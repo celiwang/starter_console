@@ -51,10 +51,10 @@ a:hover {
   color: var(--link-hover);
 }
 
-.app-shell {
+.app-content {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  min-height: 100vh;
+  grid-template-columns: 280px minmax(0, 1fr);
+  min-height: calc(100vh - 56px);
   background: var(--surface-bg);
 }
 
@@ -169,12 +169,6 @@ a:hover {
 }
 
 /* Top bar */
-.app-content {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 .top-bar {
   display: flex;
   align-items: center;
@@ -344,9 +338,10 @@ a:hover {
 
 /* Main content */
 .main-content {
-  flex: 1;
   padding: 28px 32px 40px;
   background: var(--surface-bg);
+  min-height: calc(100vh - 56px);
+  overflow-y: auto;
 }
 
 .page-header h1 {
@@ -592,8 +587,8 @@ a:hover {
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
-  .app-shell {
-    grid-template-columns: 240px 1fr;
+  .app-content {
+    grid-template-columns: 240px minmax(0, 1fr);
   }
 
   .menu-item,
@@ -603,7 +598,7 @@ a:hover {
 }
 
 @media (max-width: 960px) {
-  .app-shell {
+  .app-content {
     grid-template-columns: 1fr;
   }
 
