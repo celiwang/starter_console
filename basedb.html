@@ -195,17 +195,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="empty-state-row">
-              <td colspan="7">
-                <div class="empty-state">
-                  <h2>No items to display</h2>
-                  <p>Create new items or search again using different filters or search terms.</p>
-                </div>
-              </td>
-            </tr>
+            <!--#include virtual="partials/table-empty-state.html" -->
           </tbody>
         </table>
-        <!--#include virtual="partials/table-footer.html" -->
+        <!-- table footer rendered dynamically -->
       </section>
     </main>
   </div>
@@ -357,7 +350,7 @@
                 { label: 'Autonomous AI Database', href: '#' },
                 { label: 'Autonomous AI Database on Dedicated Infrastructure', href: '#' },
                 { label: 'Globally Distributed Autonomous AI Database', href: '#' },
-                { label: 'Oracle Base Database Service', href: '#' }
+                { label: 'Oracle Base Database Service', href: 'basedb.html' }
               ]
             },
             {
@@ -480,6 +473,124 @@
         });
       };
 
+      const initDataTables = () => {
+        const dataTables = document.querySelectorAll('.data-table');
+
+        const ensureEmptyStateRow = (tbody, columnCount) => {
+          let emptyRow = tbody.querySelector('.empty-state-row');
+
+          if (!emptyRow) {
+            emptyRow = document.createElement('tr');
+            emptyRow.className = 'empty-state-row';
+
+            const cell = document.createElement('td');
+            cell.className = 'empty-state-cell';
+            cell.innerHTML = `
+              <div class="empty-state" role="status">
+                <h2>No items to display</h2>
+                <p>Create new items or search again using different filters or search terms.</p>
+              </div>
+            `;
+
+            emptyRow.appendChild(cell);
+            tbody.appendChild(emptyRow);
+          }
+
+          const emptyCell = emptyRow.querySelector('.empty-state-cell');
+          if (emptyCell) {
+            emptyCell.setAttribute('colspan', String(columnCount));
+          }
+
+          return emptyRow;
+        };
+
+        const ensureFooter = (section) => {
+          let footer = section.querySelector('[data-footer]');
+
+          if (!footer) {
+            footer = document.createElement('footer');
+            footer.className = 'table-footer';
+            footer.setAttribute('data-footer', '');
+            footer.innerHTML = `
+              <div class="pagination">
+                <button type="button" class="pagination-button" aria-label="Previous page" disabled>‹</button>
+                <span class="pagination-info" data-pagination-info></span>
+                <button type="button" class="pagination-button" aria-label="Next page" disabled>›</button>
+              </div>
+              <div class="page-size">
+                <span>Items per page</span>
+                <button type="button" class="select-button" aria-haspopup="listbox">25 <span class="chevron" aria-hidden="true"></span></button>
+              </div>
+            `;
+            section.appendChild(footer);
+          }
+
+          return footer;
+        };
+
+        const isVisibleRow = (row) => {
+          if (row.hidden || row.getAttribute('aria-hidden') === 'true' || row.dataset.hidden === 'true') {
+            return false;
+          }
+
+          const style = window.getComputedStyle(row);
+          return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+        };
+
+        const updateTableState = (section) => {
+          const table = section.querySelector('table');
+          const tbody = table ? table.querySelector('tbody') : null;
+
+          if (!table || !tbody) {
+            return;
+          }
+
+          const columns = table.querySelectorAll('thead th').length || 1;
+          const dataRows = Array.from(tbody.querySelectorAll('tr')).filter((row) => !row.classList.contains('empty-state-row'));
+          const visibleRows = dataRows.filter(isVisibleRow);
+          const hasData = visibleRows.length > 0;
+
+          const footer = ensureFooter(section);
+          const emptyRow = ensureEmptyStateRow(tbody, columns);
+
+          if (emptyRow) {
+            emptyRow.classList.toggle('empty-state-row--hidden', hasData);
+          }
+
+          if (footer) {
+            footer.classList.toggle('table-footer--hidden', !hasData);
+            const info = footer.querySelector('[data-pagination-info]');
+            if (info) {
+              info.textContent = hasData
+                ? `Page 1 of 1 (1 - ${visibleRows.length} of ${visibleRows.length} total items)`
+                : 'Page 1 of 1 (0 total items)';
+            }
+          }
+        };
+
+        dataTables.forEach((section) => {
+          const table = section.querySelector('table');
+          const tbody = table ? table.querySelector('tbody') : null;
+
+          if (!table || !tbody) {
+            return;
+          }
+
+          updateTableState(section);
+
+          const observer = new MutationObserver(() => {
+            updateTableState(section);
+          });
+
+          observer.observe(tbody, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['style', 'class', 'hidden', 'aria-hidden', 'data-hidden']
+          });
+        });
+      };
+
       categoryButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const key = button.getAttribute('data-category');
@@ -492,6 +603,7 @@
       });
 
       renderCategory('oracle-ai-database');
+      initDataTables();
     })();
   </script>
 </body>
