@@ -737,8 +737,12 @@ a:hover {
   border-bottom: 1px solid #eceff1;
 }
 
-.empty-state-row td {
+.empty-state-cell {
   padding: 48px 20px;
+}
+
+.empty-state-row--hidden {
+  display: none;
 }
 
 .empty-state {
@@ -803,7 +807,71 @@ a:hover {
   text-align: center;
   color: #6b6f76;
 }
-
 .table-footer {
   display: flex;
-  align***
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #f5f6f8;
+  border-top: 1px solid #e3e5e8;
+}
+
+.table-footer--hidden {
+  display: none;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pagination-button {
+  background: var(--card-bg);
+  border: 1px solid #d0d2d6;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: var(--text-base);
+  cursor: pointer;
+}
+
+.pagination-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pagination-info {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.page-size {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.select-button {
+  border: 1px solid #d0d2d6;
+  background: var(--card-bg);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.select-button .chevron {
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+}
