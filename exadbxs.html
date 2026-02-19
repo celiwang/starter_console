@@ -255,7 +255,8 @@
         navButton.focus();
       };
 
-      navButton.addEventListener('click', () => {
+      navButton.addEventListener('click', (event) => {
+        event.stopPropagation();
         if (navMenu.classList.contains('is-open')) {
           closeMenu();
         } else {
@@ -614,6 +615,12 @@
           button.setAttribute('aria-current', 'true');
           renderCategory(key);
         });
+      });
+
+      document.addEventListener('click', () => {
+        if (navMenu.classList.contains('is-open')) {
+          closeMenu();
+        }
       });
 
       renderCategory('oracle-ai-database');
