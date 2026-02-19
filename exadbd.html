@@ -200,8 +200,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td data-label="Display name"><a href="#">VMCluster-202601141706</a></td>
+            <tr data-cluster-id="vmcluster-202601141706">
+              <td data-label="Display name"><a href="vm-cluster-template.html?id=vmcluster-202601141706">VMCluster-202601141706</a></td>
               <td data-label="State"><span class="badge badge--available">Available</span></td>
               <td data-label="VM count">2</td>
               <td data-label="Availability domain">AD-1</td>
@@ -210,8 +210,8 @@
               <td data-label="Storage type">ASM</td>
               <td class="table-actions" aria-label="Row actions">⋮</td>
             </tr>
-            <tr>
-              <td><a href="#">SSOExaVMCluster</a></td>
+            <tr data-cluster-id="ssoexavmcluster">
+              <td><a href="vm-cluster-template.html?id=ssoexavmcluster">SSOExaVMCluster</a></td>
               <td><span class="badge badge--available">Available</span></td>
               <td>2</td>
               <td>AD-1</td>
@@ -220,8 +220,8 @@
               <td>ASM</td>
               <td class="table-actions" aria-label="Row actions">⋮</td>
             </tr>
-            <tr>
-              <td><a href="#">VMCluster-2025082110355N</a></td>
+            <tr data-cluster-id="vmcluster-2025082110355n">
+              <td><a href="vm-cluster-template.html?id=vmcluster-2025082110355n">VMCluster-2025082110355N</a></td>
               <td><span class="badge badge--available">Available</span></td>
               <td>2</td>
               <td>AD-1</td>
@@ -230,8 +230,8 @@
               <td>ASM</td>
               <td class="table-actions" aria-label="Row actions">⋮</td>
             </tr>
-            <tr>
-              <td><a href="#">VMCluster-202507281139</a></td>
+            <tr data-cluster-id="vmcluster-202507281139">
+              <td><a href="vm-cluster-template.html?id=vmcluster-202507281139">VMCluster-202507281139</a></td>
               <td><span class="badge badge--available">Available</span></td>
               <td>1</td>
               <td>AD-1</td>
@@ -240,8 +240,8 @@
               <td>ASM</td>
               <td class="table-actions" aria-label="Row actions">⋮</td>
             </tr>
-            <tr>
-              <td><a href="#">VMCluster-202503311639</a></td>
+            <tr data-cluster-id="vmcluster-202503311639">
+              <td><a href="vm-cluster-template.html?id=vmcluster-202503311639">VMCluster-202503311639</a></td>
               <td><span class="badge badge--available">Available</span></td>
               <td>1</td>
               <td>AD-1</td>
@@ -295,7 +295,8 @@
         navButton.focus();
       };
 
-      navButton.addEventListener('click', () => {
+      navButton.addEventListener('click', (event) => {
+        event.stopPropagation();
         if (navMenu.classList.contains('is-open')) {
           closeMenu();
         } else {
@@ -303,15 +304,15 @@
         }
       });
 
-      navOverlay.addEventListener('click', closeMenu);
+     navOverlay.addEventListener('click', closeMenu);
 
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && navMenu.classList.contains('is-open')) {
+     document.addEventListener('keydown', (event) => {
+       if (event.key === 'Escape' && navMenu.classList.contains('is-open')) {
           closeMenu();
         }
       });
 
-      const categoryData = {
+    const categoryData = {
         networking: {
           title: 'Networking',
           columns: [
@@ -656,9 +657,159 @@
         });
       });
 
+      document.addEventListener('click', () => {
+        if (navMenu.classList.contains('is-open')) {
+          closeMenu();
+        }
+      });
+
       renderCategory('oracle-ai-database');
       initDataTables();
     })();
-  </script>
+
+    const clusterCatalog = {
+      'vmcluster-202601141706': {
+        name: 'VMCluster-202601141706',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        breadcrumbLabel: 'Exadata VM Clusters',
+        headerMeta: {
+          compartment: 'ocidbaaspm (root)/SharedPM',
+          availabilityDomain: 'AD-1',
+          ocid: 'ocid1.vmcluster.oc1..vmcluster-202601141706'
+        },
+        generalInformation: [
+          { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+          { label: 'Availability domain', value: 'AD-1' },
+          { label: 'OCID', value: 'ocid1.vmcluster.oc1..vmcluster-202601141706', copy: true },
+          { label: 'Created', value: 'Mon, Jan 14, 2026, 17:06:00 UTC' },
+          { label: 'Cluster name', value: 'vmcluster-202601141706' },
+          { label: 'Time zone', value: 'UTC' },
+          { label: 'VM Type', value: 'Regular' },
+          { label: 'License type', value: 'Bring Your Own License (BYOL)' },
+          { label: 'IORM status', value: 'Enabled' },
+          { label: 'Diagnostics collection', value: 'Enabled', action: { label: 'Edit', type: 'button' } },
+          { label: 'API Access Control', value: 'Enabled' }
+        ],
+        storage: [
+          { label: 'Storage type', value: 'ASM' },
+          { label: 'Exadata storage', value: '2 TB' },
+          { label: 'Storage for local backups', value: 'Not enabled' },
+          { label: 'Storage for Exadata sparse snapshots', value: 'Not enabled' }
+        ],
+        network: [
+          { label: 'Virtual cloud network', value: 'SSOVCNCWL' },
+          { label: 'Client subnet', value: 'SSOSUBREG' },
+          { label: 'Backup subnet', value: 'SSOBACKUPREG' },
+          { label: 'Hostname domain name', value: 'vmcluster-202601141706.pub.cwl.oraclevcn.com', copy: true },
+          { label: 'SCAN DNS name', value: 'vmcluster-202601141706-scan.pub.cwl.oraclevcn.com', copy: true }
+        ]
+      },
+      ssoexavmcluster: {
+        name: 'SSOExaVMCluster',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        breadcrumbLabel: 'Exadata VM Clusters',
+        headerMeta: {
+          compartment: 'ocidbaaspm (root)/SharedPM',
+          availabilityDomain: 'vPay:UK-CARDIFF-1.AD-1',
+          ocid: 'ocid1.vmcluster.oc1..example'
+        },
+        generalInformation: [
+          { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+          { label: 'Availability domain', value: 'vPay:UK-CARDIFF-1.AD-1' },
+          { label: 'OCID', value: 'ocid1.vmcluster.oc1..example', copy: true },
+          { label: 'Created', value: 'Thu, Sep 25, 2025, 14:22:41 UTC' },
+          { label: 'Cluster name', value: 'ssoexavm' },
+          { label: 'Time zone', value: 'UTC' },
+          { label: 'VM Type', value: 'Regular' },
+          { label: 'License type', value: 'Bring Your Own License (BYOL)' },
+          { label: 'IORM status', value: 'Enabled' },
+          { label: 'Diagnostics collection', value: 'Enabled', action: { label: 'Edit', type: 'button' } },
+          { label: 'API Access Control', value: 'Enabled' }
+        ],
+        storage: [
+          { label: 'Storage type', value: 'ASM' },
+          { label: 'Exadata storage', value: '2 TB' },
+          { label: 'Storage for local backups', value: 'Not enabled' },
+          { label: 'Storage for Exadata sparse snapshots', value: 'Not enabled' }
+        ],
+        network: [
+          { label: 'Virtual cloud network', value: 'SSOVCNCWL' },
+          { label: 'Client subnet', value: 'SSOSUBREG' },
+          { label: 'Backup subnet', value: 'SSOBACKUPREG' },
+          { label: 'Hostname domain name', value: 'pub.cwl.oraclevcn.com', copy: true },
+          { label: 'SCAN DNS name', value: 'ssoexavm-6bjtx-scan.pub.cwl.oraclevcn.com', copy: true }
+        ]
+      },
+      'vmcluster-2025082110355n': {
+        name: 'VMCluster-2025082110355N',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        breadcrumbLabel: 'Exadata VM Clusters',
+        headerMeta: {
+          compartment: 'ocidbaaspm (root)/SharedPM',
+          availabilityDomain: 'AD-1',
+          ocid: 'ocid1.vmcluster.oc1..vmcluster-2025082110355n'
+        },
+        generalInformation: [
+          { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+          { label: 'Availability domain', value: 'AD-1' },
+          { label: 'OCID', value: 'ocid1.vmcluster.oc1..vmcluster-2025082110355n', copy: true },
+          { label: 'Created', value: 'Thu, Aug 21, 2025, 10:35:00 UTC' },
+          { label: 'Cluster name', value: 'vmcluster-2025082110355N' },
+          { label: 'Time zone', value: 'UTC' },
+          { label: 'VM Type', value: 'Regular' },
+          { label: 'License type', value: 'Bring Your Own License (BYOL)' },
+          { label: 'IORM status', value: 'Enabled' },
+          { label: 'Diagnostics collection', value: 'Enabled' },
+          { label: 'API Access Control', value: 'Enabled' }
+        ],
+        storage: [
+          { label: 'Storage type', value: 'ASM' },
+          { label: 'Exadata storage', value: '2 TB' },
+          { label: 'Storage for local backups', value: 'Not enabled' },
+          { label: 'Storage for Exadata sparse snapshots', value: 'Not enabled' }
+        ],
+        network: [
+          { label: 'Virtual cloud network', value: 'SSOVCNCWL' },
+          { label: 'Client subnet', value: 'SSOSUBREG' },
+          { label: 'Backup subnet', value: 'SSOBACKUPREG' },
+          { label: 'Hostname domain name', value: 'vmcluster-2025082110355n.pub.cwl.oraclevcn.com', copy: true },
+          { label: 'SCAN DNS name', value: 'vmcluster-2025082110355n-scan.pub.cwl.oraclevcn.com', copy: true }
+        ]
+      },
+      'vmcluster-202507281139': {
+        name: 'VMCluster-202507281139',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        breadcrumbLabel: 'Exadata VM Clusters',
+        headerMeta: {
+          compartment: 'ocidbaaspm (root)/SharedPM',
+          availabilityDomain: 'AD-1',
+          ocid: 'ocid1.vmcluster.oc1..vmcluster-202507281139'
+        },
+        generalInformation: [
+          { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+          { label: 'Availability domain', value: 'AD-1' },
+          { label: 'OCID', value: 'ocid1.vmcluster.oc1..vmcluster-202507281139', copy: true },
+          { label: 'Created', value: 'Thu, Jul 28, 2025, 11:39:00 UTC' },
+          { label: 'Cluster name', value: 'vmcluster-202507281139' },
+          { label: 'Time zone', value: 'UTC' },
+          { label: 'VM Type', value: 'Regular' },
+          { label: 'License type', value: 'Bring Your Own License (BYOL)' },
+          { label: 'IORM status', value: 'Enabled' },
+          { label: 'Diagnostics collection', value: 'Enabled' },
+          { label: 'API Access Control', value: 'Enabled' }
+        ],
+        storage: [
+          { label: 'Storage type', value: 'ASM' },
+          { label: 'Exadata storage', value: '1 TB' },
+          { label: 'Storage for local backups', value: 'Not enabled' },
+          { label: 'Storage for Exadata sparse snapshots', value: 'Not enabled' }
+        ],
+        network: [
+          { label: 'Virtual cloud network', value: 'SSOVCNCWL' },
+          { label: 'Client subnet', value: 'SSOSUBREG' }
+        ]
+      }
+    };
+ </script>
 </body>
 </html>
