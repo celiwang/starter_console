@@ -738,6 +738,30 @@
           { label: 'Backup subnet', value: 'SSOBACKUPREG' },
           { label: 'Hostname domain name', value: 'pub.cwl.oraclevcn.com', copy: true },
           { label: 'SCAN DNS name', value: 'ssoexavm-6bjtx-scan.pub.cwl.oraclevcn.com', copy: true }
+        ],
+        virtualMachines: [
+          {
+            name: 'ssoexavm-6bjtx1',
+            state: 'Available',
+            compute: '4 OCPUs',
+            memory: '30 GB',
+            storage: '244 GB',
+            dnsName: 'ssoexavm-6bjtx1.pub.cwl.oraclevcn.com',
+            dbServer: 'dbServer-1',
+            publicIp: '129.151.83.103',
+            ipv6: '—'
+          },
+          {
+            name: 'ssoexavm-6bjtx2',
+            state: 'Available',
+            compute: '4 OCPUs',
+            memory: '30 GB',
+            storage: '244 GB',
+            dnsName: 'ssoexavm-6bjtx2.pub.cwl.oraclevcn.com',
+            dbServer: 'dbServer-2',
+            publicIp: '144.24.224.57',
+            ipv6: '—'
+          }
         ]
       },
       'vmcluster-2025082110355n': {
