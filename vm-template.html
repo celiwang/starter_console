@@ -185,6 +185,17 @@
                 Actions
                 <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
               </button>
+              <div
+                class="actions-menu__dropdown"
+                id="vm-actions-menu"
+                role="menu"
+                data-vm-actions-menu
+                hidden
+              >
+                <button type="button" class="actions-menu__item" role="menuitem" data-vm-action="reboot">Reboot</button>
+                <button type="button" class="actions-menu__item" role="menuitem">Add Tags</button>
+                <button type="button" class="actions-menu__item actions-menu__item--danger" role="menuitem">Terminate</button>
+              </div>
             </div>
             <button type="button" class="primary-button">Stop</button>
           </div>
@@ -245,6 +256,41 @@
       </section>
     </main>
   </div>
+
+  <aside class="vm-side-panel" data-vm-panel="reboot" aria-hidden="true">
+    <div class="vm-side-panel__overlay" data-vm-panel-overlay></div>
+    <div class="vm-side-panel__content" role="dialog" aria-modal="true" aria-labelledby="vm-reboot-title" tabindex="-1">
+      <header class="vm-side-panel__header">
+        <h2 id="vm-reboot-title">Reboot VM</h2>
+        <button type="button" class="icon-button icon-button--light" data-vm-panel-close aria-label="Close panel">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5.53033 4.46967C5.23744 4.17678 4.76256 4.17678 4.46967 4.46967C4.17678 4.76256 4.17678 5.23744 4.46967 5.53033L8.93934 10L4.46967 14.4697C4.17678 14.7626 4.17678 15.2374 4.46967 15.5303C4.76256 15.8232 5.23744 15.8232 5.53033 15.5303L10 11.0607L14.4697 15.5303C14.7626 15.8232 15.2374 15.8232 15.5303 15.5303C15.8232 15.2374 15.8232 14.7626 15.5303 14.4697L11.0607 10L15.5303 5.53033C15.8232 5.23744 15.8232 4.76256 15.5303 4.46967C15.2374 4.17678 14.7626 4.17678 14.4697 4.46967L10 8.93934L5.53033 4.46967Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </header>
+      <div class="vm-side-panel__body">
+        <p class="vm-side-panel__description">
+          Rebooting the VM first attempts a clean shutdown before restarting. Enable Forceful Reboot to restart the VM immediately without waiting for a clean shutdown. This may result in loss of uncommitted database transactions.
+        </p>
+        <div class="vm-side-panel__toggle">
+          <div class="toggle-field">
+            <div class="toggle-field__label-group">
+              <span class="toggle-field__label">Force Reboot VM</span>
+              <button type="button" class="toggle" role="switch" aria-checked="false" data-vm-reboot-toggle>
+                <span class="toggle__track" aria-hidden="true"></span>
+                <span class="toggle__thumb" aria-hidden="true"></span>
+              </button>
+            </div>
+            <p class="toggle-field__description">Use only when the VM is unresponsive.</p>
+          </div>
+        </div>
+      </div>
+      <footer class="vm-side-panel__footer">
+        <button type="button" class="secondary-button" data-vm-panel-cancel>Cancel</button>
+        <button type="button" class="primary-button" data-vm-panel-confirm>Reboot</button>
+      </footer>
+    </div>
+  </aside>
 
   <script>
     (function () {
@@ -358,6 +404,9 @@
         breadcrumbLink: document.querySelector('[data-breadcrumb-link]'),
       };
 
+      let openRebootPanel = () => {};
+      let closeRebootPanel = () => {};
+
       const fallbackHref = clusterId ? 'vm-cluster-template.html?id=' + encodeURIComponent(clusterId) : 'exadbd.html';
       if (selectors.breadcrumbLink) {
         selectors.breadcrumbLink.href = fallbackHref;
@@ -376,6 +425,8 @@
         renderVm(vmEntry);
       }
 
+      setupRebootPanel();
+      setupActionsMenu();
       document.addEventListener('click', handleCopyClick);
 
       function setupTabs() {
@@ -419,6 +470,222 @@
         if (initiallyActive) {
           activateTab(initiallyActive.getAttribute('data-vm-tab'));
         }
+      }
+
+      function setupActionsMenu() {
+        const menuContainer = document.querySelector('[data-vm-actions]');
+        if (!menuContainer) {
+          return;
+        }
+        const trigger = menuContainer.querySelector('[data-vm-actions-trigger]');
+        const menu = menuContainer.querySelector('[data-vm-actions-menu]');
+        if (!trigger || !menu) {
+          return;
+        }
+        const items = Array.from(menu.querySelectorAll('.actions-menu__item'));
+
+        const closeMenu = () => {
+          menu.hidden = true;
+          trigger.setAttribute('aria-expanded', 'false');
+        };
+
+        const openMenu = () => {
+          menu.hidden = false;
+          trigger.setAttribute('aria-expanded', 'true');
+        };
+
+        const toggleMenu = () => {
+          if (menu.hidden) {
+            openMenu();
+          } else {
+            closeMenu();
+          }
+        };
+
+        trigger.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          toggleMenu();
+        });
+
+        document.addEventListener('click', (event) => {
+          if (!menuContainer.contains(event.target)) {
+            closeMenu();
+          }
+        });
+
+        const menuKeydownHandler = (event) => {
+          if (event.key === 'Escape') {
+            closeMenu();
+            trigger.focus();
+            return;
+          }
+
+          if (!menu.hidden && (event.key === 'ArrowUp' || event.key === 'ArrowDown')) {
+            event.preventDefault();
+            if (!items.length) {
+              return;
+            }
+            const firstItem = items[0];
+            const lastItem = items[items.length - 1];
+            const currentIndex = items.indexOf(document.activeElement);
+            if (event.key === 'ArrowDown') {
+              if (currentIndex === -1 || currentIndex === items.length - 1) {
+                firstItem.focus();
+              } else {
+                items[currentIndex + 1].focus();
+              }
+            } else if (event.key === 'ArrowUp') {
+              if (currentIndex <= 0) {
+                lastItem.focus();
+              } else {
+                items[currentIndex - 1].focus();
+              }
+            }
+          } else if (!menu.hidden && (event.key === 'Home' || event.key === 'End')) {
+            event.preventDefault();
+            if (!items.length) {
+              return;
+            }
+            if (event.key === 'Home') {
+              items[0].focus();
+            } else {
+              items[items.length - 1].focus();
+            }
+          } else if (!menu.hidden && event.key === 'Tab') {
+            closeMenu();
+          }
+        };
+
+        document.addEventListener('keydown', menuKeydownHandler);
+
+        items.forEach((item) => {
+          item.addEventListener('click', () => {
+            closeMenu();
+            trigger.focus();
+          });
+        });
+
+        const rebootAction = menuContainer.querySelector('[data-vm-action="reboot"]');
+        if (rebootAction) {
+          rebootAction.addEventListener('click', () => {
+            closeMenu();
+            openRebootPanel();
+          });
+        }
+
+        trigger.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            if (menu.hidden) {
+              openMenu();
+            }
+            if (items.length) {
+              items[0].focus();
+            }
+          } else if (event.key === 'ArrowUp' && menu.hidden) {
+            event.preventDefault();
+            openMenu();
+            if (items.length) {
+              items[items.length - 1].focus();
+            }
+          }
+        });
+
+        document.addEventListener('focusin', (event) => {
+          if (!menu.hidden && !menuContainer.contains(event.target)) {
+            closeMenu();
+          }
+        });
+      }
+
+      function setupRebootPanel() {
+        const panel = document.querySelector('[data-vm-panel="reboot"]');
+        if (!panel) {
+          openRebootPanel = () => {};
+          closeRebootPanel = () => {};
+          return;
+        }
+        const content = panel.querySelector('.vm-side-panel__content');
+        const overlay = panel.querySelector('[data-vm-panel-overlay]');
+        const closeButton = panel.querySelector('[data-vm-panel-close]');
+        const cancelButton = panel.querySelector('[data-vm-panel-cancel]');
+        const confirmButton = panel.querySelector('[data-vm-panel-confirm]');
+        const toggleButton = panel.querySelector('[data-vm-reboot-toggle]');
+        let lastFocusedElement = null;
+        let forceReboot = false;
+
+        const setToggleState = (state) => {
+          forceReboot = state;
+          if (!toggleButton) {
+            return;
+          }
+          toggleButton.setAttribute('aria-checked', state ? 'true' : 'false');
+          toggleButton.classList.toggle('toggle--on', state);
+        };
+
+        setToggleState(false);
+
+        openRebootPanel = () => {
+          setToggleState(false);
+          lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+          panel.classList.add('is-open');
+          panel.setAttribute('aria-hidden', 'false');
+          if (content) {
+            content.focus();
+          }
+        };
+
+        closeRebootPanel = () => {
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+          if (content && content === document.activeElement) {
+            content.blur();
+          }
+          if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+          }
+          lastFocusedElement = null;
+          setToggleState(false);
+        };
+
+        const handlePanelClose = () => {
+          closeRebootPanel();
+        };
+
+        if (overlay) {
+          overlay.addEventListener('click', handlePanelClose);
+        }
+        if (closeButton) {
+          closeButton.addEventListener('click', handlePanelClose);
+        }
+        if (cancelButton) {
+          cancelButton.addEventListener('click', handlePanelClose);
+        }
+        if (confirmButton) {
+          confirmButton.addEventListener('click', handlePanelClose);
+        }
+
+        if (toggleButton) {
+          const toggle = () => setToggleState(!forceReboot);
+          toggleButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggle();
+          });
+          toggleButton.addEventListener('keydown', (event) => {
+            if (event.key === ' ' || event.key === 'Enter') {
+              event.preventDefault();
+              toggle();
+            }
+          });
+        }
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+            event.preventDefault();
+            closeRebootPanel();
+          }
+        });
       }
 
       function resolveVmEntry(vmIdParam, clusterIdParam) {
