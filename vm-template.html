@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oracle Cloud Infrastructure Console — Virtual Machine Detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="console-branding-bar search-v2">
+    <div id="console-nav-container" class="nav-container" role="application" aria-label="Console navigation">
+      <button
+        type="button"
+        id="nav-menu-button"
+        class="nav-menu_button nav-menu_button_mega nav-menu_button_open-free-focus-white"
+        data-test-id="nav-mega-menu-button"
+        tabindex="0"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Open navigation menu"
+      >
+        <span class="nav-menu_button__icon" aria-hidden="true">
+          <span class="nav-menu_button__bar"></span>
+          <span class="nav-menu_button__bar"></span>
+          <span class="nav-menu_button__bar"></span>
+        </span>
+        <span class="nav-menu_button__close" aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="top-bar__logo" aria-label="Oracle Cloud">
+      <span class="brand-oval" aria-hidden="true"></span>
+      <span class="brand-text">Cloud</span>
+    </div>
+    <div id="search-v2-container" class="console-header-search-box">
+      <div class="margin-space-left"></div>
+      <div id="search-v2" aria-label="Search" class="searchbox-v2" tabindex="-1">
+        <label class="search-bar" for="global-search">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+            <circle cx="9" cy="9" r="6.5" stroke="white" stroke-width="2" fill="none" opacity="0.85"></circle>
+            <path d="M13.5 13.5L18 18" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <input id="global-search" type="text" placeholder="Search resources, services, documentation, and Marketplace" />
+        </label>
+      </div>
+      <div class="margin-space-right"></div>
+    </div>
+    <div class="console-header-item-bar">
+      <div class="top-bar__region" role="button" aria-haspopup="listbox" aria-label="Selected region">
+        <span class="region-icon" aria-hidden="true"></span>
+        <span class="region-label">UK West (Newport)</span>
+        <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
+      </div>
+      <div class="top-bar__actions">
+        <button type="button" class="icon-button" aria-label="Developer tools">
+          <svg focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1.66602 1.6665H18.3327V14.1665H10.8327V16.6665H14.166V18.3332H5.83268V16.6665H9.16602V14.1665H1.66602V1.6665ZM3.33268 3.33317V12.4998H16.666V3.33317H3.33268Z" fill="white"></path>
+            <path d="M7.74343 4.82725L8.92194 6.00576L7.01119 7.9165L8.92194 9.82725L7.74343 11.0058L4.65417 7.9165L7.74343 4.82725ZM12.9875 7.9165L11.0768 6.00576L12.2553 4.82725L15.3445 7.9165L12.2553 11.0058L11.0768 9.82725L12.9875 7.9165Z" fill="white"></path>
+          </svg>
+        </button>
+        <button type="button" class="icon-button" aria-label="Unread announcements">
+          <svg focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2.49805 12.4998V14.1665H17.498V12.4998C15.8897 12.4998 15.8314 9.1665 15.8314 9.1665V7.49984C15.8314 5.95274 15.2168 4.46901 14.1228 3.37505C13.0289 2.28109 11.5451 1.6665 9.99805 1.6665C8.45095 1.6665 6.96722 2.28109 5.87326 3.37505C4.77929 4.46901 4.16471 5.95274 4.16471 7.49984V9.1665C4.16471 9.1665 4.10638 12.4998 2.49805 12.4998ZM14.1647 9.1665C14.1531 10.3207 14.4099 11.4618 14.9147 12.4998H5.08138C5.58623 11.4618 5.84298 10.3207 5.83138 9.1665V7.49984C5.83138 6.39477 6.27037 5.33496 7.05177 4.55356C7.83317 3.77216 8.89298 3.33317 9.99805 3.33317C11.1031 3.33317 12.1629 3.77216 12.9443 4.55356C13.7257 5.33496 14.1647 6.39477 14.1647 7.49984V9.1665Z" fill="white"></path>
+            <path d="M6.73897 16.177C8.04186 19.053 12.0271 19.0567 13.2644 16.1606L11.7317 15.5058C11.0807 17.0296 8.97923 17.0833 8.25712 15.4893L6.73897 16.177Z" fill="white"></path>
+          </svg>
+        </button>
+        <button type="button" class="icon-button" aria-label="Help menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.33268 9.99984C3.33268 6.31794 6.31745 3.33317 9.99935 3.33317C13.6812 3.33317 16.666 6.31794 16.666 9.99984C16.666 13.6817 13.6812 16.6665 9.99935 16.6665C6.31745 16.6665 3.33268 13.6817 3.33268 9.99984ZM9.99935 1.6665C5.39518 1.6665 1.66602 5.39567 1.66602 9.99984C1.66602 14.604 5.39518 18.3332 9.99935 18.3332C14.6035 18.3332 18.3327 14.604 18.3327 9.99984C18.3327 5.39567 14.6035 1.6665 9.99935 1.6665ZM8.33268 8.15773C8.37768 6.35212 9.47602 4.99984 11.666 4.99984C14.5001 4.99984 15.9993 6.4644 15.9993 7.43773C15.9993 8.663 15.4768 9.00405 14.8327 9.42089C14.1877 9.8251 13.6343 10.3051 13.4993 11.049L13.4393 11.6665H11.7727L11.8327 10.9612C11.9677 10.3051 12.521 9.8251 13.166 9.42089C13.8102 9.00405 14.3327 8.663 14.3327 7.43773C14.3327 6.4644 13.8335 4.99984 10.9993 4.99984C8.80935 4.99984 7.71102 6.35212 7.66602 8.15773L7.64935 8.80317H5.99935C6.02268 6.24708 7.87768 4.1665 10.9993 4.1665C14.2277 4.1665 16.666 5.99317 16.666 7.43773C16.666 8.9944 15.9385 9.74112 15.2277 10.1855C14.4993 10.643 13.9993 10.9932 13.9993 11.6665V11.8332H12.3327V11.6665C12.3327 10.4223 12.8543 9.979 13.5168 9.53463C14.2277 9.06009 14.9993 8.5251 14.9993 7.43773C14.9993 5.89195 13.3327 4.1665 10.9993 4.1665C8.31102 4.1665 6.66602 5.8063 6.66602 8.15773V8.83317H8.33268V8.15773ZM10.9993 15.8332H9.33268V14.1665H10.9993V15.8332Z" fill="white"></path>
+          </svg>
+        </button>
+        <button type="button" class="profile-button" aria-label="User menu">
+          <span class="profile-avatar" aria-hidden="true"></span>
+          <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="nav-mega-menu-overlay" class="nav-mega-menu-overlay" aria-hidden="true"></div>
+  <div id="nav-menu" class="nav-menu" role="application" aria-modal="true" aria-hidden="true">
+    <div class="nav-menu__panel">
+      <div id="nav-primary-menu" class="nav-primary-menu" role="navigation">
+        <div class="nav-search-area">
+          <label class="nav-search-bar" for="nav-mega-search">
+            <svg class="nav-search-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+              <circle cx="9" cy="9" r="6.5" stroke="#51565d" stroke-width="2" fill="none"></circle>
+              <path d="M13.5 13.5L18 18" stroke="#51565d" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <input id="nav-mega-search" type="text" placeholder="Search" />
+          </label>
+        </div>
+        <div class="category-list" role="list">
+          <button type="button" class="category-item category-item--active" role="listitem" data-category="oracle-ai-database">Oracle AI Database</button>
+          <button type="button" class="category-item" role="listitem" data-category="networking">Networking</button>
+        </div>
+      </div>
+      <div id="nav-secondary-menu" class="nav-secondary-menu">
+        <div id="submenu-container" class="submenu-container" tabindex="-1">
+          <div class="submenu-container__heading">
+            <span class="category-item-icon" aria-hidden="true"></span>
+            <div tabindex="0" class="category-item__text" id="nav-category-title" role="heading" aria-level="1">Oracle AI Database</div>
+          </div>
+          <div class="submenu-container__section">
+            <div class="submenu-container__section_primary" id="submenu-container-primary">
+              <div class="submenu-columns" id="nav-category-content">
+                <div class="submenu-column">
+                  <h3 class="submenu-column__title">Overview</h3>
+                  <a class="submenu-link nav-link" href="basedb.html">Oracle Base Database Service</a>
+                  <a class="submenu-link nav-link" href="exadbd.html">Exadata VM Clusters</a>
+                </div>
+                <div class="submenu-column">
+                  <h3 class="submenu-column__title">Resources</h3>
+                  <a class="submenu-link nav-link" href="#">Documentation</a>
+                  <a class="submenu-link nav-link" href="#">Tutorials</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-content">
+    <aside class="side-nav">
+      <div class="side-nav__product">
+        <div class="product-icon" aria-hidden="true"><span class="product-icon__base"></span></div>
+        <div class="product-text">Oracle AI Database</div>
+      </div>
+      <nav class="side-nav__menu" aria-label="Oracle Exadata navigation">
+        <button type="button" class="menu-item menu-item--active">
+          <span class="menu-item__back" aria-hidden="true">‹</span>
+          Oracle Exadata Database Service on Dedicated Infrastructure
+        </button>
+        <div class="menu-sublist" role="list">
+          <button type="button" class="menu-subitem menu-subitem--active">Exadata VM Clusters</button>
+          <button type="button" class="menu-subitem">Exadata Infrastructure</button>
+          <button type="button" class="menu-subitem">Resources</button>
+        </div>
+        <div class="menu-divider" role="presentation"></div>
+        <div class="menu-secondary">
+          <button type="button" class="menu-subitem">Scheduling policy</button>
+          <button type="button" class="menu-subitem">Software images</button>
+          <button type="button" class="menu-subitem">Standalone backups</button>
+          <button type="button" class="menu-subitem">Interim software updates</button>
+          <button type="button" class="menu-subitem">Key Stores</button>
+        </div>
+      </nav>
+    </aside>
+    <main class="main-content main-content--detail" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="vm-cluster-template.html" class="breadcrumbs__link" data-breadcrumb-link>
+          <svg class="breadcrumbs__icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+            <g fill="none">
+              <path d="M21.996 11H5.41l5.293-5.293L9.29 4.293 1.582 12l7.707 7.707 1.414-1.414L5.41 13h16.586z" fill="currentColor"></path>
+            </g>
+          </svg>
+          <span data-slot="vm-breadcrumb-label">Exadata VM Cluster Details</span>
+        </a>
+      </nav>
+
+      <section class="vm-detail" data-vm-view>
+        <header class="vm-detail-header" aria-labelledby="vm-detail-title">
+          <div class="vm-detail-header__context">
+            <div class="vm-detail-header__title-row">
+              <h1 id="vm-detail-title" data-slot="vm-name">Virtual Machine</h1>
+              <span class="badge badge--available" data-slot="vm-status">Available</span>
+            </div>
+            <p class="vm-detail-header__subtitle" data-slot="vm-type">Virtual Machine</p>
+          </div>
+          <div class="vm-detail-header__actions">
+            <div class="actions-menu" data-vm-actions>
+              <button
+                type="button"
+                class="dropdown-button"
+                data-vm-actions-trigger
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="vm-actions-menu"
+              >
+                Actions
+                <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
+              </button>
+              <div
+                class="actions-menu__dropdown"
+                id="vm-actions-menu"
+                role="menu"
+                data-vm-actions-menu
+                hidden
+              >
+                <button type="button" class="actions-menu__item" role="menuitem" data-vm-action="reboot">Reboot</button>
+                <button type="button" class="actions-menu__item" role="menuitem">Add Tags</button>
+                <button type="button" class="actions-menu__item actions-menu__item--danger" role="menuitem">Terminate</button>
+              </div>
+            </div>
+            <button type="button" class="primary-button">Stop</button>
+          </div>
+        </header>
+
+        <div class="filter-bar filter-bar--flat" aria-hidden="true">
+          <div class="filter-bar__background"></div>
+        </div>
+
+        <nav class="detail-tabs detail-tabs--vm" aria-label="Virtual machine detail navigation">
+          <div class="tabs" role="tablist">
+            <button class="tab tab--active" role="tab" id="vm-tab-trigger-information" aria-controls="vm-tab-information" aria-selected="true" tabindex="0" data-vm-tab="vm-tab-information">VM information</button>
+            <button class="tab" role="tab" id="vm-tab-trigger-connections" aria-controls="vm-tab-connections" aria-selected="false" tabindex="-1" data-vm-tab="vm-tab-connections">Console connections</button>
+            <button class="tab" role="tab" id="vm-tab-trigger-history" aria-controls="vm-tab-history" aria-selected="false" tabindex="-1" data-vm-tab="vm-tab-history">Console history</button>
+            <button class="tab" role="tab" id="vm-tab-trigger-work-requests" aria-controls="vm-tab-work-requests" aria-selected="false" tabindex="-1" data-vm-tab="vm-tab-work-requests">Work requests</button>
+            <button class="tab" role="tab" id="vm-tab-trigger-tags" aria-controls="vm-tab-tags" aria-selected="false" tabindex="-1" data-vm-tab="vm-tab-tags">Tags</button>
+          </div>
+        </nav>
+
+        <section class="tab-panels" data-vm-panels>
+          <article class="tab-panel tab-panel--active" id="vm-tab-information" role="tabpanel" aria-labelledby="vm-tab-trigger-information" data-vm-panel="vm-tab-information">
+            <div class="detail-card" data-vm-card="general">
+              <header class="detail-card__header">
+                <h2>General information</h2>
+              </header>
+              <dl class="detail-rows" data-vm-general-rows></dl>
+            </div>
+          </article>
+
+          <article class="tab-panel" id="vm-tab-connections" role="tabpanel" aria-labelledby="vm-tab-trigger-connections" data-vm-panel="vm-tab-connections" hidden>
+            <div class="empty-state">
+              <h2>Console connections</h2>
+              <p>Content to be implemented.</p>
+            </div>
+          </article>
+
+          <article class="tab-panel" id="vm-tab-history" role="tabpanel" aria-labelledby="vm-tab-trigger-history" data-vm-panel="vm-tab-history" hidden>
+            <div class="empty-state">
+              <h2>Console history</h2>
+              <p>Content to be implemented.</p>
+            </div>
+          </article>
+
+          <article class="tab-panel" id="vm-tab-work-requests" role="tabpanel" aria-labelledby="vm-tab-trigger-work-requests" data-vm-panel="vm-tab-work-requests" hidden>
+            <div class="empty-state">
+              <h2>Work requests</h2>
+              <p>Content to be implemented.</p>
+            </div>
+          </article>
+
+          <article class="tab-panel" id="vm-tab-tags" role="tabpanel" aria-labelledby="vm-tab-trigger-tags" data-vm-panel="vm-tab-tags" hidden>
+            <div class="empty-state">
+              <h2>Tags</h2>
+              <p>Content to be implemented.</p>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <aside class="vm-side-panel" data-vm-panel="reboot" aria-hidden="true">
+    <div class="vm-side-panel__overlay" data-vm-panel-overlay></div>
+    <div class="vm-side-panel__content" role="dialog" aria-modal="true" aria-labelledby="vm-reboot-title" tabindex="-1">
+      <header class="vm-side-panel__header">
+        <h2 id="vm-reboot-title">Reboot VM</h2>
+        <button type="button" class="icon-button icon-button--light" data-vm-panel-close aria-label="Close panel">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5.53033 4.46967C5.23744 4.17678 4.76256 4.17678 4.46967 4.46967C4.17678 4.76256 4.17678 5.23744 4.46967 5.53033L8.93934 10L4.46967 14.4697C4.17678 14.7626 4.17678 15.2374 4.46967 15.5303C4.76256 15.8232 5.23744 15.8232 5.53033 15.5303L10 11.0607L14.4697 15.5303C14.7626 15.8232 15.2374 15.8232 15.5303 15.5303C15.8232 15.2374 15.8232 14.7626 15.5303 14.4697L11.0607 10L15.5303 5.53033C15.8232 5.23744 15.8232 4.76256 15.5303 4.46967C15.2374 4.17678 14.7626 4.17678 14.4697 4.46967L10 8.93934L5.53033 4.46967Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </header>
+      <div class="vm-side-panel__body">
+        <p class="vm-side-panel__description">
+          Rebooting the VM first attempts a clean shutdown before restarting. Enable Forceful Reboot to restart the VM immediately without waiting for a clean shutdown. This may result in loss of uncommitted database transactions.
+        </p>
+        <div class="vm-side-panel__toggle">
+          <div class="toggle-field">
+            <div class="toggle-field__label-group">
+              <span class="toggle-field__label">Force Reboot VM</span>
+              <button type="button" class="toggle" role="switch" aria-checked="false" data-vm-reboot-toggle>
+                <span class="toggle__track" aria-hidden="true"></span>
+                <span class="toggle__thumb" aria-hidden="true"></span>
+              </button>
+            </div>
+            <p class="toggle-field__description">Use only when the VM is unresponsive.</p>
+          </div>
+        </div>
+      </div>
+      <footer class="vm-side-panel__footer">
+        <button type="button" class="secondary-button" data-vm-panel-cancel>Cancel</button>
+        <button type="button" class="primary-button" data-vm-panel-confirm>Reboot</button>
+      </footer>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const basePageTitle = 'Oracle Cloud Infrastructure Console — Virtual Machine Detail';
+
+      const navButton = document.getElementById('nav-menu-button');
+      const navMenu = document.getElementById('nav-menu');
+      const navOverlay = document.getElementById('nav-mega-menu-overlay');
+      const body = document.body;
+
+      if (navButton && navMenu && navOverlay) {
+        const openMenu = () => {
+          navMenu.classList.add('is-open');
+          navOverlay.classList.add('is-open');
+          navMenu.setAttribute('aria-hidden', 'false');
+          navOverlay.setAttribute('aria-hidden', 'false');
+          navButton.setAttribute('aria-expanded', 'true');
+          navButton.setAttribute('aria-label', 'Close navigation menu');
+          if (body) {
+            body.classList.add('nav-menu-open');
+          }
+        };
+
+        const closeMenu = () => {
+          navMenu.classList.remove('is-open');
+          navOverlay.classList.remove('is-open');
+          navMenu.setAttribute('aria-hidden', 'true');
+          navOverlay.setAttribute('aria-hidden', 'true');
+          navButton.setAttribute('aria-expanded', 'false');
+          navButton.setAttribute('aria-label', 'Open navigation menu');
+          if (body) {
+            body.classList.remove('nav-menu-open');
+          }
+        };
+
+        navButton.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          if (navMenu.classList.contains('is-open')) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
+
+        navOverlay.addEventListener('click', closeMenu);
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && navMenu.classList.contains('is-open')) {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener('click', (event) => {
+          if (!navMenu.contains(event.target) && event.target !== navButton && navMenu.classList.contains('is-open')) {
+            closeMenu();
+          }
+        });
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const vmId = params.get('id');
+      const clusterId = params.get('cluster') || 'ssoexavmcluster';
+
+      const baseVmCatalog = {
+        ssoexavmcluster: {
+          'ssoexavm-6bjtx1': {
+            name: 'ssoexavm-6bjtx1',
+            status: { label: 'Available', badgeClass: 'badge--available' },
+            vmType: 'Virtual Machine',
+            breadcrumbLabel: 'Exadata VM Cluster Details',
+            generalInformation: [
+              { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+              { label: 'Availability domain', value: 'vPay:UK-CARDIFF-1-AD-1' },
+              { label: 'OCID', value: 'ocid1.dbnode.oc1.uk-cardiff-1.anrxoljr6cpfvnaa5ov7itreilw4jreue4hnve2uibqinqxxb6ppcugx4q', copy: true },
+              { label: 'Created', value: 'Sep 25, 2025, 2:22:41 PM UTC' },
+              { label: 'Time zone', value: 'UTC' },
+              { label: 'Public IP address', value: '129.151.83.103' },
+              { label: 'Floating IP address', value: '10.35.0.154' },
+              { label: 'Private IP address & DNS name', value: '10.35.0.209 (ssoexavm-6bjtx1.pub.cwl.oraclevcn.com)', copy: true }
+            ]
+          },
+          'ssoexavm-6bjtx2': {
+            name: 'ssoexavm-6bjtx2',
+            status: { label: 'Available', badgeClass: 'badge--available' },
+            vmType: 'Virtual Machine',
+            breadcrumbLabel: 'Exadata VM Cluster Details',
+            generalInformation: [
+              { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+              { label: 'Availability domain', value: 'vPay:UK-CARDIFF-1-AD-1' },
+              { label: 'OCID', value: 'ocid1.dbnode.oc1.uk-cardiff-1.anrxoljr6cpfvnaa5ov7itreilw4jreue4hnve2uibqinqxxb6ppcugx4r', copy: true },
+              { label: 'Created', value: 'Sep 25, 2025, 2:23:10 PM UTC' },
+              { label: 'Time zone', value: 'UTC' },
+              { label: 'Public IP address', value: '144.24.224.57' },
+              { label: 'Floating IP address', value: '10.35.0.168' },
+              { label: 'Private IP address & DNS name', value: '10.35.0.210 (ssoexavm-6bjtx2.pub.cwl.oraclevcn.com)', copy: true }
+            ]
+          }
+        }
+      };
+
+      const selectors = {
+        detail: document.querySelector('[data-vm-view]'),
+        name: document.querySelector('[data-slot="vm-name"]'),
+        status: document.querySelector('[data-slot="vm-status"]'),
+        type: document.querySelector('[data-slot="vm-type"]'),
+        breadcrumbLabels: document.querySelectorAll('[data-slot="vm-breadcrumb-label"]'),
+        generalRows: document.querySelector('[data-vm-general-rows]'),
+        breadcrumbLink: document.querySelector('[data-breadcrumb-link]'),
+      };
+
+      let openRebootPanel = () => {};
+      let closeRebootPanel = () => {};
+
+      const fallbackHref = clusterId ? 'vm-cluster-template.html?id=' + encodeURIComponent(clusterId) : 'exadbd.html';
+      if (selectors.breadcrumbLink) {
+        selectors.breadcrumbLink.href = fallbackHref;
+        selectors.breadcrumbLink.addEventListener('click', (event) => {
+          if (!clusterId) {
+            return;
+          }
+          event.preventDefault();
+          window.location.href = fallbackHref;
+        });
+      }
+      setupTabs();
+
+      const vmEntry = vmId ? resolveVmEntry(vmId, clusterId) : null;
+      if (vmEntry) {
+        renderVm(vmEntry);
+      }
+
+      setupRebootPanel();
+      setupActionsMenu();
+      document.addEventListener('click', handleCopyClick);
+
+      function setupTabs() {
+        const tabButtons = Array.from(document.querySelectorAll('[data-vm-tab]'));
+        const tabPanels = Array.from(document.querySelectorAll('[data-vm-panel]'));
+        if (!tabButtons.length || !tabPanels.length) {
+          return;
+        }
+
+        const activateTab = (targetId) => {
+          tabButtons.forEach((button) => {
+            const isActive = button.getAttribute('data-vm-tab') === targetId;
+            button.classList.toggle('tab--active', isActive);
+            button.setAttribute('aria-selected', String(isActive));
+            button.setAttribute('tabindex', isActive ? '0' : '-1');
+          });
+
+          tabPanels.forEach((panel) => {
+            const isActive = panel.getAttribute('data-vm-panel') === targetId;
+            panel.classList.toggle('tab-panel--active', isActive);
+            if (isActive) {
+              panel.removeAttribute('hidden');
+            } else {
+              panel.setAttribute('hidden', 'hidden');
+            }
+          });
+        };
+
+        tabButtons.forEach((button) => {
+          button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const targetId = button.getAttribute('data-vm-tab');
+            if (!targetId) {
+              return;
+            }
+            activateTab(targetId);
+          });
+        });
+
+        const initiallyActive = tabButtons.find((button) => button.classList.contains('tab--active')) || tabButtons[0];
+        if (initiallyActive) {
+          activateTab(initiallyActive.getAttribute('data-vm-tab'));
+        }
+      }
+
+      function setupActionsMenu() {
+        const menuContainer = document.querySelector('[data-vm-actions]');
+        if (!menuContainer) {
+          return;
+        }
+        const trigger = menuContainer.querySelector('[data-vm-actions-trigger]');
+        const menu = menuContainer.querySelector('[data-vm-actions-menu]');
+        if (!trigger || !menu) {
+          return;
+        }
+        const items = Array.from(menu.querySelectorAll('.actions-menu__item'));
+
+        const closeMenu = () => {
+          menu.hidden = true;
+          trigger.setAttribute('aria-expanded', 'false');
+        };
+
+        const openMenu = () => {
+          menu.hidden = false;
+          trigger.setAttribute('aria-expanded', 'true');
+        };
+
+        const toggleMenu = () => {
+          if (menu.hidden) {
+            openMenu();
+          } else {
+            closeMenu();
+          }
+        };
+
+        trigger.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          toggleMenu();
+        });
+
+        document.addEventListener('click', (event) => {
+          if (!menuContainer.contains(event.target)) {
+            closeMenu();
+          }
+        });
+
+        const menuKeydownHandler = (event) => {
+          if (event.key === 'Escape') {
+            closeMenu();
+            trigger.focus();
+            return;
+          }
+
+          if (!menu.hidden && (event.key === 'ArrowUp' || event.key === 'ArrowDown')) {
+            event.preventDefault();
+            if (!items.length) {
+              return;
+            }
+            const firstItem = items[0];
+            const lastItem = items[items.length - 1];
+            const currentIndex = items.indexOf(document.activeElement);
+            if (event.key === 'ArrowDown') {
+              if (currentIndex === -1 || currentIndex === items.length - 1) {
+                firstItem.focus();
+              } else {
+                items[currentIndex + 1].focus();
+              }
+            } else if (event.key === 'ArrowUp') {
+              if (currentIndex <= 0) {
+                lastItem.focus();
+              } else {
+                items[currentIndex - 1].focus();
+              }
+            }
+          } else if (!menu.hidden && (event.key === 'Home' || event.key === 'End')) {
+            event.preventDefault();
+            if (!items.length) {
+              return;
+            }
+            if (event.key === 'Home') {
+              items[0].focus();
+            } else {
+              items[items.length - 1].focus();
+            }
+          } else if (!menu.hidden && event.key === 'Tab') {
+            closeMenu();
+          }
+        };
+
+        document.addEventListener('keydown', menuKeydownHandler);
+
+        items.forEach((item) => {
+          item.addEventListener('click', () => {
+            closeMenu();
+            trigger.focus();
+          });
+        });
+
+        const rebootAction = menuContainer.querySelector('[data-vm-action="reboot"]');
+        if (rebootAction) {
+          rebootAction.addEventListener('click', () => {
+            closeMenu();
+            openRebootPanel();
+          });
+        }
+
+        trigger.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            if (menu.hidden) {
+              openMenu();
+            }
+            if (items.length) {
+              items[0].focus();
+            }
+          } else if (event.key === 'ArrowUp' && menu.hidden) {
+            event.preventDefault();
+            openMenu();
+            if (items.length) {
+              items[items.length - 1].focus();
+            }
+          }
+        });
+
+        document.addEventListener('focusin', (event) => {
+          if (!menu.hidden && !menuContainer.contains(event.target)) {
+            closeMenu();
+          }
+        });
+      }
+
+      function setupRebootPanel() {
+        const panel = document.querySelector('[data-vm-panel="reboot"]');
+        if (!panel) {
+          openRebootPanel = () => {};
+          closeRebootPanel = () => {};
+          return;
+        }
+        const content = panel.querySelector('.vm-side-panel__content');
+        const overlay = panel.querySelector('[data-vm-panel-overlay]');
+        const closeButton = panel.querySelector('[data-vm-panel-close]');
+        const cancelButton = panel.querySelector('[data-vm-panel-cancel]');
+        const confirmButton = panel.querySelector('[data-vm-panel-confirm]');
+        const toggleButton = panel.querySelector('[data-vm-reboot-toggle]');
+        let lastFocusedElement = null;
+        let forceReboot = false;
+
+        const setToggleState = (state) => {
+          forceReboot = state;
+          if (!toggleButton) {
+            return;
+          }
+          toggleButton.setAttribute('aria-checked', state ? 'true' : 'false');
+          toggleButton.classList.toggle('toggle--on', state);
+        };
+
+        setToggleState(false);
+
+        openRebootPanel = () => {
+          setToggleState(false);
+          lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+          panel.classList.add('is-open');
+          panel.setAttribute('aria-hidden', 'false');
+          if (content) {
+            content.focus();
+          }
+        };
+
+        closeRebootPanel = () => {
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+          if (content && content === document.activeElement) {
+            content.blur();
+          }
+          if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+          }
+          lastFocusedElement = null;
+          setToggleState(false);
+        };
+
+        const handlePanelClose = () => {
+          closeRebootPanel();
+        };
+
+        if (overlay) {
+          overlay.addEventListener('click', handlePanelClose);
+        }
+        if (closeButton) {
+          closeButton.addEventListener('click', handlePanelClose);
+        }
+        if (cancelButton) {
+          cancelButton.addEventListener('click', handlePanelClose);
+        }
+        if (confirmButton) {
+          confirmButton.addEventListener('click', handlePanelClose);
+        }
+
+        if (toggleButton) {
+          const toggle = () => setToggleState(!forceReboot);
+          toggleButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggle();
+          });
+          toggleButton.addEventListener('keydown', (event) => {
+            if (event.key === ' ' || event.key === 'Enter') {
+              event.preventDefault();
+              toggle();
+            }
+          });
+        }
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+            event.preventDefault();
+            closeRebootPanel();
+          }
+        });
+      }
+
+      function resolveVmEntry(vmIdParam, clusterIdParam) {
+        const baseEntry = baseVmCatalog[clusterIdParam] && baseVmCatalog[clusterIdParam][vmIdParam]
+          ? cloneEntry(baseVmCatalog[clusterIdParam][vmIdParam])
+          : null;
+        const sessionEntry = readSessionVmEntry(vmIdParam, clusterIdParam);
+        return mergeEntries(baseEntry, sessionEntry);
+      }
+
+      function readSessionVmEntry(vmIdParam, clusterIdParam) {
+        const catalogCluster = readClusterFromCatalog(clusterIdParam);
+        const fromCatalog = findVmEntry(catalogCluster, vmIdParam);
+        if (fromCatalog) {
+          return fromCatalog;
+        }
+        const selectedCluster = readSelectedCluster();
+        if (selectedCluster && selectedCluster.data) {
+          if (!clusterIdParam || selectedCluster.id === clusterIdParam) {
+            const fromSelected = findVmEntry(selectedCluster.data, vmIdParam);
+            if (fromSelected) {
+              return fromSelected;
+            }
+          }
+        }
+        return null;
+      }
+
+      function readClusterFromCatalog(clusterIdParam) {
+        try {
+          const raw = sessionStorage.getItem('vmCluster:catalog');
+          if (!raw) {
+            return null;
+          }
+          const parsed = JSON.parse(raw);
+          if (!parsed || typeof parsed !== 'object') {
+            return null;
+          }
+          return parsed[clusterIdParam] || null;
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function readSelectedCluster() {
+        try {
+          const raw = sessionStorage.getItem('vmCluster:selected');
+          if (!raw) {
+            return null;
+          }
+          const parsed = JSON.parse(raw);
+          if (!parsed || typeof parsed !== 'object') {
+            return null;
+          }
+          return parsed;
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function findVmEntry(clusterData, vmIdParam) {
+        if (!clusterData) {
+          return null;
+        }
+        const list = Array.isArray(clusterData.virtualMachines) ? clusterData.virtualMachines : [];
+        const match = list.find((vm) => vm && vm.name === vmIdParam);
+        if (!match) {
+          return null;
+        }
+        return cloneEntry(adaptVmFromCluster(match));
+      }
+
+      function adaptVmFromCluster(vm) {
+        if (!vm) {
+          return null;
+        }
+        const badgeClass = vm.state === 'Available' ? 'badge--available' : '';
+        const entry = {
+          name: vm.name || '',
+          status: vm.state ? { label: vm.state, badgeClass } : undefined,
+          vmType: 'Virtual Machine',
+          breadcrumbLabel: 'Exadata VM Cluster Details'
+        };
+        if (Array.isArray(vm.generalInformation) && vm.generalInformation.length) {
+          entry.generalInformation = vm.generalInformation;
+        } else {
+          entry.generalInformation = buildRowsFromVm(vm);
+        }
+        return entry;
+      }
+
+      function buildRowsFromVm(vm) {
+        const rows = [];
+        if (vm.compartment) {
+          rows.push({ label: 'Compartment', value: vm.compartment });
+        }
+        if (vm.availabilityDomain) {
+          rows.push({ label: 'Availability domain', value: vm.availabilityDomain });
+        }
+        if (vm.ocid) {
+          rows.push({ label: 'OCID', value: vm.ocid, copy: true });
+        }
+        if (vm.created) {
+          rows.push({ label: 'Created', value: vm.created });
+        }
+        if (vm.timezone || vm.timeZone) {
+          rows.push({ label: 'Time zone', value: vm.timezone || vm.timeZone });
+        }
+        if (vm.publicIp) {
+          rows.push({ label: 'Public IP address', value: vm.publicIp });
+        }
+        if (vm.floatingIp) {
+          rows.push({ label: 'Floating IP address', value: vm.floatingIp });
+        }
+        if (vm.privateIp || vm.privateDns) {
+          const privateValue = vm.privateIp && vm.privateDns
+            ? vm.privateIp + ' (' + vm.privateDns + ')'
+            : vm.privateIp || vm.privateDns;
+          rows.push({ label: 'Private IP address & DNS name', value: privateValue, copy: true });
+        }
+        return rows;
+      }
+
+      function cloneEntry(entry) {
+        if (!entry) {
+          return null;
+        }
+        return {
+          name: entry.name || '',
+          status: entry.status ? { label: entry.status.label || '', badgeClass: entry.status.badgeClass || '' } : undefined,
+          vmType: entry.vmType || 'Virtual Machine',
+          breadcrumbLabel: entry.breadcrumbLabel || 'Exadata VM Cluster Details',
+          generalInformation: cloneRows(entry.generalInformation || [])
+        };
+      }
+
+      function mergeEntries(baseEntry, overrideEntry) {
+        if (!baseEntry && !overrideEntry) {
+          return null;
+        }
+        if (!baseEntry) {
+          return cloneEntry(overrideEntry);
+        }
+        const merged = cloneEntry(baseEntry);
+        if (!overrideEntry) {
+          return merged;
+        }
+        if (overrideEntry.name) {
+          merged.name = overrideEntry.name;
+        }
+        if (overrideEntry.vmType) {
+          merged.vmType = overrideEntry.vmType;
+        }
+        if (overrideEntry.breadcrumbLabel) {
+          merged.breadcrumbLabel = overrideEntry.breadcrumbLabel;
+        }
+        if (overrideEntry.status) {
+          merged.status = {
+            label: overrideEntry.status.label || (merged.status ? merged.status.label : ''),
+            badgeClass: overrideEntry.status.badgeClass || (merged.status ? merged.status.badgeClass : '')
+          };
+        }
+        if (Array.isArray(overrideEntry.generalInformation) && overrideEntry.generalInformation.length) {
+          merged.generalInformation = cloneRows(overrideEntry.generalInformation);
+        }
+        return merged;
+      }
+
+      function cloneRows(rows) {
+        if (!Array.isArray(rows)) {
+          return [];
+        }
+        return rows.map((row) => {
+          const valueText = row.value != null ? String(row.value) : '';
+          const clone = {
+            label: row.label || '',
+            value: valueText
+          };
+          if (row.copy) {
+            clone.copy = true;
+          }
+          if (row.action) {
+            clone.action = Object.assign({}, row.action);
+          }
+          return clone;
+        });
+      }
+
+      function renderVm(vm) {
+        if (selectors.detail) {
+          selectors.detail.removeAttribute('hidden');
+        }
+        if (selectors.empty) {
+          selectors.empty.setAttribute('hidden', 'hidden');
+        }
+        if (selectors.name) {
+          selectors.name.textContent = vm.name || '';
+        }
+        if (selectors.status) {
+          selectors.status.textContent = vm.status && vm.status.label ? vm.status.label : '';
+          const statusClasses = ['badge'];
+          if (vm.status && vm.status.badgeClass) {
+            statusClasses.push(vm.status.badgeClass);
+          }
+          selectors.status.className = statusClasses.join(' ');
+        }
+        if (selectors.type) {
+          selectors.type.textContent = vm.vmType || 'Virtual Machine';
+        }
+        updateBreadcrumbLabel(vm.breadcrumbLabel || 'Exadata VM Cluster Details');
+        renderGeneralInformation(vm.generalInformation || []);
+        const vmTitle = vm.name ? vm.name + ' — Oracle Cloud Infrastructure Console' : basePageTitle;
+        document.title = vmTitle;
+      }
+
+      function renderGeneralInformation(rows) {
+        if (!selectors.generalRows) {
+          return;
+        }
+        selectors.generalRows.innerHTML = '';
+        const safeRows = Array.isArray(rows) ? rows : [];
+        safeRows.forEach((row) => {
+          const item = document.createElement('div');
+          const dt = document.createElement('dt');
+          dt.textContent = row.label || '';
+          const dd = document.createElement('dd');
+          const valueSpan = document.createElement('span');
+          valueSpan.textContent = row.value != null ? String(row.value) : '';
+          dd.appendChild(valueSpan);
+          if (row.copy) {
+            const copyButton = document.createElement('button');
+            copyButton.type = 'button';
+            copyButton.className = 'chip-button';
+            copyButton.textContent = 'Copy';
+            copyButton.dataset.copyValue = row.value != null ? String(row.value) : '';
+            dd.appendChild(copyButton);
+          }
+          if (row.action && row.action.label) {
+            const actionButton = document.createElement('button');
+            actionButton.type = row.action.type || 'button';
+            actionButton.className = 'inline-button';
+            actionButton.textContent = row.action.label;
+            dd.appendChild(actionButton);
+          }
+          item.appendChild(dt);
+          item.appendChild(dd);
+          selectors.generalRows.appendChild(item);
+        });
+      }
+
+      function updateBreadcrumbLabel(text) {
+        if (!selectors.breadcrumbLabels) {
+          return;
+        }
+        selectors.breadcrumbLabels.forEach((node) => {
+          node.textContent = text;
+        });
+      }
+
+      function handleCopyClick(event) {
+        const button = event.target.closest('[data-copy-value]');
+        if (!button) {
+          return;
+        }
+        const value = button.dataset.copyValue || '';
+        navigator.clipboard.writeText(value).catch(() => {
+          // ignore clipboard errors
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

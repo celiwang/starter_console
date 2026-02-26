@@ -52,7 +52,7 @@
       <div class="top-bar__region" role="button" aria-haspopup="listbox" aria-label="Selected region">
         <span class="region-icon" aria-hidden="true"></span>
         <span class="region-label">UK West (Newport)</span>
-        <span class="chevron chevron--down" aria-hidden="true"></span>
+        <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
       </div>
       <div class="top-bar__actions">
         <button type="button" class="icon-button" aria-label="Developer tools">
@@ -74,11 +74,55 @@
           </button>
         <button type="button" class="profile-button" aria-label="User menu">
           <span class="profile-avatar" aria-hidden="true"></span>
-          <span class="chevron chevron--down" aria-hidden="true"></span>
+          <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
         </button>
       </div>
     </div>
   </header>
+
+  <div id="nav-mega-menu-overlay" class="nav-mega-menu-overlay" aria-hidden="true"></div>
+  <div id="nav-menu" class="nav-menu" role="application" aria-modal="true" aria-hidden="true">
+    <div id="nav-primary-menu" class="nav-primary-menu" role="navigation">
+      <div class="nav-search-area">
+        <label class="nav-search-bar" for="nav-mega-search">
+          <svg class="nav-search-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+            <circle cx="9" cy="9" r="6.5" stroke="#51565d" stroke-width="2" fill="none"></circle>
+            <path d="M13.5 13.5L18 18" stroke="#51565d" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <input id="nav-mega-search" type="text" placeholder="Search" />
+        </label>
+      </div>
+      <div class="category-list" role="list">
+        <button type="button" class="category-item" role="listitem" data-category="home">Home</button>
+        <button type="button" class="category-item" role="listitem" data-category="compute">Compute</button>
+        <button type="button" class="category-item" role="listitem" data-category="storage">Storage</button>
+        <button type="button" class="category-item" role="listitem" data-category="networking">Networking</button>
+        <button type="button" class="category-item category-item--active" role="listitem" aria-current="true" data-category="oracle-ai-database">Oracle AI Database</button>
+        <button type="button" class="category-item" role="listitem" data-category="databases">Databases</button>
+        <button type="button" class="category-item" role="listitem" data-category="analytics-ai">Analytics &amp; AI</button>
+        <button type="button" class="category-item" role="listitem" data-category="developer-services">Developer Services</button>
+        <button type="button" class="category-item" role="listitem" data-category="identity-security">Identity &amp; Security</button>
+        <button type="button" class="category-item" role="listitem" data-category="observability-management">Observability &amp; Management</button>
+        <button type="button" class="category-item" role="listitem" data-category="hybrid-multicloud">Hybrid &amp; Multicloud</button>
+        <button type="button" class="category-item" role="listitem" data-category="migration-disaster-recovery">Migration &amp; Disaster Recovery</button>
+      </div>
+    </div>
+    <div id="nav-secondary-menu" class="nav-secondary-menu">
+      <div id="submenu-container" class="submenu-container" tabindex="-1">
+        <div class="submenu-container__heading">
+          <span class="category-item-icon" aria-hidden="true"></span>
+          <div tabindex="0" class="category-item__text" id="nav-category-title" role="heading" aria-level="1">Oracle AI Database</div>
+        </div>
+        <div class="submenu-container__section">
+          <div class="submenu-container__section_primary" id="submenu-container-primary">
+            <div class="submenu-columns" id="nav-category-content">
+              <!-- dynamic -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="app-content">
     <aside class="side-nav">
@@ -129,46 +173,11 @@
         <div class="vm-detail-header__actions">
           <button type="button" class="dropdown-button">
             Actions
-            <span class="chevron chevron--down" aria-hidden="true"></span>
+            <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
           </button>
           <button type="button" class="primary-button">Scale VM cluster</button>
         </div>
       </header>
-      <div id="nav-mega-menu-overlay" class="nav-mega-menu-overlay" aria-hidden="true"></div>
-      <div id="nav-menu" class="nav-menu" role="application" aria-modal="true" aria-hidden="true">
-        <div class="nav-menu__panel">
-          <div id="nav-primary-menu" class="nav-primary-menu" role="navigation">
-            <div class="nav-search-area">
-              <label class="nav-search-bar" for="nav-mega-search">
-                <svg class="nav-search-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
-                  <circle cx="9" cy="9" r="6.5" stroke="#51565d" stroke-width="2" fill="none"></circle>
-                  <path d="M13.5 13.5L18 18" stroke="#51565d" stroke-width="2" stroke-linecap="round"></path>
-                </svg>
-                <input id="nav-mega-search" type="text" placeholder="Search" />
-              </label>
-            </div>
-            <div class="category-list" role="list">
-              <button type="button" class="category-item category-item--active" role="listitem" data-category="oracle-ai-database">Oracle AI Database</button>
-              <button type="button" class="category-item" role="listitem" data-category="networking">Networking</button>
-            </div>
-          </div>
-          <div id="nav-secondary-menu" class="nav-secondary-menu">
-            <div id="submenu-container" class="submenu-container" tabindex="-1">
-              <div class="submenu-container__heading">
-                <span class="category-item-icon" aria-hidden="true"></span>
-                <div tabindex="0" class="category-item__text" id="nav-category-title" role="heading" aria-level="1">Oracle AI Database</div>
-              </div>
-              <div class="submenu-container__section">
-                <div class="submenu-container__section_primary" id="submenu-container-primary">
-                  <div class="submenu-columns" id="nav-category-content">
-                    <!-- dynamic -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="filter-bar filter-bar--flat" aria-hidden="true">
         <div class="filter-bar__background"></div>
       </div>
@@ -197,6 +206,152 @@
           </div>
         </article>
 
+        <template id="vm-detail-main-template">
+          <section class="vm-detail vm-detail--compact" data-vm-detail>
+            <header class="vm-detail-header" data-vm-header>
+              <div class="vm-detail-header__primary">
+                <button type="button" class="vm-detail-header__back" data-vm-back>
+                  <span class="chevron chevron--left" aria-hidden="true"></span>
+                  <span data-slot="vm-breadcrumb-label">Exadata VM Cluster Details</span>
+                </button>
+                <div class="vm-detail-header__title">
+                  <h1 data-slot="vm-name">ssoexavm-6bjtx1</h1>
+                  <span class="badge badge--available" data-slot="vm-status">Available</span>
+                </div>
+                <p class="vm-detail-header__subtitle" data-slot="vm-type">Virtual Machine</p>
+              </div>
+              <div class="vm-detail-header__actions">
+                <div class="actions-menu" data-vm-actions>
+                  <button
+                    type="button"
+                    class="dropdown-button"
+                    data-vm-actions-trigger
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-controls="vm-actions-menu"
+                  >
+                    Actions
+                    <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
+                  </button>
+                  <div
+                    class="actions-menu__dropdown"
+                    id="vm-actions-menu"
+                    role="menu"
+                    data-vm-actions-menu
+                    hidden
+                  >
+                    <button type="button" class="actions-menu__item" role="menuitem">Reboot</button>
+                    <button type="button" class="actions-menu__item" role="menuitem">Add Tags</button>
+                    <button type="button" class="actions-menu__item actions-menu__item--danger" role="menuitem">Terminate</button>
+                  </div>
+                </div>
+                <button type="button" class="secondary-button">Stop</button>
+              </div>
+            </header>
+
+            <section class="vm-detail-banner" aria-hidden="true">
+              <div class="vm-detail-banner__art" aria-hidden="true"></div>
+            </section>
+
+            <nav class="detail-tabs detail-tabs--vm" aria-label="Virtual machine detail navigation">
+              <div class="tabs" role="tablist">
+                <button class="tab tab--active" role="tab" aria-selected="true" aria-controls="vm-tab-information" id="vm-tab-trigger-information">VM information</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="vm-tab-connections" id="vm-tab-trigger-connections">Console connections</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="vm-tab-history" id="vm-tab-trigger-history">Console history</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="vm-tab-work-requests" id="vm-tab-trigger-work-requests">Work requests</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="vm-tab-tags" id="vm-tab-trigger-tags">Tags</button>
+              </div>
+            </nav>
+
+            <section class="tab-panels" data-vm-panels>
+              <article class="tab-panel tab-panel--active" id="vm-tab-information" role="tabpanel" aria-labelledby="vm-tab-trigger-information">
+                <div class="detail-card" data-vm-card="general">
+                  <header class="detail-card__header">
+                    <h2>General information</h2>
+                  </header>
+                  <dl class="detail-rows" data-vm-general-rows></dl>
+                </div>
+              </article>
+
+              <article class="tab-panel" id="vm-tab-connections" role="tabpanel" aria-labelledby="vm-tab-trigger-connections" hidden>
+                <div class="empty-state">
+                  <h2>Console connections</h2>
+                  <p>Content to be implemented.</p>
+                </div>
+              </article>
+
+              <article class="tab-panel" id="vm-tab-history" role="tabpanel" aria-labelledby="vm-tab-trigger-history" hidden>
+                <div class="empty-state">
+                  <h2>Console history</h2>
+                  <p>Content to be implemented.</p>
+                </div>
+              </article>
+
+              <article class="tab-panel" id="vm-tab-work-requests" role="tabpanel" aria-labelledby="vm-tab-trigger-work-requests" hidden>
+                <div class="empty-state">
+                  <h2>Work requests</h2>
+                  <p>Content to be implemented.</p>
+                </div>
+              </article>
+
+              <article class="tab-panel" id="vm-tab-tags" role="tabpanel" aria-labelledby="vm-tab-trigger-tags" hidden>
+                <div class="empty-state">
+                  <h2>Tags</h2>
+                  <p>Content to be implemented.</p>
+                </div>
+              </article>
+            </section>
+          </section>
+        </template>
+
+        <template id="vm-virtual-machines-template">
+          <section class="vm-tab" data-vm-section>
+            <div class="vm-toolbar">
+              <label class="vm-toolbar__search">
+                <span class="sr-only">Search virtual machines</span>
+                <input type="search" placeholder="Search and Filter" disabled />
+              </label>
+              <button type="button" class="secondary-button vm-toolbar__search-button" disabled>Search</button>
+            </div>
+            <div class="vm-toolbar vm-toolbar--actions">
+              <button type="button" class="secondary-button vm-add-button" disabled>Add Virtual Machines</button>
+            </div>
+            <div class="data-table data-table--virtual-machines">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col" class="sortable vm-col-name">Name</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Compute</th>
+                    <th scope="col">Memory</th>
+                    <th scope="col">Local Storage</th>
+                    <th scope="col">DNS name</th>
+                    <th scope="col">DB Server</th>
+                    <th scope="col">Public IP address (IPv4)</th>
+                    <th scope="col">IP address (IPv6)</th>
+                    <th scope="col" aria-hidden="true" class="table-actions-header"></th>
+                  </tr>
+                </thead>
+                <tbody data-vm-rows></tbody>
+              </table>
+              <footer class="table-footer" data-vm-footer>
+                <div class="pagination">
+                  <button type="button" class="pagination-button" aria-label="Previous page" disabled>‹</button>
+                  <span class="pagination-info" data-vm-pagination>Page 1 of 1 (0 total items)</span>
+                  <button type="button" class="pagination-button" aria-label="Next page" disabled>›</button>
+                </div>
+                <div class="page-size">
+                  <span>Items per page</span>
+                  <button type="button" class="select-button" disabled>
+                    10
+                    <span class="chevron" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </section>
+        </template>
+
         <article class="tab-panel" id="tab-databases" role="tabpanel" aria-labelledby="tab-trigger-databases" hidden>
           <div class="empty-state">
             <h2>Databases</h2>
@@ -219,10 +374,7 @@
         </article>
 
         <article class="tab-panel" id="tab-virtual-machines" role="tabpanel" aria-labelledby="tab-trigger-virtual-machines" hidden>
-          <div class="empty-state">
-            <h2>Virtual Machines</h2>
-            <p>Content to be implemented.</p>
-          </div>
+          <div data-section="virtual-machines"></div>
         </article>
 
         <article class="tab-panel" id="tab-updates-os" role="tabpanel" aria-labelledby="tab-trigger-updates-os" hidden>
@@ -413,29 +565,63 @@
           title: 'Oracle AI Database',
           columns: [
             {
-              heading: 'Dedicated infrastructure',
+              heading: 'Overview',
               links: [
-                { label: 'Databases', href: '#' },
-                { label: 'Exadata VM Clusters', href: '#' },
-                { label: 'Exadata infrastructure', href: '#' },
-                { label: 'Resources', href: '#' }
+                { label: 'Autonomous AI Database', href: '#' },
+                { label: 'Autonomous AI Database on Dedicated Infrastructure', href: '#' },
+                { label: 'Globally Distributed Autonomous AI Database', href: '#' },
+                { label: 'Oracle Base Database Service', href: 'basedb.html' }
               ]
             },
             {
-              heading: 'Cloud@Customer',
+              heading: 'Oracle Exadata Database Service',
               links: [
-                { label: 'Exadata VM Clusters', href: '#' },
-                { label: 'Autonomous AI Databases', href: '#' },
-                { label: 'Autonomous container databases', href: '#' },
-                { label: 'Control plane', href: '#' }
+                { label: 'Oracle Exadata Database Service on Dedicated Infrastructure', href: 'exadbd.html' },
+                { label: 'Oracle Exadata Database Service on Exascale Infrastructure', href: 'exadbxs.html' },
+                { label: 'Oracle Exadata Database Service on Cloud@Customer', href: 'exadbcc.html' },
+                { label: 'Exadata Fleet Update', href: '#' },
+                { label: 'External Database', href: '#' },
+                { label: 'Database Multicloud Integrations', href: '#' }
               ]
             },
             {
-              heading: 'Autonomous',
+              heading: 'Data Safe - Database Security',
+              highlighted: true,
               links: [
-                { label: 'Shared infrastructure', href: '#' },
-                { label: 'Dedicated Exadata', href: '#' },
-                { label: 'Analytics Warehouse', href: '#' }
+                { label: 'Overview', href: '#' },
+                { label: 'Security assessment', href: '#' },
+                { label: 'User assessment', href: '#' },
+                { label: 'Data discovery', href: '#' },
+                { label: 'Data masking', href: '#' },
+                { label: 'Activity auditing', href: '#'},
+                { label: 'SQL Firewall', href: '#' },
+                { label: 'Database Backups', href: '#' }
+              ]
+            },
+            {
+              heading: 'GoldenGate',
+              highlighted: true,
+              groups: [
+                {
+                  subheading: 'Api Access Control',
+                  links: [
+                    { label: 'Api Controls', href: '#' },
+                    { label: 'Access Requests', href: '#' }
+                  ]
+                },
+                {
+                  subheading: 'Delegate Access Control',
+                  links: [
+                    { label: 'Delegation Controls', href: '#' },
+                    { label: 'Access Requests', href: '#' }
+                  ]
+                },
+                {
+                  subheading: 'Operator Access Control',
+                  links: [
+                    { label: 'Overview', href: '#' }
+                  ]
+                }
               ]
             }
           ]
@@ -552,6 +738,62 @@
           { label: 'Backup subnet', value: 'SSOBACKUPREG' },
           { label: 'Hostname domain name', value: 'pub.cwl.oraclevcn.com', copy: true },
           { label: 'SCAN DNS name', value: 'ssoexavm-6bjtx-scan.pub.cwl.oraclevcn.com', copy: true }
+        ],
+        virtualMachines: [
+          {
+            name: 'ssoexavm-6bjtx1',
+            state: 'Available',
+            compute: '4 OCPUs',
+            memory: '30 GB',
+            storage: '244 GB',
+            dnsName: 'ssoexavm-6bjtx1.pub.cwl.oraclevcn.com',
+            dbServer: 'dbServer-1',
+            publicIp: '129.151.83.103',
+            ipv6: '—',
+            ocid: 'ocid1.dbnode.oc1.uk-cardiff-1.anrxoljr6cpfvnaa5ov7itreilw4jreue4hnve2uibqinqxxb6ppcugx4q',
+            created: 'Sep 25, 2025, 2:22:41 PM UTC',
+            timezone: 'UTC',
+            floatingIp: '10.35.0.154',
+            privateIp: '10.35.0.209',
+            privateDns: 'ssoexavm-6bjtx1.pub.cwl.oraclevcn.com',
+            generalInformation: [
+              { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+              { label: 'Availability domain', value: 'vPay:UK-CARDIFF-1-AD-1' },
+              { label: 'OCID', value: 'ocid1.dbnode.oc1.uk-cardiff-1.anrxoljr6cpfvnaa5ov7itreilw4jreue4hnve2uibqinqxxb6ppcugx4q', copy: true },
+              { label: 'Created', value: 'Sep 25, 2025, 2:22:41 PM UTC' },
+              { label: 'Time zone', value: 'UTC' },
+              { label: 'Public IP address', value: '129.151.83.103' },
+              { label: 'Floating IP address', value: '10.35.0.154' },
+              { label: 'Private IP address & DNS name', value: '10.35.0.209 (ssoexavm-6bjtx1.pub.cwl.oraclevcn.com)', copy: true }
+            ]
+          },
+          {
+            name: 'ssoexavm-6bjtx2',
+            state: 'Available',
+            compute: '4 OCPUs',
+            memory: '30 GB',
+            storage: '244 GB',
+            dnsName: 'ssoexavm-6bjtx2.pub.cwl.oraclevcn.com',
+            dbServer: 'dbServer-2',
+            publicIp: '144.24.224.57',
+            ipv6: '—',
+            ocid: 'ocid1.dbnode.oc1.uk-cardiff-1.anrxoljr6cpfvnaa5ov7itreilw4jreue4hnve2uibqinqxxb6ppcugx4r',
+            created: 'Sep 25, 2025, 2:23:10 PM UTC',
+            timezone: 'UTC',
+            floatingIp: '10.35.0.168',
+            privateIp: '10.35.0.210',
+            privateDns: 'ssoexavm-6bjtx2.pub.cwl.oraclevcn.com',
+            generalInformation: [
+              { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+              { label: 'Availability domain', value: 'vPay:UK-CARDIFF-1-AD-1' },
+              { label: 'OCID', value: 'ocid1.dbnode.oc1.uk-cardiff-1.anrxoljr6cpfvnaa5ov7itreilw4jreue4hnve2uibqinqxxb6ppcugx4r', copy: true },
+              { label: 'Created', value: 'Sep 25, 2025, 2:23:10 PM UTC' },
+              { label: 'Time zone', value: 'UTC' },
+              { label: 'Public IP address', value: '144.24.224.57' },
+              { label: 'Floating IP address', value: '10.35.0.168' },
+              { label: 'Private IP address & DNS name', value: '10.35.0.210 (ssoexavm-6bjtx2.pub.cwl.oraclevcn.com)', copy: true }
+            ]
+          }
         ]
       },
       'vmcluster-2025082110355n': {
@@ -654,14 +896,75 @@
           { label: 'Storage for local backups', value: 'Not enabled' },
           { label: 'Storage for Exadata sparse snapshots', value: 'Not enabled' }
         ],
-        network: [
-          { label: 'Virtual cloud network', value: 'SSOVCNCWL' },
-          { label: 'Client subnet', value: 'SSOSUBREG' },
-          { label: 'Backup subnet', value: 'SSOBACKUPREG' },
-          { label: 'Hostname domain name', value: 'vmcluster-202503311639.pub.cwl.oraclevcn.com', copy: true },
-          { label: 'SCAN DNS name', value: 'vmcluster-202503311639-scan.pub.cwl.oraclevcn.com', copy: true }
+      network: [
+        { label: 'Virtual cloud network', value: 'SSOVCNCWL' },
+        { label: 'Client subnet', value: 'SSOSUBREG' },
+        { label: 'Backup subnet', value: 'SSOBACKUPREG' },
+        { label: 'Hostname domain name', value: 'vmcluster-202503311639.pub.cwl.oraclevcn.com', copy: true },
+        { label: 'SCAN DNS name', value: 'vmcluster-202503311639-scan.pub.cwl.oraclevcn.com', copy: true }
+        ],
+        virtualMachines: [
+          {
+            name: 'vmcluster-202503311639-1',
+            state: 'Available',
+            compute: '4 OCPUs',
+            memory: '30 GB',
+            storage: '244 GB',
+            dnsName: 'vmcluster-202503311639-1.pub.cwl.oraclevcn.com',
+            dbServer: 'dbServer-1',
+            publicIp: '129.151.83.103',
+            ipv6: '—'
+          },
+          {
+            name: 'vmcluster-202503311639-2',
+            state: 'Available',
+            compute: '4 OCPUs',
+            memory: '30 GB',
+            storage: '244 GB',
+            dnsName: 'vmcluster-202503311639-2.pub.cwl.oraclevcn.com',
+            dbServer: 'dbServer-2',
+            publicIp: '144.24.224.57',
+            ipv6: '—'
+          }
         ]
       }
+    };
+
+    const mergeCatalogs = (base, stored) => {
+      const merged = {};
+      const keys = new Set([
+        ...Object.keys(base || {}),
+        ...Object.keys((stored && typeof stored === 'object') ? stored : {})
+      ]);
+
+      keys.forEach((key) => {
+        const baseEntry = base ? base[key] : undefined;
+        const storedEntry = stored && typeof stored[key] === 'object' ? stored[key] : undefined;
+
+        if (!baseEntry && storedEntry) {
+          merged[key] = { ...storedEntry };
+          return;
+        }
+
+        if (!baseEntry) {
+          return;
+        }
+
+        const combined = { ...baseEntry, ...(storedEntry || {}) };
+
+        if (Array.isArray(baseEntry.virtualMachines)) {
+          const storedVms = storedEntry && Array.isArray(storedEntry.virtualMachines)
+            ? storedEntry.virtualMachines
+            : undefined;
+          combined.virtualMachines = storedVms && storedVms.length
+            ? storedVms.map((vm) => ({ ...vm }))
+            : baseEntry.virtualMachines.map((vm) => ({ ...vm }));
+        }
+
+        merged[key] = combined;
+      });
+
+      return merged;
     };
 
     let clusterCatalog = baseClusterCatalog;
@@ -670,7 +973,7 @@
       if (storedCatalog) {
         const parsedCatalog = JSON.parse(storedCatalog);
         if (parsedCatalog && typeof parsedCatalog === 'object') {
-          clusterCatalog = { ...baseClusterCatalog, ...parsedCatalog };
+          clusterCatalog = mergeCatalogs(baseClusterCatalog, parsedCatalog);
         }
       }
     } catch (error) {
@@ -685,8 +988,48 @@
       ocid: document.querySelector('[data-slot="cluster-identifier"]'),
       generalContainer: document.querySelector('[data-section="general-information"]'),
       sideContainer: document.querySelector('[data-section="side-panels"]'),
+      virtualMachinesContainer: document.querySelector('[data-section="virtual-machines"]'),
       breadcrumb: document.querySelector('.breadcrumbs__link span')
     };
+
+    const tabButtons = Array.from(document.querySelectorAll('.detail-tabs .tab'));
+    const tabPanels = Array.from(document.querySelectorAll('.tab-panels .tab-panel'));
+
+    const activateTab = (tab) => {
+      const targetId = tab.getAttribute('aria-controls');
+
+      tabButtons.forEach((button) => {
+        const isActive = button === tab;
+        button.classList.toggle('tab--active', isActive);
+        button.setAttribute('aria-selected', String(isActive));
+        button.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
+
+      tabPanels.forEach((panel) => {
+        const isTarget = panel.id === targetId;
+        panel.classList.toggle('tab-panel--active', isTarget);
+        if (isTarget) {
+          panel.removeAttribute('hidden');
+        } else {
+          panel.setAttribute('hidden', 'hidden');
+        }
+      });
+    };
+
+    tabButtons.forEach((tab) => {
+      tab.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (tab.getAttribute('aria-selected') === 'true') {
+          return;
+        }
+        activateTab(tab);
+      });
+    });
+
+    const initialActiveTab = tabButtons.find((button) => button.classList.contains('tab--active'));
+    if (initialActiveTab) {
+      activateTab(initialActiveTab);
+    }
 
     const createValueContent = (row) => {
       const wrapper = document.createElement('div');
@@ -803,6 +1146,76 @@
           clusterSelectors.sideContainer.appendChild(storageCard);
         }
       }
+
+      if (clusterSelectors.virtualMachinesContainer) {
+        clusterSelectors.virtualMachinesContainer.innerHTML = '';
+        const vmTemplate = document.getElementById('vm-virtual-machines-template');
+        if (vmTemplate) {
+          const fragment = vmTemplate.content.cloneNode(true);
+          const tableBody = fragment.querySelector('[data-vm-rows]');
+          const footer = fragment.querySelector('[data-vm-pagination]');
+
+          const rows = (cluster.virtualMachines || []).map((vm) => {
+            const tr = document.createElement('tr');
+
+            const createCell = (value, { isLink = false, href = '#', className = '' } = {}) => {
+              const td = document.createElement('td');
+              if (isLink) {
+                const link = document.createElement('a');
+                link.href = href || '#';
+                link.textContent = value;
+                link.className = className;
+                td.appendChild(link);
+              } else {
+                td.textContent = value;
+              }
+              return td;
+            };
+
+            tr.appendChild(createCell(vm.name, {
+              isLink: true,
+              className: 'vm-row-name',
+              href: `vm-template.html?id=${encodeURIComponent(vm.name)}&cluster=${encodeURIComponent(cluster.id || '')}`
+            }));
+
+            const stateCell = document.createElement('td');
+            const badge = document.createElement('span');
+            badge.className = 'vm-row-badge';
+            badge.textContent = vm.state;
+            stateCell.appendChild(badge);
+            tr.appendChild(stateCell);
+
+            tr.appendChild(createCell(vm.compute));
+            tr.appendChild(createCell(vm.memory));
+            tr.appendChild(createCell(vm.storage));
+            tr.appendChild(createCell(vm.dnsName));
+            tr.appendChild(createCell(vm.dbServer, { isLink: true, className: 'vm-row-name' }));
+            tr.appendChild(createCell(vm.publicIp));
+            tr.appendChild(createCell(vm.ipv6 || '—'));
+
+            const actionsCell = document.createElement('td');
+            actionsCell.className = 'vm-table-actions';
+            actionsCell.textContent = '⋮';
+            tr.appendChild(actionsCell);
+
+            return tr;
+          });
+
+          if (tableBody) {
+            tableBody.innerHTML = '';
+            rows.forEach((row) => tableBody.appendChild(row));
+          }
+
+          if (footer) {
+            const total = rows.length;
+            footer.textContent = total
+              ? `Page 1 of 1 (1 - ${total} of ${total} total items)`
+              : 'Page 1 of 1 (0 total items)';
+          }
+
+          clusterSelectors.virtualMachinesContainer.appendChild(fragment);
+        }
+      }
     };
 
     const handleCopyClick = (event) => {
@@ -849,7 +1262,8 @@
       try {
         const storedCluster = JSON.parse(storedClusterRaw);
         if (storedCluster && storedCluster.id === clusterId && storedCluster.data) {
-          renderCluster(storedCluster.data);
+          const merged = mergeCatalogs(baseClusterCatalog, { [clusterId]: storedCluster.data });
+          renderCluster(merged[clusterId] || storedCluster.data);
         } else {
           clusterWriter(clusterId);
         }
