@@ -1542,30 +1542,42 @@ dd {
 
 .vm-toolbar__search {
   flex: 1;
+  position: relative;
 }
 
 .vm-toolbar__search input {
   width: 100%;
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid #c5c8cc;
+  padding: 10px 14px 10px 40px;
+  border-radius: 6px;
+  border: 1px solid #cfcfd4;
   font-size: 14px;
-  background: #f8f9fb;
-  color: var(--text-secondary);
+  background: #ffffff;
+  color: var(--text-base);
 }
 
 .vm-toolbar__search-button,
 .vm-add-button {
   padding: 10px 18px;
-  border-radius: var(--radius-md);
+  border-radius: 6px;
   border: 1px solid #c7cacf;
-  background: var(--card-bg);
+  background: #ffffff;
   font-weight: 600;
-  color: var(--text-base);
+  color: #3b3f45;
 }
 
 .vm-toolbar--actions {
   justify-content: flex-start;
+}
+
+.vm-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: #7a7f86;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='9' cy='9' r='6.5' stroke='%23000' stroke-width='2' fill='none'/%3E%3Cpath d='M13.5 13.5L18 18' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .data-table--virtual-machines table {
@@ -1576,17 +1588,43 @@ dd {
   background: #f7f8fb;
 }
 
+.data-table--virtual-machines {
+  border: 1px solid #e0e1e4;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.data-table--virtual-machines thead {
+  background: #f8f8fa;
+}
+
+.data-table--virtual-machines th,
+.data-table--virtual-machines td {
+  font-size: 14px;
+}
+
+.vm-row {
+  cursor: pointer;
+}
+
+.vm-row:focus {
+  outline: 2px solid var(--link);
+  outline-offset: -2px;
+  background: #f3f5fa;
+}
+
 .vm-col-name {
   width: 200px;
 }
 
 .vm-row-name {
-  color: var(--link);
+  color: #2a6fd3;
   font-weight: 600;
 }
 
 .vm-row-name:hover {
-  color: var(--link-hover);
+  color: #1f5bb0;
 }
 
 .vm-row-badge {
@@ -1596,8 +1634,8 @@ dd {
   border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
-  background: var(--badge-available-bg);
-  color: var(--badge-available-text);
+  background: #dbeec7;
+  color: #3f5c1f;
 }
 
 .vm-table-actions {
