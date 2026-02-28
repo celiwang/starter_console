@@ -309,12 +309,13 @@
             <div class="vm-toolbar">
               <label class="vm-toolbar__search">
                 <span class="sr-only">Search virtual machines</span>
-                <input type="search" placeholder="Search and Filter" disabled />
+                <span class="vm-search-icon" aria-hidden="true"></span>
+                <input type="search" placeholder="Search and Filter" />
               </label>
-              <button type="button" class="secondary-button vm-toolbar__search-button" disabled>Search</button>
+              <button type="button" class="secondary-button vm-toolbar__search-button">Search</button>
             </div>
             <div class="vm-toolbar vm-toolbar--actions">
-              <button type="button" class="secondary-button vm-add-button" disabled>Add Virtual Machines</button>
+              <button type="button" class="secondary-button vm-add-button">Add Virtual Machines</button>
             </div>
             <div class="data-table data-table--virtual-machines">
               <table>
@@ -328,7 +329,6 @@
                     <th scope="col">DNS name</th>
                     <th scope="col">DB Server</th>
                     <th scope="col">Public IP address (IPv4)</th>
-                    <th scope="col">IP address (IPv6)</th>
                     <th scope="col" aria-hidden="true" class="table-actions-header"></th>
                   </tr>
                 </thead>
@@ -342,7 +342,7 @@
                 </div>
                 <div class="page-size">
                   <span>Items per page</span>
-                  <button type="button" class="select-button" disabled>
+                  <button type="button" class="select-button">
                     10
                     <span class="chevron" aria-hidden="true"></span>
                   </button>
@@ -629,28 +629,53 @@
       };
 
       const renderCategory = (key) => {
-        const data = categoryData[key] || categoryData['oracle-ai-database'];
-        if (!data) return;
+        const fallback = categoryData['oracle-ai-database'];
+        const data = categoryData[key] || fallback;
+        if (!data || !Array.isArray(data.columns)) return;
 
         categoryTitle.textContent = data.title;
         categoryContent.innerHTML = '';
 
         data.columns.forEach((column) => {
           const columnEl = document.createElement('div');
-          columnEl.className = 'submenu-column';
+          columnEl.className = column.highlighted ? 'submenu-column submenu-column--highlight' : 'submenu-column';
 
           const heading = document.createElement('h3');
           heading.className = 'submenu-column__title';
           heading.textContent = column.heading;
           columnEl.appendChild(heading);
 
-          column.links.forEach((link) => {
-            const linkEl = document.createElement('a');
-            linkEl.className = 'submenu-link';
-            linkEl.href = link.href;
-            linkEl.textContent = link.label;
-            columnEl.appendChild(linkEl);
-          });
+          if (Array.isArray(column.links)) {
+            column.links.forEach((link) => {
+              const linkEl = document.createElement('a');
+              linkEl.className = column.highlighted ? 'submenu-link submenu-link--highlight nav-link' : 'submenu-link nav-link';
+              linkEl.href = link.href;
+              linkEl.textContent = link.label;
+              columnEl.appendChild(linkEl);
+            });
+          }
+
+          if (Array.isArray(column.groups)) {
+            column.groups.forEach((group) => {
+              const groupEl = document.createElement('div');
+              groupEl.className = 'submenu-column__group';
+
+              const subheading = document.createElement('h4');
+              subheading.className = 'submenu-column__subtitle';
+              subheading.textContent = group.subheading;
+              groupEl.appendChild(subheading);
+
+              (group.links || []).forEach((link) => {
+                const linkEl = document.createElement('a');
+                linkEl.className = column.highlighted ? 'submenu-link submenu-link--highlight nav-link' : 'submenu-link nav-link';
+                linkEl.href = link.href;
+                linkEl.textContent = link.label;
+                groupEl.appendChild(linkEl);
+              });
+
+              columnEl.appendChild(groupEl);
+            });
+          }
 
           categoryContent.appendChild(columnEl);
         });
@@ -664,6 +689,12 @@
           button.classList.add('category-item--active');
           renderCategory(button.getAttribute('data-category'));
         });
+      });
+
+      document.addEventListener('click', () => {
+        if (navMenu.classList.contains('is-open')) {
+          closeMenu();
+        }
       });
     })();
 
@@ -1157,6 +1188,11 @@
 
           const rows = (cluster.virtualMachines || []).map((vm) => {
             const tr = document.createElement('tr');
+            const detailHref = `vm-template.html?id=${encodeURIComponent(vm.name)}&cluster=${encodeURIComponent(cluster.id || '')}`;
+            tr.className = 'vm-row';
+            tr.setAttribute('role', 'link');
+            tr.setAttribute('tabindex', '0');
+            tr.dataset.vmLink = detailHref;
 
             const createCell = (value, { isLink = false, href = '#', className = '' } = {}) => {
               const td = document.createElement('td');
@@ -1175,7 +1211,7 @@
             tr.appendChild(createCell(vm.name, {
               isLink: true,
               className: 'vm-row-name',
-              href: `vm-template.html?id=${encodeURIComponent(vm.name)}&cluster=${encodeURIComponent(cluster.id || '')}`
+              href: detailHref
             }));
 
             const stateCell = document.createElement('td');
@@ -1191,7 +1227,6 @@
             tr.appendChild(createCell(vm.dnsName));
             tr.appendChild(createCell(vm.dbServer, { isLink: true, className: 'vm-row-name' }));
             tr.appendChild(createCell(vm.publicIp));
-            tr.appendChild(createCell(vm.ipv6 || '—'));
 
             const actionsCell = document.createElement('td');
             actionsCell.className = 'vm-table-actions';
@@ -1204,6 +1239,28 @@
           if (tableBody) {
             tableBody.innerHTML = '';
             rows.forEach((row) => tableBody.appendChild(row));
+
+            tableBody.addEventListener('click', (event) => {
+              const target = event.target;
+              if (target.closest('a, button, input, select, textarea')) {
+                return;
+              }
+              const row = target.closest('tr[data-vm-link]');
+              if (row && row.dataset.vmLink) {
+                window.location.href = row.dataset.vmLink;
+              }
+            });
+
+            tableBody.addEventListener('keydown', (event) => {
+              if (event.key !== 'Enter' && event.key !== ' ') {
+                return;
+              }
+              const row = event.target.closest('tr[data-vm-link]');
+              if (row && row.dataset.vmLink) {
+                event.preventDefault();
+                window.location.href = row.dataset.vmLink;
+              }
+            });
           }
 
           if (footer) {
@@ -1233,12 +1290,6 @@
     };
 
       document.addEventListener('click', handleCopyClick);
-
-      document.addEventListener('click', () => {
-        if (navMenu.classList.contains('is-open')) {
-          closeMenu();
-        }
-      });
 
     const params = new URLSearchParams(window.location.search);
     const clusterId = params.get('id') || 'ssoexavmcluster';
