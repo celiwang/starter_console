@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oracle Cloud Infrastructure Console &mdash; Database Detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="console-branding-bar search-v2">
+    <div id="console-nav-container" class="nav-container" role="application" aria-label="Console navigation">
+      <button
+        type="button"
+        id="nav-menu-button"
+        class="nav-menu_button nav-menu_button_mega nav-menu_button_open-free-focus-white"
+        data-test-id="nav-mega-menu-button"
+        tabindex="0"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Open navigation menu"
+      >
+        <span class="nav-menu_button__icon" aria-hidden="true">
+          <span class="nav-menu_button__bar"></span>
+          <span class="nav-menu_button__bar"></span>
+          <span class="nav-menu_button__bar"></span>
+        </span>
+        <span class="nav-menu_button__close" aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="top-bar__logo" aria-label="Oracle Cloud">
+      <span class="brand-oval" aria-hidden="true"></span>
+      <span class="brand-text">Cloud</span>
+    </div>
+    <div id="search-v2-container" class="console-header-search-box">
+      <div class="margin-space-left"></div>
+      <div id="search-v2" aria-label="Search" class="searchbox-v2" tabindex="-1">
+        <label class="search-bar" for="global-search">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+            <circle cx="9" cy="9" r="6.5" stroke="white" stroke-width="2" fill="none" opacity="0.85"></circle>
+            <path d="M13.5 13.5L18 18" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <input id="global-search" type="text" placeholder="Search resources, services, documentation, and Marketplace" />
+        </label>
+      </div>
+      <div class="margin-space-right"></div>
+    </div>
+    <div class="console-header-item-bar">
+      <div class="top-bar__region" role="button" aria-haspopup="listbox" aria-label="Selected region">
+        <span class="region-icon" aria-hidden="true"></span>
+        <span class="region-label">UK West (Newport)</span>
+        <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
+      </div>
+      <div class="top-bar__actions">
+        <button type="button" class="icon-button" aria-label="Developer tools">
+          <svg focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1.66602 1.6665H18.3327V14.1665H10.8327V16.6665H14.166V18.3332H5.83268V16.6665H9.16602V14.1665H1.66602V1.6665ZM3.33268 3.33317V12.4998H16.666V3.33317H3.33268Z" fill="white"></path>
+            <path d="M7.74343 4.82725L8.92194 6.00576L7.01119 7.9165L8.92194 9.82725L7.74343 11.0058L4.65417 7.9165L7.74343 4.82725ZM12.9875 7.9165L11.0768 6.00576L12.2553 4.82725L15.3445 7.9165L12.2553 11.0058L11.0768 9.82725L12.9875 7.9165Z" fill="white"></path>
+          </svg>
+        </button>
+        <button type="button" class="icon-button" aria-label="Unread announcements">
+          <svg focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2.49805 12.4998V14.1665H17.498V12.4998C15.8897 12.4998 15.8314 9.1665 15.8314 9.1665V7.49984C15.8314 5.95274 15.2168 4.46901 14.1228 3.37505C13.0289 2.28109 11.5451 1.6665 9.99805 1.6665C8.45095 1.6665 6.96722 2.28109 5.87326 3.37505C4.77929 4.46901 4.16471 5.95274 4.16471 7.49984V9.1665C4.16471 9.1665 4.10638 12.4998 2.49805 12.4998ZM14.1647 9.1665C14.1531 10.3207 14.4099 11.4618 14.9147 12.4998H5.08138C5.58623 11.4618 5.84298 10.3207 5.83138 9.1665V7.49984C5.83138 6.39477 6.27037 5.33496 7.05177 4.55356C7.83317 3.77216 8.89298 3.33317 9.99805 3.33317C11.1031 3.33317 12.1629 3.77216 12.9443 4.55356C13.7257 5.33496 14.1647 6.39477 14.1647 7.49984V9.1665Z" fill="white"></path>
+            <path d="M6.73897 16.177C8.04186 19.053 12.0271 19.0567 13.2644 16.1606L11.7317 15.5058C11.0807 17.0296 8.97923 17.0833 8.25712 15.4893L6.73897 16.177Z" fill="white"></path>
+          </svg>
+        </button>
+        <button type="button" class="icon-button" aria-label="Help menu">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3.33268 9.99984C3.33268 6.31794 6.31745 3.33317 9.99935 3.33317C13.6812 3.33317 16.666 6.31794 16.666 9.99984C16.666 13.6817 13.6812 16.6665 9.99935 16.6665C6.31745 16.6665 3.33268 13.6817 3.33268 9.99984ZM9.99935 1.6665C5.39698 1.6665 1.66602 5.39746 1.66602 9.99984C1.66602 14.6022 5.39698 18.3332 9.99935 18.3332C14.6017 18.3332 18.3327 14.6022 18.3327 9.99984C18.3327 5.39746 14.6017 1.6665 9.99935 1.6665ZM6.66602 8.15773H8.33268C8.34768 7.26089 8.91935 6.40335 9.99935 6.40335C10.7943 6.40335 11.666 6.84405 11.666 7.61457C11.666 8.25702 11.0015 8.69673 10.4346 9.07192L10.3327 9.13949C9.73352 9.53177 9.25602 9.86229 9.16602 10.9612V11.6665H10.7727L10.8327 11.049C10.9677 10.3051 11.521 9.8251 12.166 9.42089C12.8102 9.00405 13.3327 8.663 13.3327 7.43773C13.3327 6.4644 12.8335 4.99984 9.99935 4.99984C7.80935 4.99984 6.71102 6.35212 6.66602 8.15773ZM10.8327 14.9998V13.3332H9.16602V14.9998H10.8327Z" fill="white"></path>
+            </svg>
+          </button>
+        <button type="button" class="profile-button" aria-label="User menu">
+          <span class="profile-avatar" aria-hidden="true"></span>
+          <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="nav-mega-menu-overlay" class="nav-mega-menu-overlay" aria-hidden="true"></div>
+  <div id="nav-menu" class="nav-menu" role="application" aria-modal="true" aria-hidden="true">
+    <div id="nav-primary-menu" class="nav-primary-menu" role="navigation">
+      <div class="nav-search-area">
+        <label class="nav-search-bar" for="nav-mega-search">
+          <svg class="nav-search-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+            <circle cx="9" cy="9" r="6.5" stroke="#51565d" stroke-width="2" fill="none"></circle>
+            <path d="M13.5 13.5L18 18" stroke="#51565d" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <input id="nav-mega-search" type="text" placeholder="Search" />
+        </label>
+      </div>
+      <div class="category-list" role="list">
+        <button type="button" class="category-item" role="listitem" data-category="home">Home</button>
+        <button type="button" class="category-item" role="listitem" data-category="compute">Compute</button>
+        <button type="button" class="category-item" role="listitem" data-category="storage">Storage</button>
+        <button type="button" class="category-item" role="listitem" data-category="networking">Networking</button>
+        <button type="button" class="category-item category-item--active" role="listitem" aria-current="true" data-category="oracle-ai-database">Oracle AI Database</button>
+        <button type="button" class="category-item" role="listitem" data-category="databases">Databases</button>
+        <button type="button" class="category-item" role="listitem" data-category="analytics-ai">Analytics &amp; AI</button>
+        <button type="button" class="category-item" role="listitem" data-category="developer-services">Developer Services</button>
+        <button type="button" class="category-item" role="listitem" data-category="identity-security">Identity &amp; Security</button>
+        <button type="button" class="category-item" role="listitem" data-category="observability-management">Observability &amp; Management</button>
+        <button type="button" class="category-item" role="listitem" data-category="hybrid-multicloud">Hybrid &amp; Multicloud</button>
+        <button type="button" class="category-item" role="listitem" data-category="migration-disaster-recovery">Migration &amp; Disaster Recovery</button>
+      </div>
+    </div>
+    <div id="nav-secondary-menu" class="nav-secondary-menu">
+      <div id="submenu-container" class="submenu-container" tabindex="-1">
+        <div class="submenu-container__heading">
+          <span class="category-item-icon" aria-hidden="true"></span>
+          <div tabindex="0" class="category-item__text" id="nav-category-title" role="heading" aria-level="1">Oracle AI Database</div>
+        </div>
+        <div class="submenu-container__section">
+          <div class="submenu-container__section_primary" id="submenu-container-primary">
+            <div class="submenu-columns" id="nav-category-content">
+              <!-- dynamic -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-content">
+    <aside class="side-nav">
+      <div class="side-nav__product">
+        <div class="product-icon" aria-hidden="true"><span class="product-icon__base"></span></div>
+        <div class="product-text">Oracle AI Database</div>
+      </div>
+      <nav class="side-nav__menu" aria-label="Oracle Exadata navigation">
+        <button type="button" class="menu-item menu-item--active">
+          <span class="menu-item__back" aria-hidden="true">‹</span>
+          Oracle Exadata Database Service on Dedicated Infrastructure
+        </button>
+        <div class="menu-sublist" role="list">
+          <button type="button" class="menu-subitem menu-subitem--active">Exadata VM Clusters</button>
+          <button type="button" class="menu-subitem">Exadata Infrastructure</button>
+          <button type="button" class="menu-subitem">Resources</button>
+        </div>
+        <div class="menu-divider" role="presentation"></div>
+        <div class="menu-secondary">
+          <button type="button" class="menu-subitem">Scheduling policy</button>
+          <button type="button" class="menu-subitem">Software images</button>
+          <button type="button" class="menu-subitem">Standalone backups</button>
+          <button type="button" class="menu-subitem">Interim software updates</button>
+          <button type="button" class="menu-subitem">Key Stores</button>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content main-content--detail" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="vm-cluster-template.html" class="breadcrumbs__link" data-breadcrumb-link>
+          <svg class="breadcrumbs__icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+            <g fill="none">
+              <path d="M21.996 11H5.41l5.293-5.293L9.29 4.293 1.582 12l7.707 7.707 1.414-1.414L5.41 13h16.586z" fill="currentColor"></path>
+            </g>
+          </svg>
+          <span data-slot="db-breadcrumb-label">Exadata VM Cluster Details</span>
+        </a>
+      </nav>
+
+      <header class="vm-detail-header" aria-labelledby="db-detail-title">
+        <div class="vm-detail-header__context">
+          <div class="vm-detail-header__title-row">
+            <h1 id="db-detail-title" data-slot="db-name">DemoPITR</h1>
+            <span class="badge badge--available" data-slot="db-status">Available</span>
+          </div>
+          <p class="vm-detail-header__subtitle">Database</p>
+        </div>
+        <div class="vm-detail-header__actions">
+          <button type="button" class="secondary-button">Performance Hub</button>
+          <button type="button" class="secondary-button">Launch SQL Worksheet</button>
+          <button type="button" class="secondary-button">More actions</button>
+        </div>
+      </header>
+
+      <nav class="detail-tabs" aria-label="Database detail navigation">
+        <div class="tabs" role="tablist">
+          <button class="tab tab--active" role="tab" aria-selected="true" aria-controls="tab-db-info" id="tab-trigger-db-info">Database information</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-backups" id="tab-trigger-db-backups">Backups</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-guard" id="tab-trigger-db-guard">Data Guard Associations</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-connections" id="tab-trigger-db-connections">Connections</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-pdb" id="tab-trigger-db-pdb">Pluggable Databases</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-upgrades" id="tab-trigger-db-upgrades">Upgrade history</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-monitoring" id="tab-trigger-db-monitoring">Monitoring</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-requests" id="tab-trigger-db-requests">Work requests</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-tags" id="tab-trigger-db-tags">Tags</button>
+        </div>
+      </nav>
+
+      <section class="tab-panels" data-db-panels>
+        <article class="tab-panel tab-panel--active" id="tab-db-info" role="tabpanel" aria-labelledby="tab-trigger-db-info">
+          <div class="detail-columns">
+            <div class="detail-columns__main">
+              <section class="detail-card">
+                <header class="detail-card__header">
+                  <h2>General information</h2>
+                </header>
+                <dl class="detail-rows">
+                  <div>
+                    <dt>OCID</dt>
+                    <dd>
+                      <span data-slot="db-ocid"></span>
+                      <button type="button" class="inline-button" data-copy-value>Copy</button>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Created</dt>
+                    <dd data-slot="db-created"></dd>
+                  </div>
+                  <div>
+                    <dt>Database unique name</dt>
+                    <dd data-slot="db-unique-name"></dd>
+                  </div>
+                  <div>
+                    <dt>Oracle SID Prefix</dt>
+                    <dd data-slot="db-sid-prefix"></dd>
+                  </div>
+                  <div>
+                    <dt>Character Set</dt>
+                    <dd data-slot="db-character-set"></dd>
+                  </div>
+                  <div>
+                    <dt>National Character Set</dt>
+                    <dd data-slot="db-national-character-set"></dd>
+                  </div>
+                  <div>
+                    <dt>API Access Control</dt>
+                    <dd data-slot="db-api-access"></dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section class="detail-card">
+                <header class="detail-card__header">
+                  <h2>Database version</h2>
+                </header>
+                <dl class="detail-rows">
+                  <div>
+                    <dt>Database Home</dt>
+                    <dd><a href="#" class="vm-row-name" data-slot="db-home"></a></dd>
+                  </div>
+                  <div>
+                    <dt>Database version</dt>
+                    <dd data-slot="db-version"></dd>
+                  </div>
+                  <div>
+                    <dt>Last Updated</dt>
+                    <dd data-slot="db-last-updated"></dd>
+                  </div>
+                </dl>
+              </section>
+            </div>
+            <aside class="detail-columns__side">
+              <section class="detail-card">
+                <header class="detail-card__header">
+                  <h2>Backup</h2>
+                </header>
+                <dl class="detail-rows">
+                  <div>
+                    <dt>Automatic backup</dt>
+                    <dd data-slot="db-backup-auto"></dd>
+                  </div>
+                  <div>
+                    <dt>Health</dt>
+                    <dd data-slot="db-backup-health"></dd>
+                  </div>
+                  <div>
+                    <dt>Data loss exposure</dt>
+                    <dd data-slot="db-backup-dle"></dd>
+                  </div>
+                  <div>
+                    <dt>Last failed backup</dt>
+                    <dd data-slot="db-backup-last-failed"></dd>
+                  </div>
+                  <div>
+                    <dt>Last completed backup</dt>
+                    <dd data-slot="db-backup-last-completed"></dd>
+                  </div>
+                  <div>
+                    <dt>Next scheduled backup</dt>
+                    <dd data-slot="db-backup-next"></dd>
+                  </div>
+                  <div>
+                    <dt>Space used for recovery window</dt>
+                    <dd data-slot="db-backup-space"></dd>
+                  </div>
+                  <div>
+                    <dt>Backup destination</dt>
+                    <dd><a href="#" class="vm-row-name" data-slot="db-backup-destination"></a></dd>
+                  </div>
+                  <div>
+                    <dt>Real-time data protection</dt>
+                    <dd data-slot="db-backup-realtime"></dd>
+                  </div>
+                  <div>
+                    <dt>Protection policy</dt>
+                    <dd>
+                      <span data-slot="db-backup-policy"></span>
+                      <small data-slot="db-backup-policy-window"></small>
+                    </dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section class="detail-card">
+                <header class="detail-card__header">
+                  <h2>Disaster recovery</h2>
+                </header>
+                <dl class="detail-rows">
+                  <div>
+                    <dt>Data Guard Status</dt>
+                    <dd data-slot="db-dr-status"></dd>
+                  </div>
+                  <div>
+                    <dt>Full Stack DR</dt>
+                    <dd>
+                      <span data-slot="db-dr-fullstack"></span>
+                      <button type="button" class="secondary-button">Configure</button>
+                    </dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section class="detail-card">
+                <header class="detail-card__header">
+                  <h2>Encryption</h2>
+                </header>
+                <dl class="detail-rows">
+                  <div>
+                    <dt>Encryption key</dt>
+                    <dd>
+                      <span data-slot="db-encryption-key"></span>
+                      <button type="button" class="secondary-button">Change</button>
+                    </dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section class="detail-card">
+                <header class="detail-card__header">
+                  <h2>Associated services</h2>
+                </header>
+                <dl class="detail-rows">
+                  <div>
+                    <dt>Database Management</dt>
+                    <dd class="detail-rows__service">
+                      <div>
+                        <div data-slot="db-service-dbmgmt-status"></div>
+                        <small data-slot="db-service-dbmgmt-desc"></small>
+                      </div>
+                      <button type="button" class="secondary-button">...</button>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Ops Insights</dt>
+                    <dd class="detail-rows__service">
+                      <div>
+                        <div data-slot="db-service-ops-status"></div>
+                        <small data-slot="db-service-ops-desc"></small>
+                      </div>
+                      <button type="button" class="secondary-button">Enable</button>
+                    </dd>
+                  </div>
+                </dl>
+              </section>
+            </aside>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="tab-db-backups" role="tabpanel" aria-labelledby="tab-trigger-db-backups" hidden>
+          <div class="empty-state">
+            <h2>Backups</h2>
+            <p>Content to be implemented.</p>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="tab-db-guard" role="tabpanel" aria-labelledby="tab-trigger-db-guard" hidden>
+          <div class="empty-state">
+            <h2>Data Guard Associations</h2>
+            <p>Content to be implemented.</p>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="tab-db-connections" role="tabpanel" aria-labelledby="tab-trigger-db-connections" hidden>
+          <div class="empty-state">
+            <h2>Connections</h2>
+            <p>Content to be implemented.</p>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="tab-db-pdb" role="tabpanel" aria-labelledby="tab-trigger-db-pdb" hidden>
+          <div class="empty-state">
+            <h2>Pluggable Databases</h2>
+            <p>Content to be implemented.</p>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="tab-db-upgrades" role="tabpanel" aria-labelledby="tab-trigger-db-upgrades" hidden>
+          <div class="empty-state">
+            <h2>Upgrade history</h2>
+            <p>Content to be implemented.</p>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="tab-db-monitoring" role="tabpanel" aria-labelledby="tab-trigger-db-monitoring" hidden>
+          <div class="empty-state">
+            <h2>Monitoring</h2>
+            <p>Content to be implemented.</p>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="tab-db-requests" role="tabpanel" aria-labelledby="tab-trigger-db-requests" hidden>
+          <div class="empty-state">
+            <h2>Work requests</h2>
+            <p>Content to be implemented.</p>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="tab-db-tags" role="tabpanel" aria-labelledby="tab-trigger-db-tags" hidden>
+          <div class="empty-state">
+            <h2>Tags</h2>
+            <p>Content to be implemented.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const navButton = document.getElementById('nav-menu-button');
+      const navMenu = document.getElementById('nav-menu');
+      const navOverlay = document.getElementById('nav-mega-menu-overlay');
+      const submenuContainer = document.getElementById('submenu-container');
+      const categoryButtons = document.querySelectorAll('.category-item');
+      const categoryTitle = document.getElementById('nav-category-title');
+      const categoryContent = document.getElementById('nav-category-content');
+
+      if (!navButton || !navMenu || !navOverlay) {
+        return;
+      }
+
+      const openMenu = () => {
+        navMenu.classList.add('is-open');
+        navOverlay.classList.add('is-open');
+        navMenu.setAttribute('aria-hidden', 'false');
+        navOverlay.setAttribute('aria-hidden', 'false');
+        navButton.setAttribute('aria-expanded', 'true');
+        navButton.setAttribute('aria-label', 'Close navigation menu');
+        document.body.classList.add('nav-menu-open');
+        if (submenuContainer) {
+          submenuContainer.focus();
+        }
+      };
+
+      const closeMenu = () => {
+        navMenu.classList.remove('is-open');
+        navOverlay.classList.remove('is-open');
+        navMenu.setAttribute('aria-hidden', 'true');
+        navOverlay.setAttribute('aria-hidden', 'true');
+        navButton.setAttribute('aria-expanded', 'false');
+        navButton.setAttribute('aria-label', 'Open navigation menu');
+        document.body.classList.remove('nav-menu-open');
+        navButton.focus();
+      };
+
+      navButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        if (navMenu.classList.contains('is-open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      navOverlay.addEventListener('click', closeMenu);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && navMenu.classList.contains('is-open')) {
+          closeMenu();
+        }
+      });
+
+      const categoryData = {
+        networking: {
+          title: 'Networking',
+          columns: [
+            {
+              heading: 'Overview',
+              links: [
+                { label: 'Overview', href: '#' }
+              ]
+            },
+            {
+              heading: 'Virtual cloud networks',
+              links: [
+                { label: 'VCNs', href: '#' }
+              ]
+            },
+            {
+              heading: 'Web Application Acceleration',
+              links: [
+                { label: 'WAAP', href: '#' }
+              ]
+            },
+            {
+              heading: 'Load balancers',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Load balancer', href: '#' },
+                { label: 'Network load balancer', href: '#' }
+              ]
+            },
+            {
+              heading: 'DNS management',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Public zones', href: '#' },
+                { label: 'Private zones', href: '#' },
+                { label: 'Traffic management steering policies', href: '#' },
+                { label: 'Private views', href: '#' },
+                { label: 'Private resolvers', href: '#' },
+                { label: 'HTTP redirects', href: '#' },
+                { label: 'TSIG keys', href: '#' }
+              ]
+            },
+            {
+              heading: 'Customer connectivity',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Site-to-Site VPN', href: '#' },
+                { label: 'FastConnect', href: '#' },
+                { label: 'Dynamic routing gateway', href: '#' },
+                { label: 'Customer-premises equipment', href: '#' }
+              ]
+            },
+            {
+              heading: 'Cluster Placement Groups',
+              links: [
+                { label: 'Cluster Placement Groups', href: '#' }
+              ]
+            },
+            {
+              heading: 'IP management',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Reserved public IPs', href: '#' },
+                { label: 'BYOIP', href: '#' },
+                { label: 'Public IP pools', href: '#' },
+                { label: 'IP Address Insights', href: '#' },
+                { label: 'BYOASN', href: '#' }
+              ]
+            },
+            {
+              heading: 'Network Command Center',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Network visualizer', href: '#' },
+                { label: 'Network Path Analyzer', href: '#' },
+                { label: 'Inter-region latency', href: '#' },
+                { label: 'Capture filters', href: '#' },
+                { label: 'VTAPs', href: '#' },
+                { label: 'Flow logs', href: '#' }
+              ]
+            }
+          ]
+        },
+        'oracle-ai-database': {
+          title: 'Oracle AI Database',
+          columns: [
+            {
+              heading: 'Overview',
+              links: [
+                { label: 'Autonomous AI Database', href: '#' },
+                { label: 'Autonomous AI Database on Dedicated Infrastructure', href: '#' },
+                { label: 'Globally Distributed Autonomous AI Database', href: '#' },
+                { label: 'Oracle Base Database Service', href: 'basedb.html' }
+              ]
+            },
+            {
+              heading: 'Oracle Exadata Database Service',
+              links: [
+                { label: 'Oracle Exadata Database Service on Dedicated Infrastructure', href: 'exadbd.html' },
+                { label: 'Oracle Exadata Database Service on Exascale Infrastructure', href: 'exadbxs.html' },
+                { label: 'Oracle Exadata Database Service on Cloud@Customer', href: 'exadbcc.html' },
+                { label: 'Exadata Fleet Update', href: '#' },
+                { label: 'External Database', href: '#' },
+                { label: 'Database Multicloud Integrations', href: '#' }
+              ]
+            },
+            {
+              heading: 'Data Safe - Database Security',
+              highlighted: true,
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Security assessment', href: '#' },
+                { label: 'User assessment', href: '#' },
+                { label: 'Data discovery', href: '#' },
+                { label: 'Data masking', href: '#' },
+                { label: 'Activity auditing', href: '#'},
+                { label: 'SQL Firewall', href: '#' },
+                { label: 'Database Backups', href: '#' }
+              ]
+            },
+            {
+              heading: 'GoldenGate',
+              highlighted: true,
+              groups: [
+                {
+                  subheading: 'Api Access Control',
+                  links: [
+                    { label: 'Api Controls', href: '#' },
+                    { label: 'Access Requests', href: '#' }
+                  ]
+                },
+                {
+                  subheading: 'Delegate Access Control',
+                  links: [
+                    { label: 'Delegation Controls', href: '#' },
+                    { label: 'Access Requests', href: '#' }
+                  ]
+                },
+                {
+                  subheading: 'Operator Access Control',
+                  links: [
+                    { label: 'Overview', href: '#' }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      };
+
+      const renderCategory = (key) => {
+        const fallback = categoryData['oracle-ai-database'];
+        const data = categoryData[key] || fallback;
+        if (!data || !Array.isArray(data.columns)) return;
+
+        categoryTitle.textContent = data.title;
+        categoryContent.innerHTML = '';
+
+        data.columns.forEach((column) => {
+          const columnEl = document.createElement('div');
+          columnEl.className = column.highlighted ? 'submenu-column submenu-column--highlight' : 'submenu-column';
+
+          const heading = document.createElement('h3');
+          heading.className = 'submenu-column__title';
+          heading.textContent = column.heading;
+          columnEl.appendChild(heading);
+
+          if (Array.isArray(column.links)) {
+            column.links.forEach((link) => {
+              const linkEl = document.createElement('a');
+              linkEl.className = column.highlighted ? 'submenu-link submenu-link--highlight nav-link' : 'submenu-link nav-link';
+              linkEl.href = link.href;
+              linkEl.textContent = link.label;
+              columnEl.appendChild(linkEl);
+            });
+          }
+
+          if (Array.isArray(column.groups)) {
+            column.groups.forEach((group) => {
+              const groupEl = document.createElement('div');
+              groupEl.className = 'submenu-column__group';
+
+              const subheading = document.createElement('h4');
+              subheading.className = 'submenu-column__subtitle';
+              subheading.textContent = group.subheading;
+              groupEl.appendChild(subheading);
+
+              (group.links || []).forEach((link) => {
+                const linkEl = document.createElement('a');
+                linkEl.className = column.highlighted ? 'submenu-link submenu-link--highlight nav-link' : 'submenu-link nav-link';
+                linkEl.href = link.href;
+                linkEl.textContent = link.label;
+                groupEl.appendChild(linkEl);
+              });
+
+              columnEl.appendChild(groupEl);
+            });
+          }
+
+          categoryContent.appendChild(columnEl);
+        });
+      };
+
+      renderCategory('oracle-ai-database');
+
+      categoryButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          categoryButtons.forEach((btn) => btn.classList.remove('category-item--active'));
+          button.classList.add('category-item--active');
+          renderCategory(button.getAttribute('data-category'));
+        });
+      });
+
+      document.addEventListener('click', () => {
+        if (navMenu.classList.contains('is-open')) {
+          closeMenu();
+        }
+      });
+    })();
+
+    const baseDbCatalog = {
+      DemoPITR: {
+        name: 'DemoPITR',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        ocid: 'ocid1.database.oc1.uk-cardiff-1.anrxoljr6cpfvnaae2eix9tq2ju0y0a9i1bm4x2uynfuy9q4d9w2n3n7x7ia',
+        created: 'Thu, Dec 18, 2025, 00:08:22 UTC',
+        uniqueName: 'DemoPITR_7t9_cwl',
+        sidPrefix: 'DemoPITR',
+        characterSet: 'AL32UTF8',
+        nationalCharacterSet: 'AL16UTF16',
+        apiAccess: 'Enabled',
+        dbHome: 'ssoexadhome',
+        version: '23.26.0.0.0',
+        lastUpdated: 'Not Applicable',
+        backup: {
+          automatic: 'Enabled',
+          health: 'Protected',
+          dataLossExposure: '2 s',
+          lastFailed: 'None',
+          lastCompleted: 'Mar 5, 2026, 12:18:29 AM UTC',
+          nextScheduled: '12:00AM - 2:00AM UTC',
+          spaceUsed: '134.49 GB',
+          destination: 'Autonomous Recovery Service',
+          realtime: 'Enabled',
+          policy: 'Bronze',
+          policyWindow: '(14-day recovery window)'
+        },
+        dr: {
+          status: 'Not enabled',
+          fullStack: '—'
+        },
+        encryptionKey: 'Oracle-managed key',
+        services: {
+          dbManagement: {
+            status: 'Not enabled',
+            description: 'Database Management provides comprehensive database performance diagnostics and management capabilities to monitor and manage Oracle Databases.'
+          },
+          opsInsights: {
+            status: 'Not enabled',
+            description: 'Ops Insights provides comprehensive Database Capacity Planning, SQL Insights and data warehouse capabilities for long-term analysis of Oracle Databases and hosts.'
+          }
+        }
+      },
+      amtestdb: {
+        name: 'amtestdb',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        ocid: 'ocid1.database.oc1.uk-cardiff-1.anrxoljr6cpfvnaa3x4n2y6w4b8v2jv2k9m8y5v9x5u9d8t6p7c3w7y6z',
+        created: 'Thu, Oct 16, 2025, 15:52:29 UTC',
+        uniqueName: 'amtestdb_01',
+        sidPrefix: 'amtestdb',
+        characterSet: 'AL32UTF8',
+        nationalCharacterSet: 'AL16UTF16',
+        apiAccess: 'Enabled',
+        dbHome: 'ssoexadhome',
+        version: '23.26.0.0.0',
+        lastUpdated: 'Not Applicable',
+        backup: {
+          automatic: 'Enabled',
+          health: 'Protected',
+          dataLossExposure: '2 s',
+          lastFailed: 'None',
+          lastCompleted: 'Mar 4, 2026, 11:42:18 PM UTC',
+          nextScheduled: '12:00AM - 2:00AM UTC',
+          spaceUsed: '134.49 GB',
+          destination: 'Autonomous Recovery Service',
+          realtime: 'Enabled',
+          policy: 'Bronze',
+          policyWindow: '(14-day recovery window)'
+        },
+        dr: {
+          status: 'Not enabled',
+          fullStack: '—'
+        },
+        encryptionKey: 'Oracle-managed key',
+        services: {
+          dbManagement: {
+            status: 'Not enabled',
+            description: 'Database Management provides comprehensive database performance diagnostics and management capabilities to monitor and manage Oracle Databases.'
+          },
+          opsInsights: {
+            status: 'Not enabled',
+            description: 'Ops Insights provides comprehensive Database Capacity Planning, SQL Insights and data warehouse capabilities for long-term analysis of Oracle Databases and hosts.'
+          }
+        }
+      },
+      RstrPITR: {
+        name: 'RstrPITR',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        ocid: 'ocid1.database.oc1.uk-cardiff-1.anrxoljr6cpfvnabb3h1m0k9t8k0c5m7n2c2p6x2a1z9v0w1y4b5x6y7',
+        created: 'Thu, Dec 18, 2025, 03:01:10 UTC',
+        uniqueName: 'RstrPITR_v98_cwl',
+        sidPrefix: 'RstrPITR',
+        characterSet: 'AL32UTF8',
+        nationalCharacterSet: 'AL16UTF16',
+        apiAccess: 'Enabled',
+        dbHome: 'ssoexadhome',
+        version: '23.26.0.0.0',
+        lastUpdated: 'Not Applicable',
+        backup: {
+          automatic: 'Enabled',
+          health: 'Protected',
+          dataLossExposure: '2 s',
+          lastFailed: 'None',
+          lastCompleted: 'Mar 5, 2026, 12:18:29 AM UTC',
+          nextScheduled: '12:00AM - 2:00AM UTC',
+          spaceUsed: '134.49 GB',
+          destination: 'Autonomous Recovery Service',
+          realtime: 'Enabled',
+          policy: 'Bronze',
+          policyWindow: '(14-day recovery window)'
+        },
+        dr: {
+          status: 'Not enabled',
+          fullStack: '—'
+        },
+        encryptionKey: 'Oracle-managed key',
+        services: {
+          dbManagement: {
+            status: 'Not enabled',
+            description: 'Database Management provides comprehensive database performance diagnostics and management capabilities to monitor and manage Oracle Databases.'
+          },
+          opsInsights: {
+            status: 'Not enabled',
+            description: 'Ops Insights provides comprehensive Database Capacity Planning, SQL Insights and data warehouse capabilities for long-term analysis of Oracle Databases and hosts.'
+          }
+        }
+      },
+      anmdb2: {
+        name: 'anmdb2',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        ocid: 'ocid1.database.oc1.uk-cardiff-1.anrxoljr6cpfvnabg8p8d6c5z4f2n1k3v7n9t2u0x4y6z8a1b3c5d7e9',
+        created: 'Mon, Nov 24, 2025, 02:51:37 UTC',
+        uniqueName: 'anmdb2',
+        sidPrefix: 'anmdb2',
+        characterSet: 'AL32UTF8',
+        nationalCharacterSet: 'AL16UTF16',
+        apiAccess: 'Enabled',
+        dbHome: 'ssoexadhome',
+        version: '23.26.0.0.0',
+        lastUpdated: 'Not Applicable',
+        backup: {
+          automatic: 'Enabled',
+          health: 'Protected',
+          dataLossExposure: '2 s',
+          lastFailed: 'None',
+          lastCompleted: 'Mar 5, 2026, 12:18:29 AM UTC',
+          nextScheduled: '12:00AM - 2:00AM UTC',
+          spaceUsed: '134.49 GB',
+          destination: 'Autonomous Recovery Service',
+          realtime: 'Enabled',
+          policy: 'Bronze',
+          policyWindow: '(14-day recovery window)'
+        },
+        dr: {
+          status: 'Not enabled',
+          fullStack: '—'
+        },
+        encryptionKey: 'Oracle-managed key',
+        services: {
+          dbManagement: {
+            status: 'Not enabled',
+            description: 'Database Management provides comprehensive database performance diagnostics and management capabilities to monitor and manage Oracle Databases.'
+          },
+          opsInsights: {
+            status: 'Not enabled',
+            description: 'Ops Insights provides comprehensive Database Capacity Planning, SQL Insights and data warehouse capabilities for long-term analysis of Oracle Databases and hosts.'
+          }
+        }
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const dbId = params.get('id');
+    const clusterId = params.get('cluster');
+
+    const readClusterCatalog = () => {
+      try {
+        const storedCatalog = sessionStorage.getItem('vmCluster:catalog');
+        if (!storedCatalog) return null;
+        const parsed = JSON.parse(storedCatalog);
+        return parsed && typeof parsed === 'object' ? parsed : null;
+      } catch (error) {
+        return null;
+      }
+    };
+
+    const buildFromCluster = (catalog, dbName, clusterKey) => {
+      if (!catalog) return null;
+      const cluster = catalog[clusterKey];
+      if (!cluster || !Array.isArray(cluster.databases)) return null;
+      const match = cluster.databases.find((db) => db.name === dbName);
+      if (!match) return null;
+      const base = baseDbCatalog[dbName] || {};
+      return {
+        name: match.name,
+        status: base.status || { label: 'Available', badgeClass: 'badge--available' },
+        ocid: base.ocid || 'ocid1.database.oc1.uk-cardiff-1.example',
+        created: match.created || base.created || '—',
+        uniqueName: match.uniqueName || base.uniqueName || '—',
+        sidPrefix: base.sidPrefix || match.name,
+        characterSet: base.characterSet || 'AL32UTF8',
+        nationalCharacterSet: base.nationalCharacterSet || 'AL16UTF16',
+        apiAccess: base.apiAccess || 'Enabled',
+        dbHome: base.dbHome || 'ssoexadhome',
+        version: match.version || base.version || '—',
+        lastUpdated: base.lastUpdated || 'Not Applicable',
+        backup: base.backup || {},
+        dr: base.dr || {},
+        encryptionKey: base.encryptionKey || 'Oracle-managed key',
+        services: base.services || {}
+      };
+    };
+
+    const resolveDb = () => {
+      if (dbId && baseDbCatalog[dbId]) {
+        return baseDbCatalog[dbId];
+      }
+
+      const catalog = readClusterCatalog();
+      if (dbId && catalog && clusterId) {
+        const derived = buildFromCluster(catalog, dbId, clusterId);
+        if (derived) return derived;
+      }
+
+      if (dbId && catalog) {
+        const clusterKeys = Object.keys(catalog || {});
+        for (const key of clusterKeys) {
+          const derived = buildFromCluster(catalog, dbId, key);
+          if (derived) return derived;
+        }
+      }
+
+      const first = Object.keys(baseDbCatalog)[0];
+      return baseDbCatalog[first];
+    };
+
+    const dbPayload = resolveDb();
+
+    const setText = (slot, value) => {
+      const el = document.querySelector(`[data-slot="${slot}"]`);
+      if (!el) return;
+      el.textContent = value || '—';
+    };
+
+    if (dbPayload) {
+      document.title = `Oracle Cloud Infrastructure Console — ${dbPayload.name}`;
+      setText('db-name', dbPayload.name);
+      setText('db-ocid', dbPayload.ocid);
+      setText('db-created', dbPayload.created);
+      setText('db-unique-name', dbPayload.uniqueName);
+      setText('db-sid-prefix', dbPayload.sidPrefix);
+      setText('db-character-set', dbPayload.characterSet);
+      setText('db-national-character-set', dbPayload.nationalCharacterSet);
+      setText('db-api-access', dbPayload.apiAccess);
+      setText('db-home', dbPayload.dbHome);
+      setText('db-version', dbPayload.version);
+      setText('db-last-updated', dbPayload.lastUpdated);
+      setText('db-backup-auto', dbPayload.backup.automatic);
+      setText('db-backup-health', dbPayload.backup.health);
+      setText('db-backup-dle', dbPayload.backup.dataLossExposure);
+      setText('db-backup-last-failed', dbPayload.backup.lastFailed);
+      setText('db-backup-last-completed', dbPayload.backup.lastCompleted);
+      setText('db-backup-next', dbPayload.backup.nextScheduled);
+      setText('db-backup-space', dbPayload.backup.spaceUsed);
+      setText('db-backup-destination', dbPayload.backup.destination);
+      setText('db-backup-realtime', dbPayload.backup.realtime);
+      setText('db-backup-policy', dbPayload.backup.policy);
+      setText('db-backup-policy-window', dbPayload.backup.policyWindow);
+      setText('db-dr-status', dbPayload.dr.status);
+      setText('db-dr-fullstack', dbPayload.dr.fullStack);
+      setText('db-encryption-key', dbPayload.encryptionKey);
+      setText('db-service-dbmgmt-status', dbPayload.services.dbManagement?.status);
+      setText('db-service-dbmgmt-desc', dbPayload.services.dbManagement?.description);
+      setText('db-service-ops-status', dbPayload.services.opsInsights?.status);
+      setText('db-service-ops-desc', dbPayload.services.opsInsights?.description);
+
+      const statusEl = document.querySelector('[data-slot="db-status"]');
+      if (statusEl) {
+        statusEl.textContent = dbPayload.status?.label || 'Available';
+        statusEl.className = `badge ${dbPayload.status?.badgeClass || 'badge--available'}`;
+      }
+
+      const copyButton = document.querySelector('[data-copy-value]');
+      if (copyButton) {
+        copyButton.setAttribute('data-copy-value', dbPayload.ocid || '');
+      }
+    }
+
+    const breadcrumbLink = document.querySelector('[data-breadcrumb-link]');
+    if (breadcrumbLink && clusterId) {
+      breadcrumbLink.setAttribute('href', `vm-cluster-template.html?id=${encodeURIComponent(clusterId)}`);
+    }
+
+    const tabButtons = Array.from(document.querySelectorAll('.detail-tabs .tab'));
+    const tabPanels = Array.from(document.querySelectorAll('.tab-panels .tab-panel'));
+
+    const activateTab = (tab) => {
+      const targetId = tab.getAttribute('aria-controls');
+
+      tabButtons.forEach((button) => {
+        const isActive = button === tab;
+        button.classList.toggle('tab--active', isActive);
+        button.setAttribute('aria-selected', String(isActive));
+        button.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
+
+      tabPanels.forEach((panel) => {
+        const isTarget = panel.id === targetId;
+        panel.classList.toggle('tab-panel--active', isTarget);
+        if (isTarget) {
+          panel.removeAttribute('hidden');
+        } else {
+          panel.setAttribute('hidden', 'hidden');
+        }
+      });
+    };
+
+    tabButtons.forEach((tab) => {
+      tab.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (tab.getAttribute('aria-selected') === 'true') {
+          return;
+        }
+        activateTab(tab);
+      });
+    });
+
+    const initialTab = tabButtons.find((button) => button.classList.contains('tab--active'));
+    if (initialTab) {
+      activateTab(initialTab);
+    }
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-copy-value]');
+      if (!button) return;
+      const value = button.getAttribute('data-copy-value');
+      if (!value) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value);
+      }
+    });
+  </script>
+</body>
+</html>
