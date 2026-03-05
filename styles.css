@@ -1711,6 +1711,25 @@ dd {
   font-size: 13px;
 }
 
+.detail-rows__service {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.detail-rows__service > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-rows__service small {
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .detail-columns__side {
   display: grid;
   gap: 20px;
