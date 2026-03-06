@@ -178,6 +178,10 @@
         </div>
       </header>
 
+      <div class="filter-bar filter-bar--flat" aria-hidden="true">
+        <div class="filter-bar__background"></div>
+      </div>
+
       <nav class="detail-tabs" aria-label="Database detail navigation">
         <div class="tabs" role="tablist">
           <button class="tab tab--active" role="tab" aria-selected="true" aria-controls="tab-db-info" id="tab-trigger-db-info">Database information</button>
@@ -203,9 +207,11 @@
                 <dl class="detail-rows">
                   <div>
                     <dt>OCID</dt>
-                    <dd>
-                      <span data-slot="db-ocid"></span>
-                      <button type="button" class="inline-button" data-copy-value>Copy</button>
+                    <dd class="detail-rows__service">
+                      <div>
+                        <span data-slot="db-ocid"></span>
+                      </div>
+                      <button type="button" class="secondary-button" data-copy-value>Copy</button>
                     </dd>
                   </div>
                   <div>
@@ -373,10 +379,118 @@
         </article>
 
         <article class="tab-panel" id="tab-db-backups" role="tabpanel" aria-labelledby="tab-trigger-db-backups" hidden>
-          <div class="empty-state">
-            <h2>Backups</h2>
-            <p>Content to be implemented.</p>
-          </div>
+          <section class="vm-tab" aria-label="Database backups">
+            <div class="vm-toolbar">
+              <label class="vm-toolbar__search">
+                <span class="sr-only">Search backups</span>
+                <span class="vm-search-icon" aria-hidden="true"></span>
+                <input type="search" placeholder="Search and Filter" />
+              </label>
+              <button type="button" class="secondary-button vm-toolbar__search-button">Search</button>
+            </div>
+            <div class="vm-toolbar vm-toolbar--actions">
+              <button type="button" class="secondary-button vm-add-button">Create Backup</button>
+            </div>
+            <div class="data-table data-table--virtual-machines data-table--databases">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Backup destination</th>
+                    <th scope="col">Encryption Key</th>
+                    <th scope="col">Database version</th>
+                    <th scope="col">Expiration date</th>
+                    <th scope="col">Started</th>
+                    <th scope="col" aria-hidden="true" class="table-actions-header"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Automatic Backup</td>
+                    <td><span class="vm-row-badge">Active</span></td>
+                    <td>Incremental Backup, Initiated by Auto Backup</td>
+                    <td>Autonomous Recovery Service</td>
+                    <td>Oracle-managed key</td>
+                    <td>23.26.0.0.0</td>
+                    <td>&mdash;</td>
+                    <td>Mar 6, 2026, 12:18:29 AM UTC</td>
+                    <td class="vm-table-actions">⋮</td>
+                  </tr>
+                  <tr>
+                    <td>Automatic Backup</td>
+                    <td><span class="vm-row-badge">Active</span></td>
+                    <td>Incremental Backup, Initiated by Auto Backup</td>
+                    <td>Autonomous Recovery Service</td>
+                    <td>Oracle-managed key</td>
+                    <td>23.26.0.0.0</td>
+                    <td>&mdash;</td>
+                    <td>Mar 5, 2026, 12:18:29 AM UTC</td>
+                    <td class="vm-table-actions">⋮</td>
+                  </tr>
+                  <tr>
+                    <td>Automatic Backup</td>
+                    <td><span class="vm-row-badge">Active</span></td>
+                    <td>Incremental Backup, Initiated by Auto Backup</td>
+                    <td>Autonomous Recovery Service</td>
+                    <td>Oracle-managed key</td>
+                    <td>23.26.0.0.0</td>
+                    <td>&mdash;</td>
+                    <td>Mar 4, 2026, 12:18:29 AM UTC</td>
+                    <td class="vm-table-actions">⋮</td>
+                  </tr>
+                  <tr>
+                    <td>Automatic Backup</td>
+                    <td><span class="vm-row-badge">Active</span></td>
+                    <td>Incremental Backup, Initiated by Auto Backup</td>
+                    <td>Autonomous Recovery Service</td>
+                    <td>Oracle-managed key</td>
+                    <td>23.26.0.0.0</td>
+                    <td>&mdash;</td>
+                    <td>Mar 3, 2026, 12:18:29 AM UTC</td>
+                    <td class="vm-table-actions">⋮</td>
+                  </tr>
+                  <tr>
+                    <td>Automatic Backup</td>
+                    <td><span class="vm-row-badge">Active</span></td>
+                    <td>Incremental Backup, Initiated by Auto Backup</td>
+                    <td>Autonomous Recovery Service</td>
+                    <td>Oracle-managed key</td>
+                    <td>23.26.0.0.0</td>
+                    <td>&mdash;</td>
+                    <td>Mar 2, 2026, 12:18:29 AM UTC</td>
+                    <td class="vm-table-actions">⋮</td>
+                  </tr>
+                  <tr>
+                    <td>Automatic Backup</td>
+                    <td><span class="vm-row-badge">Active</span></td>
+                    <td>Incremental Backup, Initiated by Auto Backup</td>
+                    <td>Autonomous Recovery Service</td>
+                    <td>Oracle-managed key</td>
+                    <td>23.26.0.0.0</td>
+                    <td>&mdash;</td>
+                    <td>Mar 1, 2026, 12:18:29 AM UTC</td>
+                    <td class="vm-table-actions">⋮</td>
+                  </tr>
+                </tbody>
+              </table>
+              <footer class="table-footer">
+                <div class="pagination">
+                  <button type="button" class="pagination-button" aria-label="Previous page" disabled>‹</button>
+                  <span class="pagination-info">Page 1 of 1 (1 - 6 of 6 total items)</span>
+                  <button type="button" class="pagination-button" aria-label="Next page" disabled>›</button>
+                </div>
+                <div class="page-size">
+                  <span>Items per page</span>
+                  <button type="button" class="select-button">
+                    10
+                    <span class="chevron" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </section>
         </article>
 
         <article class="tab-panel" id="tab-db-guard" role="tabpanel" aria-labelledby="tab-trigger-db-guard" hidden>

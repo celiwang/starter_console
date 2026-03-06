@@ -707,11 +707,14 @@ a:hover {
   border-radius: var(--radius-lg);
   border: 1px solid var(--divider);
   box-shadow: var(--shadow-soft);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
 }
 
 .data-table table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   border-collapse: collapse;
 }
 
@@ -725,6 +728,7 @@ a:hover {
   padding: 14px 20px;
   text-align: left;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .data-table tbody tr:not(:last-child) {
@@ -808,6 +812,10 @@ a:hover {
   padding: 12px 24px;
   background: #f5f6f8;
   border-top: 1px solid #e3e5e8;
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
 }
 
 .table-footer--hidden {
@@ -1591,7 +1599,8 @@ dd {
 .data-table--virtual-machines {
   border: 1px solid #e0e1e4;
   border-radius: 8px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   background: #ffffff;
 }
 
@@ -1643,9 +1652,38 @@ dd {
   width: 40px;
 }
 
+.data-table .table-actions-header,
+.data-table .vm-table-actions {
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  background: #ffffff;
+}
+
+.data-table .table-actions-header::before,
+.data-table .vm-table-actions::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #bfc6cf;
+  pointer-events: none;
+}
+
+.data-table thead .table-actions-header {
+  z-index: 3;
+  background: #f3f5f7;
+}
+
+.data-table--virtual-machines thead .table-actions-header {
+  background: #f8f8fa;
+}
+
 .detail-columns {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 28px;
 }
 
@@ -1679,7 +1717,7 @@ dd {
   gap: 0;
 }
 
-.detail-rows div {
+.detail-rows > div {
   display: grid;
   grid-template-columns: 200px minmax(0, 1fr);
   gap: 16px;
@@ -1688,7 +1726,7 @@ dd {
   border-bottom: 1px solid #eceff2;
 }
 
-.detail-rows div:last-child {
+.detail-rows > div:last-child {
   border-bottom: none;
 }
 
@@ -1696,6 +1734,8 @@ dd {
   font-size: 14px;
   color: var(--text-secondary);
   font-weight: 600;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .detail-rows dd {
@@ -1705,29 +1745,56 @@ dd {
   display: inline-flex;
   gap: 12px;
   align-items: center;
+  flex-wrap: wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .detail-rows dd button {
   font-size: 13px;
 }
 
-.detail-rows__service {
+.detail-rows dd > button {
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.detail-rows dd.detail-rows__service {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
-.detail-rows__service > div {
+.detail-rows dd.detail-rows__service > div {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
-.detail-rows__service small {
+.detail-rows dd.detail-rows__service small {
   color: var(--text-secondary);
   font-size: 12px;
   line-height: 1.4;
+}
+
+.detail-rows dd.detail-rows__service > button {
+  flex: 0 0 auto;
+  margin-left: auto;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.detail-rows dd span,
+.detail-rows dd a,
+.detail-rows dd small,
+.vm-row-name {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .detail-columns__side {
@@ -1959,12 +2026,12 @@ dd {
   padding: 0 24px 24px;
 }
 
-.detail-card--side .detail-rows div {
+.detail-card--side .detail-rows > div {
   grid-template-columns: 180px minmax(0, 1fr);
   padding: 12px 0;
 }
 
-.detail-card--side .detail-rows div:last-child {
+.detail-card--side .detail-rows > div:last-child {
   border-bottom: none;
 }
 
