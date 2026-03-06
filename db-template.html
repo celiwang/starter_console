@@ -186,7 +186,7 @@
         <div class="tabs" role="tablist">
           <button class="tab tab--active" role="tab" aria-selected="true" aria-controls="tab-db-info" id="tab-trigger-db-info">Database information</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-backups" id="tab-trigger-db-backups">Backups</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-guard" id="tab-trigger-db-guard">Data Guard Associations</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-guard" id="tab-trigger-db-guard">Data Guard Group</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-connections" id="tab-trigger-db-connections">Connections</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-pdb" id="tab-trigger-db-pdb">Pluggable Databases</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-db-upgrades" id="tab-trigger-db-upgrades">Upgrade history</button>
@@ -197,7 +197,7 @@
       </nav>
 
       <section class="tab-panels" data-db-panels>
-        <article class="tab-panel tab-panel--active" id="tab-db-info" role="tabpanel" aria-labelledby="tab-trigger-db-info">
+        <article class="tab-panel tab-panel--active tab-panel--info-flat" id="tab-db-info" role="tabpanel" aria-labelledby="tab-trigger-db-info">
           <div class="detail-columns">
             <div class="detail-columns__main">
               <section class="detail-card">
@@ -389,7 +389,7 @@
               <button type="button" class="secondary-button vm-toolbar__search-button">Search</button>
             </div>
             <div class="vm-toolbar vm-toolbar--actions">
-              <button type="button" class="secondary-button vm-add-button">Create Backup</button>
+              <button type="button" class="secondary-button vm-add-button" data-backup-open>Create Backup</button>
             </div>
             <div class="data-table data-table--virtual-machines data-table--databases">
               <table>
@@ -406,79 +406,12 @@
                     <th scope="col" aria-hidden="true" class="table-actions-header"></th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Automatic Backup</td>
-                    <td><span class="vm-row-badge">Active</span></td>
-                    <td>Incremental Backup, Initiated by Auto Backup</td>
-                    <td>Autonomous Recovery Service</td>
-                    <td>Oracle-managed key</td>
-                    <td>23.26.0.0.0</td>
-                    <td>&mdash;</td>
-                    <td>Mar 6, 2026, 12:18:29 AM UTC</td>
-                    <td class="vm-table-actions">⋮</td>
-                  </tr>
-                  <tr>
-                    <td>Automatic Backup</td>
-                    <td><span class="vm-row-badge">Active</span></td>
-                    <td>Incremental Backup, Initiated by Auto Backup</td>
-                    <td>Autonomous Recovery Service</td>
-                    <td>Oracle-managed key</td>
-                    <td>23.26.0.0.0</td>
-                    <td>&mdash;</td>
-                    <td>Mar 5, 2026, 12:18:29 AM UTC</td>
-                    <td class="vm-table-actions">⋮</td>
-                  </tr>
-                  <tr>
-                    <td>Automatic Backup</td>
-                    <td><span class="vm-row-badge">Active</span></td>
-                    <td>Incremental Backup, Initiated by Auto Backup</td>
-                    <td>Autonomous Recovery Service</td>
-                    <td>Oracle-managed key</td>
-                    <td>23.26.0.0.0</td>
-                    <td>&mdash;</td>
-                    <td>Mar 4, 2026, 12:18:29 AM UTC</td>
-                    <td class="vm-table-actions">⋮</td>
-                  </tr>
-                  <tr>
-                    <td>Automatic Backup</td>
-                    <td><span class="vm-row-badge">Active</span></td>
-                    <td>Incremental Backup, Initiated by Auto Backup</td>
-                    <td>Autonomous Recovery Service</td>
-                    <td>Oracle-managed key</td>
-                    <td>23.26.0.0.0</td>
-                    <td>&mdash;</td>
-                    <td>Mar 3, 2026, 12:18:29 AM UTC</td>
-                    <td class="vm-table-actions">⋮</td>
-                  </tr>
-                  <tr>
-                    <td>Automatic Backup</td>
-                    <td><span class="vm-row-badge">Active</span></td>
-                    <td>Incremental Backup, Initiated by Auto Backup</td>
-                    <td>Autonomous Recovery Service</td>
-                    <td>Oracle-managed key</td>
-                    <td>23.26.0.0.0</td>
-                    <td>&mdash;</td>
-                    <td>Mar 2, 2026, 12:18:29 AM UTC</td>
-                    <td class="vm-table-actions">⋮</td>
-                  </tr>
-                  <tr>
-                    <td>Automatic Backup</td>
-                    <td><span class="vm-row-badge">Active</span></td>
-                    <td>Incremental Backup, Initiated by Auto Backup</td>
-                    <td>Autonomous Recovery Service</td>
-                    <td>Oracle-managed key</td>
-                    <td>23.26.0.0.0</td>
-                    <td>&mdash;</td>
-                    <td>Mar 1, 2026, 12:18:29 AM UTC</td>
-                    <td class="vm-table-actions">⋮</td>
-                  </tr>
-                </tbody>
+                <tbody data-backup-rows></tbody>
               </table>
               <footer class="table-footer">
                 <div class="pagination">
                   <button type="button" class="pagination-button" aria-label="Previous page" disabled>‹</button>
-                  <span class="pagination-info">Page 1 of 1 (1 - 6 of 6 total items)</span>
+                  <span class="pagination-info" data-backup-pagination>Page 1 of 1 (0 total items)</span>
                   <button type="button" class="pagination-button" aria-label="Next page" disabled>›</button>
                 </div>
                 <div class="page-size">
@@ -494,10 +427,56 @@
         </article>
 
         <article class="tab-panel" id="tab-db-guard" role="tabpanel" aria-labelledby="tab-trigger-db-guard" hidden>
-          <div class="empty-state">
-            <h2>Data Guard Associations</h2>
-            <p>Content to be implemented.</p>
-          </div>
+          <section class="vm-tab" aria-label="Data Guard Group">
+            <p class="data-guard-note">Add standby operation will also do a precheck. <a href="#">Learn more</a></p>
+            <div class="vm-toolbar">
+              <label class="vm-toolbar__search">
+                <span class="sr-only">Search Data Guard groups</span>
+                <span class="vm-search-icon" aria-hidden="true"></span>
+                <input type="search" placeholder="Search and Filter" />
+              </label>
+              <button type="button" class="secondary-button vm-toolbar__search-button">Search</button>
+            </div>
+            <div class="vm-toolbar vm-toolbar--actions">
+              <button type="button" class="primary-button" data-standby-open>Add standby</button>
+            </div>
+            <div class="data-table data-table--virtual-machines data-table--databases">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Member</th>
+                    <th scope="col">VM Cluster</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Service name</th>
+                    <th scope="col">Switchover ready</th>
+                    <th scope="col">Failover ready</th>
+                    <th scope="col">Transport type</th>
+                    <th scope="col">Apply lag</th>
+                    <th scope="col">Transport lag</th>
+                    <th scope="col">Lag as of</th>
+                    <th scope="col">Data Guard type</th>
+                    <th scope="col" aria-hidden="true" class="table-actions-header"></th>
+                  </tr>
+                </thead>
+                <tbody data-dg-rows></tbody>
+              </table>
+              <footer class="table-footer">
+                <div class="pagination">
+                  <button type="button" class="pagination-button" aria-label="Previous page" disabled>‹</button>
+                  <span class="pagination-info" data-dg-pagination>Page 1 of 1 (0 total items)</span>
+                  <button type="button" class="pagination-button" aria-label="Next page" disabled>›</button>
+                </div>
+                <div class="page-size">
+                  <span>Items per page</span>
+                  <button type="button" class="select-button">
+                    10
+                    <span class="chevron" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </section>
         </article>
 
         <article class="tab-panel" id="tab-db-connections" role="tabpanel" aria-labelledby="tab-trigger-db-connections" hidden>
@@ -544,6 +523,164 @@
       </section>
     </main>
   </div>
+
+  <aside class="vm-side-panel db-backup-panel" data-backup-panel aria-hidden="true">
+    <div class="vm-side-panel__overlay" data-backup-overlay></div>
+    <div class="vm-side-panel__content" role="dialog" aria-modal="true" aria-labelledby="create-backup-title" tabindex="-1">
+      <header class="vm-side-panel__header">
+        <h2 id="create-backup-title">Create Backup</h2>
+      </header>
+      <form class="vm-side-panel__body backup-form" data-backup-form>
+        <p class="backup-form__intro">Create a backup of your database. <a href="#">Learn more</a></p>
+
+        <label class="backup-form__field">
+          <span class="sr-only">Backup Name</span>
+          <input type="text" placeholder="Name" data-backup-name />
+        </label>
+        <p class="backup-form__error" data-backup-name-error hidden>Required</p>
+
+        <div class="backup-form__warning">
+          <p><strong>Warning</strong></p>
+          <p><strong>Important:</strong> All <a href="#">prerequisites</a> for backing up to Oracle Cloud Infrastructure Object Storage must be met for automatic backups to work.</p>
+        </div>
+
+        <div class="backup-form__section">
+          <h3>Backup retention period</h3>
+          <p>Recovery Service creates a long-term backup using existing database backups</p>
+          <label><input type="radio" name="backup-retention" value="policy" checked /> Retain backup per backup retention policy</label>
+          <label><input type="radio" name="backup-retention" value="long-term" /> Specify long-term backup retention period</label>
+        </div>
+
+        <div class="backup-form__long-term" data-backup-long-term hidden>
+          <label class="backup-form__field">
+            <span class="sr-only">Backup retention period</span>
+            <input type="number" min="1" placeholder="Backup retention period" data-backup-retention-value />
+          </label>
+          <p class="backup-form__error" data-backup-retention-error hidden>Required</p>
+
+          <label class="backup-form__field backup-form__field--select">
+            <span class="sr-only">Retention unit</span>
+            <select data-backup-retention-unit>
+              <option value="" selected></option>
+              <option value="days">Days</option>
+              <option value="months">Months</option>
+              <option value="years">Years</option>
+            </select>
+          </label>
+          <p class="backup-form__error backup-form__error--right" data-backup-retention-unit-error hidden>Required</p>
+        </div>
+
+        <dl class="detail-rows backup-form__summary">
+          <div>
+            <dt>Protection policy</dt>
+            <dd>Silver</dd>
+          </div>
+          <div>
+            <dt>Backup retention period</dt>
+            <dd>35 days</dd>
+          </div>
+        </dl>
+      </form>
+      <footer class="vm-side-panel__footer">
+        <button type="button" class="secondary-button" data-backup-cancel>Cancel</button>
+        <button type="button" class="primary-button" data-backup-create>Create</button>
+      </footer>
+    </div>
+  </aside>
+
+  <aside class="vm-side-panel db-standby-panel" data-standby-panel aria-hidden="true">
+    <div class="vm-side-panel__overlay" data-standby-overlay></div>
+    <div class="vm-side-panel__content" role="dialog" aria-modal="true" aria-labelledby="add-standby-title" tabindex="-1">
+      <header class="vm-side-panel__header">
+        <h2 id="add-standby-title">Add standby</h2>
+      </header>
+      <div class="vm-side-panel__body standby-form">
+        <p class="standby-form__intro">Configure and manage Data Guard in your VM cluster. <a href="#">Learn more</a></p>
+
+        <div class="backup-form__warning">
+          <p><strong>Warning</strong></p>
+          <p>Perform a precheck before adding a standby database. Select "Run Precheck" option.</p>
+        </div>
+
+        <section class="standby-form__section">
+          <h3>Peer VM Cluster</h3>
+          <div class="standby-form__field"><span class="standby-form__label">Peer region</span><span>UK West (Newport)</span><span class="standby-form__caret">▼</span></div>
+          <div class="standby-form__field"><span class="standby-form__label">Availability domain</span><span>vPay:UK-CARDIFF-1-AD-1</span><span class="standby-form__caret">▼</span></div>
+          <div class="standby-form__field"><span class="standby-form__label">Select a service</span><span>Exadata Database Service on Dedicated Infrastructure</span><span class="standby-form__caret">▼</span></div>
+
+          <div class="standby-form__grid">
+            <div class="standby-form__field"><span class="standby-form__label">Compartment</span><span>SharedPM</span><span class="standby-form__caret">▼</span></div>
+            <div class="standby-form__field"><span class="standby-form__label">Exadata infrastructure</span><span>&nbsp;</span><span class="standby-form__caret">▼</span></div>
+          </div>
+          <p class="standby-form__required">Required</p>
+
+          <div class="standby-form__grid">
+            <div class="standby-form__field"><span class="standby-form__label">Compartment</span><span>SharedPM</span><span class="standby-form__caret">▼</span></div>
+            <div class="standby-form__field"><span class="standby-form__label">VM cluster</span><span>&nbsp;</span><span class="standby-form__caret">▼</span></div>
+          </div>
+        </section>
+
+        <section class="standby-form__section">
+          <h3>Data Guard Group details</h3>
+          <div class="standby-card-grid">
+            <article class="standby-card standby-card--active">
+              <h4>Active Data Guard</h4>
+              <p>Active Data Guard is a licensed option to the Oracle Database Enterprise Edition and enables advanced capabilities that extend the basic Data Guard functionality. <a href="#">Learn more</a></p>
+            </article>
+            <article class="standby-card">
+              <h4>Data Guard</h4>
+              <p>Oracle Data Guard ensures high availability, data protection, and disaster recovery for enterprise data. <a href="#">Learn more</a></p>
+            </article>
+          </div>
+          <dl class="detail-rows standby-form__rows">
+            <div>
+              <dt>Protection mode</dt>
+              <dd>Maximum Performance</dd>
+            </div>
+            <div>
+              <dt>Transport type</dt>
+              <dd>Async</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="standby-form__section">
+          <h3>Database Home</h3>
+          <div class="standby-form__field standby-form__field--invalid"><span>Database Home display name</span><span class="standby-form__caret">▼</span></div>
+          <p class="backup-form__error">Required</p>
+          <div class="backup-form__warning">
+            <p><strong>Warning</strong></p>
+            <p>To add a standby database in a new database home, you must create the database home before adding the standby database</p>
+          </div>
+        </section>
+
+        <section class="standby-form__section">
+          <h3>Standby database</h3>
+          <input class="standby-form__input" type="text" placeholder="Database unique name" />
+          <input class="standby-form__input" type="password" placeholder="Database password" />
+          <p class="standby-form__required">Required</p>
+          <input class="standby-form__input" type="password" placeholder="TDE wallet password" />
+          <p class="standby-form__required">Required</p>
+        </section>
+
+        <section class="standby-form__section standby-form__accordion">
+          <h3>Advanced options</h3>
+          <div class="standby-accordion-card">
+            <h4>Management</h4>
+            <input class="standby-form__input" type="text" placeholder="Oracle SID prefix" />
+          </div>
+          <div class="standby-accordion-card">
+            <h4>Tags</h4>
+          </div>
+        </section>
+      </div>
+      <footer class="vm-side-panel__footer">
+        <button type="button" class="secondary-button" data-standby-cancel>Cancel</button>
+        <button type="button" class="secondary-button">Run Precheck</button>
+        <button type="button" class="primary-button">Add</button>
+      </footer>
+    </div>
+  </aside>
 
   <script>
     (function () {
@@ -821,6 +958,15 @@
       });
     })();
 
+    const buildSampleBackupRows = () => ([
+      { name: 'Automatic Backup', state: 'Active', type: 'Incremental Backup, Initiated by Auto Backup', destination: 'Autonomous Recovery Service', encryptionKey: 'Oracle-managed key', version: '23.26.0.0.0', expirationDate: '—', started: 'Mar 6, 2026, 12:18:29 AM UTC' },
+      { name: 'Automatic Backup', state: 'Active', type: 'Incremental Backup, Initiated by Auto Backup', destination: 'Autonomous Recovery Service', encryptionKey: 'Oracle-managed key', version: '23.26.0.0.0', expirationDate: '—', started: 'Mar 5, 2026, 12:18:29 AM UTC' },
+      { name: 'Automatic Backup', state: 'Active', type: 'Incremental Backup, Initiated by Auto Backup', destination: 'Autonomous Recovery Service', encryptionKey: 'Oracle-managed key', version: '23.26.0.0.0', expirationDate: '—', started: 'Mar 4, 2026, 12:18:29 AM UTC' },
+      { name: 'Automatic Backup', state: 'Active', type: 'Incremental Backup, Initiated by Auto Backup', destination: 'Autonomous Recovery Service', encryptionKey: 'Oracle-managed key', version: '23.26.0.0.0', expirationDate: '—', started: 'Mar 3, 2026, 12:18:29 AM UTC' },
+      { name: 'Automatic Backup', state: 'Active', type: 'Incremental Backup, Initiated by Auto Backup', destination: 'Autonomous Recovery Service', encryptionKey: 'Oracle-managed key', version: '23.26.0.0.0', expirationDate: '—', started: 'Mar 2, 2026, 12:18:29 AM UTC' },
+      { name: 'Automatic Backup', state: 'Active', type: 'Incremental Backup, Initiated by Auto Backup', destination: 'Autonomous Recovery Service', encryptionKey: 'Oracle-managed key', version: '23.26.0.0.0', expirationDate: '—', started: 'Mar 1, 2026, 12:18:29 AM UTC' }
+    ]);
+
     const baseDbCatalog = {
       DemoPITR: {
         name: 'DemoPITR',
@@ -862,7 +1008,9 @@
             status: 'Not enabled',
             description: 'Ops Insights provides comprehensive Database Capacity Planning, SQL Insights and data warehouse capabilities for long-term analysis of Oracle Databases and hosts.'
           }
-        }
+        },
+        dataGuardGroups: [],
+        backupRows: buildSampleBackupRows()
       },
       amtestdb: {
         name: 'amtestdb',
@@ -904,7 +1052,38 @@
             status: 'Not enabled',
             description: 'Ops Insights provides comprehensive Database Capacity Planning, SQL Insights and data warehouse capabilities for long-term analysis of Oracle Databases and hosts.'
           }
-        }
+        },
+        dataGuardGroups: [
+          {
+            member: 'amtestdb',
+            vmCluster: 'SSOExaVMCluster',
+            role: 'Primary',
+            region: 'UK West (Newport)',
+            serviceName: 'ExaDB-D',
+            switchoverReady: 'Healthy',
+            failoverReady: 'Healthy',
+            transportType: 'Async',
+            applyLag: '—',
+            transportLag: '—',
+            lagAsOf: '—',
+            dataGuardType: 'Data Guard'
+          },
+          {
+            member: 'amtestdb',
+            vmCluster: 'SSOExaVMClusterDR',
+            role: 'Standby',
+            region: 'Japan Central (Osaka)',
+            serviceName: 'ExaDB-D',
+            switchoverReady: 'Healthy',
+            failoverReady: 'Healthy',
+            transportType: 'Async',
+            applyLag: '1',
+            transportLag: '0 seconds',
+            lagAsOf: 'Mar 6, 2026, 10:03:16 PM UTC',
+            dataGuardType: 'Active Data Guard'
+          }
+        ],
+        backupRows: buildSampleBackupRows()
       },
       RstrPITR: {
         name: 'RstrPITR',
@@ -946,7 +1125,9 @@
             status: 'Not enabled',
             description: 'Ops Insights provides comprehensive Database Capacity Planning, SQL Insights and data warehouse capabilities for long-term analysis of Oracle Databases and hosts.'
           }
-        }
+        },
+        dataGuardGroups: [],
+        backupRows: buildSampleBackupRows()
       },
       anmdb2: {
         name: 'anmdb2',
@@ -988,7 +1169,9 @@
             status: 'Not enabled',
             description: 'Ops Insights provides comprehensive Database Capacity Planning, SQL Insights and data warehouse capabilities for long-term analysis of Oracle Databases and hosts.'
           }
-        }
+        },
+        dataGuardGroups: [],
+        backupRows: buildSampleBackupRows()
       }
     };
 
@@ -1030,7 +1213,9 @@
         backup: base.backup || {},
         dr: base.dr || {},
         encryptionKey: base.encryptionKey || 'Oracle-managed key',
-        services: base.services || {}
+        services: base.services || {},
+        dataGuardGroups: base.dataGuardGroups || [],
+        backupRows: base.backupRows ? base.backupRows.map((row) => ({ ...row })) : buildSampleBackupRows()
       };
     };
 
@@ -1107,6 +1292,11 @@
       if (copyButton) {
         copyButton.setAttribute('data-copy-value', dbPayload.ocid || '');
       }
+
+      renderBackupRows(dbPayload.backupRows || [], dbPayload.version);
+      renderDataGuardGroups(dbPayload.dataGuardGroups || []);
+      setupCreateBackupPanel(dbPayload);
+      setupAddStandbyPanel();
     }
 
     const breadcrumbLink = document.querySelector('[data-breadcrumb-link]');
@@ -1162,6 +1352,324 @@
         navigator.clipboard.writeText(value);
       }
     });
+
+    function renderDataGuardGroups(groups) {
+      const tbody = document.querySelector('[data-dg-rows]');
+      const pagination = document.querySelector('[data-dg-pagination]');
+      if (!tbody) {
+        return;
+      }
+
+      const rows = Array.isArray(groups) ? groups : [];
+      tbody.innerHTML = '';
+
+      rows.forEach((group) => {
+        const tr = document.createElement('tr');
+
+        const addCell = (value, { link = false } = {}) => {
+          const td = document.createElement('td');
+          if (link) {
+            const a = document.createElement('a');
+            a.href = '#';
+            a.className = 'vm-row-name';
+            a.textContent = value || '—';
+            td.appendChild(a);
+          } else if (value === 'Healthy') {
+            const badge = document.createElement('span');
+            badge.className = 'vm-row-badge';
+            badge.textContent = value;
+            td.appendChild(badge);
+          } else {
+            td.textContent = value || '—';
+          }
+          tr.appendChild(td);
+        };
+
+        addCell(group.member, { link: true });
+        addCell(group.vmCluster, { link: true });
+        addCell(group.role);
+        addCell(group.region);
+        addCell(group.serviceName);
+        addCell(group.switchoverReady);
+        addCell(group.failoverReady);
+        addCell(group.transportType);
+        addCell(group.applyLag);
+        addCell(group.transportLag);
+        addCell(group.lagAsOf);
+        addCell(group.dataGuardType);
+
+        const actionCell = document.createElement('td');
+        actionCell.className = 'vm-table-actions';
+        actionCell.textContent = '⋮';
+        tr.appendChild(actionCell);
+
+        tbody.appendChild(tr);
+      });
+
+      if (pagination) {
+        const total = rows.length;
+        pagination.textContent = total
+          ? `Page 1 of 1 (1 - ${total} of ${total} total items)`
+          : 'Page 1 of 1 (0 total items)';
+      }
+    }
+
+    function renderBackupRows(rows, dbVersion) {
+      const tbody = document.querySelector('[data-backup-rows]');
+      const pagination = document.querySelector('[data-backup-pagination]');
+      if (!tbody) {
+        return;
+      }
+
+      tbody.innerHTML = '';
+      const safeRows = Array.isArray(rows) ? rows : [];
+
+      safeRows.forEach((row) => {
+        const tr = document.createElement('tr');
+
+        const pushCell = (value, { badge = false } = {}) => {
+          const td = document.createElement('td');
+          if (badge) {
+            const badgeEl = document.createElement('span');
+            badgeEl.className = 'vm-row-badge';
+            badgeEl.textContent = value || '—';
+            td.appendChild(badgeEl);
+          } else {
+            td.textContent = value || '—';
+          }
+          tr.appendChild(td);
+        };
+
+        pushCell(row.name);
+        pushCell(row.state, { badge: true });
+        pushCell(row.type);
+        pushCell(row.destination);
+        pushCell(row.encryptionKey);
+        pushCell(row.version || dbVersion || '—');
+        pushCell(row.expirationDate || '—');
+        pushCell(row.started);
+
+        const actionCell = document.createElement('td');
+        actionCell.className = 'vm-table-actions';
+        actionCell.textContent = '⋮';
+        tr.appendChild(actionCell);
+
+        tbody.appendChild(tr);
+      });
+
+      if (pagination) {
+        const total = safeRows.length;
+        pagination.textContent = total
+          ? `Page 1 of 1 (1 - ${total} of ${total} total items)`
+          : 'Page 1 of 1 (0 total items)';
+      }
+    }
+
+    function setupCreateBackupPanel(db) {
+      const panel = document.querySelector('[data-backup-panel]');
+      const overlay = document.querySelector('[data-backup-overlay]');
+      const openButton = document.querySelector('[data-backup-open]');
+      const closeButtons = document.querySelectorAll('[data-backup-cancel]');
+      const createButton = document.querySelector('[data-backup-create]');
+      const nameInput = document.querySelector('[data-backup-name]');
+      const nameError = document.querySelector('[data-backup-name-error]');
+      const longTermContainer = document.querySelector('[data-backup-long-term]');
+      const retentionValueInput = document.querySelector('[data-backup-retention-value]');
+      const retentionUnitSelect = document.querySelector('[data-backup-retention-unit]');
+      const retentionValueError = document.querySelector('[data-backup-retention-error]');
+      const retentionUnitError = document.querySelector('[data-backup-retention-unit-error]');
+      const form = document.querySelector('[data-backup-form]');
+      const panelContent = panel ? panel.querySelector('.vm-side-panel__content') : null;
+
+      if (!panel || !openButton || !createButton || !nameInput || !nameError || !form) {
+        return;
+      }
+
+      const getRetentionMode = () => form.querySelector('input[name="backup-retention"]:checked')?.value || 'policy';
+      const updateRetentionFields = () => {
+        const isLongTerm = getRetentionMode() === 'long-term';
+        if (longTermContainer) {
+          longTermContainer.hidden = !isLongTerm;
+        }
+      };
+
+      const openPanel = () => {
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
+        nameInput.focus();
+      };
+
+      const closePanel = () => {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+        form.reset();
+        nameInput.classList.remove('is-invalid');
+        nameError.hidden = true;
+        if (retentionValueInput) retentionValueInput.classList.remove('is-invalid');
+        if (retentionUnitSelect) retentionUnitSelect.classList.remove('is-invalid');
+        if (retentionValueError) retentionValueError.hidden = true;
+        if (retentionUnitError) retentionUnitError.hidden = true;
+        updateRetentionFields();
+      };
+
+      openButton.addEventListener('click', openPanel);
+      closeButtons.forEach((btn) => btn.addEventListener('click', closePanel));
+      if (overlay) {
+        overlay.addEventListener('click', closePanel);
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+          closePanel();
+        }
+      });
+
+      createButton.addEventListener('click', () => {
+        const backupName = nameInput.value.trim();
+        if (!backupName) {
+          nameInput.classList.add('is-invalid');
+          nameError.hidden = false;
+          nameInput.focus();
+          return;
+        }
+
+        const retentionMode = getRetentionMode();
+        let hasRetentionErrors = false;
+        if (retentionMode === 'long-term') {
+          const retentionValue = retentionValueInput ? retentionValueInput.value.trim() : '';
+          const retentionUnit = retentionUnitSelect ? retentionUnitSelect.value : '';
+
+          if (!retentionValue) {
+            hasRetentionErrors = true;
+            if (retentionValueInput) retentionValueInput.classList.add('is-invalid');
+            if (retentionValueError) retentionValueError.hidden = false;
+          }
+
+          if (!retentionUnit) {
+            hasRetentionErrors = true;
+            if (retentionUnitSelect) retentionUnitSelect.classList.add('is-invalid');
+            if (retentionUnitError) retentionUnitError.hidden = false;
+          }
+        }
+
+        if (hasRetentionErrors) {
+          if (retentionValueInput && !retentionValueInput.value.trim()) {
+            retentionValueInput.focus();
+          } else if (retentionUnitSelect && !retentionUnitSelect.value) {
+            retentionUnitSelect.focus();
+          }
+          return;
+        }
+
+        const now = new Date();
+        const started = now.toLocaleString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+          timeZoneName: 'short'
+        });
+
+        db.backupRows = db.backupRows || [];
+        db.backupRows.unshift({
+          name: backupName,
+          state: 'Active',
+          type: 'Manual Backup',
+          destination: 'Autonomous Recovery Service',
+          encryptionKey: 'Oracle-managed key',
+          version: db.version || '—',
+          expirationDate: retentionMode === 'long-term'
+            ? `${retentionValueInput.value.trim()} ${retentionUnitSelect.value}`
+            : '—',
+          started: started.replace('GMT', 'UTC')
+        });
+
+        renderBackupRows(db.backupRows, db.version);
+        closePanel();
+      });
+
+      nameInput.addEventListener('input', () => {
+        if (nameInput.value.trim()) {
+          nameInput.classList.remove('is-invalid');
+          nameError.hidden = true;
+        }
+      });
+
+      if (retentionValueInput) {
+        retentionValueInput.addEventListener('input', () => {
+          if (retentionValueInput.value.trim()) {
+            retentionValueInput.classList.remove('is-invalid');
+            if (retentionValueError) retentionValueError.hidden = true;
+          }
+        });
+      }
+
+      if (retentionUnitSelect) {
+        retentionUnitSelect.addEventListener('change', () => {
+          if (retentionUnitSelect.value) {
+            retentionUnitSelect.classList.remove('is-invalid');
+            if (retentionUnitError) retentionUnitError.hidden = true;
+          }
+        });
+      }
+
+      form.querySelectorAll('input[name="backup-retention"]').forEach((radio) => {
+        radio.addEventListener('change', () => {
+          updateRetentionFields();
+          if (retentionValueInput) retentionValueInput.classList.remove('is-invalid');
+          if (retentionUnitSelect) retentionUnitSelect.classList.remove('is-invalid');
+          if (retentionValueError) retentionValueError.hidden = true;
+          if (retentionUnitError) retentionUnitError.hidden = true;
+        });
+      });
+
+      updateRetentionFields();
+
+      if (panelContent) {
+        panelContent.addEventListener('click', (event) => event.stopPropagation());
+      }
+    }
+
+    function setupAddStandbyPanel() {
+      const panel = document.querySelector('[data-standby-panel]');
+      const overlay = document.querySelector('[data-standby-overlay]');
+      const openButton = document.querySelector('[data-standby-open]');
+      const closeButtons = document.querySelectorAll('[data-standby-cancel]');
+      const panelContent = panel ? panel.querySelector('.vm-side-panel__content') : null;
+
+      if (!panel || !openButton) {
+        return;
+      }
+
+      const openPanel = () => {
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
+      };
+
+      const closePanel = () => {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+      };
+
+      openButton.addEventListener('click', openPanel);
+      closeButtons.forEach((btn) => btn.addEventListener('click', closePanel));
+      if (overlay) {
+        overlay.addEventListener('click', closePanel);
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+          closePanel();
+        }
+      });
+
+      if (panelContent) {
+        panelContent.addEventListener('click', (event) => event.stopPropagation());
+      }
+    }
   </script>
 </body>
 </html>
