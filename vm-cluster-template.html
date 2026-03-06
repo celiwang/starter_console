@@ -1140,34 +1140,6 @@
       activateTab(initialActiveTab);
     }
 
-    const createValueContent = (row) => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'detail-row__content';
-
-      const valueSpan = document.createElement('span');
-      valueSpan.textContent = row.value;
-      wrapper.appendChild(valueSpan);
-
-      if (row.copy) {
-        const copyButton = document.createElement('button');
-        copyButton.type = 'button';
-        copyButton.className = 'chip-button';
-        copyButton.textContent = 'Copy';
-        copyButton.dataset.copyValue = row.value;
-        wrapper.appendChild(copyButton);
-      }
-
-      if (row.action) {
-        const actionButton = document.createElement('button');
-        actionButton.type = row.action.type || 'button';
-        actionButton.className = 'inline-button';
-        actionButton.textContent = row.action.label;
-        wrapper.appendChild(actionButton);
-      }
-
-      return wrapper;
-    };
-
     const createDetailCard = ({ title, rows = [], cardClass = '' }) => {
       const card = document.createElement('article');
       card.className = ['detail-card', cardClass].filter(Boolean).join(' ');
@@ -1193,7 +1165,32 @@
         dt.textContent = row.label;
 
         const dd = document.createElement('dd');
-        dd.appendChild(createValueContent(row));
+        const valueSpan = document.createElement('span');
+        valueSpan.textContent = row.value;
+
+        if (row.action) {
+          dd.classList.add('detail-rows__service');
+          const valueBlock = document.createElement('div');
+          valueBlock.appendChild(valueSpan);
+          dd.appendChild(valueBlock);
+
+          const actionButton = document.createElement('button');
+          actionButton.type = row.action.type || 'button';
+          actionButton.className = 'secondary-button';
+          actionButton.textContent = row.action.label;
+          dd.appendChild(actionButton);
+        } else {
+          dd.appendChild(valueSpan);
+        }
+
+        if (row.copy) {
+          const copyButton = document.createElement('button');
+          copyButton.type = 'button';
+          copyButton.className = 'secondary-button';
+          copyButton.textContent = 'Copy';
+          copyButton.dataset.copyValue = row.value;
+          dd.appendChild(copyButton);
+        }
 
         item.appendChild(dt);
         item.appendChild(dd);
@@ -1248,8 +1245,7 @@
         if (cluster.storage && cluster.storage.length) {
           const storageCard = createDetailCard({
             title: 'Exadata database storage',
-            rows: cluster.storage,
-            cardClass: 'detail-card--side'
+            rows: cluster.storage
           });
 
           clusterSelectors.sideContainer.appendChild(storageCard);
