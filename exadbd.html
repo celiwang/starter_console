@@ -183,7 +183,7 @@
         </span>
       </section>
       <section class="actions">
-        <button type="button" class="primary-button">Create Exadata VM cluster</button>
+        <button type="button" class="primary-button" data-create-vm-open>Create Exadata VM cluster</button>
       </section>
       <section class="data-table" aria-label="Exadata VM clusters list">
         <table>
@@ -197,21 +197,12 @@
               <th scope="col">Memory (GB)</th>
               <th scope="col">OCI regions</th>
               <th scope="col">Storage type</th>
+              <th scope="col">Storage (TB)</th>
+              <th scope="col" class="sortable">Created <span class="chevron chevron--down" aria-hidden="true"></span></th>
               <th scope="col" class="table-actions-header" aria-hidden="true"></th>
             </tr>
           </thead>
           <tbody>
-            <tr data-cluster-id="vmcluster-202601141706">
-              <td data-label="Display name"><a href="vm-cluster-template.html?id=vmcluster-202601141706">VMCluster-202601141706</a></td>
-              <td data-label="State"><span class="badge badge--available">Available</span></td>
-              <td data-label="VM count">2</td>
-              <td data-label="Availability domain">AD-1</td>
-              <td data-label="Compute">4 OCPUs</td>
-              <td data-label="Memory (GB)">60</td>
-              <td data-label="OCI regions">UK West (Newport)</td>
-              <td data-label="Storage type">ASM</td>
-              <td class="table-actions" aria-label="Row actions">⋮</td>
-            </tr>
             <tr data-cluster-id="ssoexavmcluster">
               <td><a href="vm-cluster-template.html?id=ssoexavmcluster">SSOExaVMCluster</a></td>
               <td><span class="badge badge--available">Available</span></td>
@@ -221,6 +212,8 @@
               <td>60</td>
               <td>US East (Ashburn)</td>
               <td>ASM</td>
+              <td>2</td>
+              <td>Sep 25, 2025, 2:22:41 PM UTC</td>
               <td class="table-actions" aria-label="Row actions">⋮</td>
             </tr>
             <tr data-cluster-id="vmcluster-2025082110355n">
@@ -232,6 +225,8 @@
               <td>60</td>
               <td>US West (Phoenix)</td>
               <td>ASM</td>
+              <td>2</td>
+              <td>Aug 21, 2025, 3:40:54 PM UTC</td>
               <td class="table-actions" aria-label="Row actions">⋮</td>
             </tr>
             <tr data-cluster-id="vmcluster-202507281139">
@@ -243,6 +238,8 @@
               <td>30</td>
               <td>Germany Central (Frankfurt)</td>
               <td>ASM</td>
+              <td>2</td>
+              <td>Jul 28, 2025, 6:43:48 PM UTC</td>
               <td class="table-actions" aria-label="Row actions">⋮</td>
             </tr>
             <tr data-cluster-id="vmcluster-202503311639">
@@ -254,6 +251,8 @@
               <td>30</td>
               <td>Japan Central (Osaka)</td>
               <td>ASM</td>
+              <td>2</td>
+              <td>Mar 31, 2025, 9:40:20 PM UTC</td>
               <td class="table-actions" aria-label="Row actions">⋮</td>
             </tr>
           </tbody>
@@ -262,6 +261,271 @@
       </section>
     </main>
   </div>
+
+  <aside class="create-vm-panel" data-create-vm-panel aria-hidden="true">
+    <div class="create-vm-panel__overlay" data-create-vm-close></div>
+    <section class="create-vm-panel__sheet" role="dialog" aria-modal="true" aria-labelledby="create-vm-panel-title">
+      <div class="create-vm-panel__body">
+        <header class="create-vm-panel__header">
+          <h1 id="create-vm-panel-title">Create Exadata VM cluster</h1>
+          <p>Create a VM cluster in an Exadata Cloud Infrastructure instance. <a href="#">Learn more</a></p>
+        </header>
+        <div class="create-vm-panel__banner" aria-hidden="true"></div>
+
+        <section class="create-vm-section">
+          <div class="create-vm-field">
+            <label>Display name</label>
+            <input type="text" value="VMCluster-202603061456" data-create-vm-name />
+          </div>
+          <div class="create-vm-field">
+            <label>Cluster name</label>
+            <input type="text" data-create-vm-cluster-name />
+          </div>
+          <div class="create-vm-field create-vm-field--select">
+            <label>Compartment</label>
+            <select>
+              <option>SharedPM</option>
+            </select>
+          </div>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select">
+              <label>Compartment</label>
+              <select>
+                <option>SharedPM</option>
+              </select>
+            </div>
+            <div class="create-vm-field create-vm-field--select is-required">
+              <label>Exadata infrastructure</label>
+              <select>
+                <option value="" selected></option>
+                <option>EXA-INFRA-01</option>
+                <option>EXA-INFRA-02</option>
+              </select>
+              <p class="create-vm-required">Required</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>Configure</h2>
+          <div class="create-vm-field create-vm-field--select">
+            <label>OCPU count per virtual machine</label>
+            <select>
+              <option>2</option>
+              <option>4</option>
+              <option>8</option>
+            </select>
+          </div>
+          <div class="create-vm-metric-row">
+            <dt>Requested OCPU count for the Exadata VM cluster</dt>
+            <dd>4</dd>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>Exadata database storage</h2>
+          <p class="create-vm-label">Storage type</p>
+          <div class="create-vm-choice-grid">
+            <button type="button" class="create-vm-choice create-vm-choice--active">
+              <strong>Automatic storage management (ASM)</strong>
+              <span>All Oracle databases in this VM Cluster will be created on ASM storage. All supported database versions can be provisioned in this VM Cluster.</span>
+            </button>
+            <button type="button" class="create-vm-choice">
+              <strong>Exascale</strong>
+              <span>All Oracle databases in this VM Cluster will be created on Exascale storage. Only Oracle Database 26ai can be provisioned in this VM Cluster.</span>
+            </button>
+          </div>
+          <div class="create-vm-card">
+            <h3>ASM database storage</h3>
+            <div class="create-vm-warning">
+              <p><strong>Warning</strong></p>
+              <p>The following storage configuration options cannot be changed after VM cluster creation.</p>
+            </div>
+            <div class="create-vm-toggle-row">
+              <p class="create-vm-toggle-title">Allocate storage for Exadata sparse snapshots</p>
+              <button type="button" class="toggle" role="switch" aria-checked="false">
+                <span class="toggle__track" aria-hidden="true"></span>
+                <span class="toggle__thumb" aria-hidden="true"></span>
+              </button>
+              <p>Select this option to create a sparse disk group, which is required to support Exadata snapshot functionality.</p>
+            </div>
+            <div class="create-vm-toggle-row">
+              <p class="create-vm-toggle-title">Allocate storage for local backups</p>
+              <button type="button" class="toggle" role="switch" aria-checked="false">
+                <span class="toggle__track" aria-hidden="true"></span>
+                <span class="toggle__thumb" aria-hidden="true"></span>
+              </button>
+              <p>Select this option to allocate more space to the RECO disk group, which can be used to store backups. You must select this option if you want to use local Exadata storage as a backup destination for any databases that you create in this VM Cluster.</p>
+            </div>
+            <div class="create-vm-metric-row">
+              <dt>Usable storage allocation:</dt>
+              <dd>Data: 80%. Reco: 20%. Sparse: 0%.</dd>
+            </div>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>Version</h2>
+          <div class="create-vm-field create-vm-field--select">
+            <label>Select the Oracle Grid Infrastructure version</label>
+            <select>
+              <option value="" selected></option>
+              <option>23.6.0.24.01</option>
+              <option>23.5.0.24.10</option>
+            </select>
+          </div>
+          <div class="create-vm-metric-row create-vm-metric-row--actions">
+            <dt>Exadata guest version</dt>
+            <dd>—</dd>
+            <button type="button" class="secondary-button">Change image</button>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>SSH Keys</h2>
+          <p>Provide the SSH public key(s) that you want to use to access the VM cluster compute nodes. To provide multiple keys, upload multiple key files or paste each key on a new line.</p>
+          <p class="create-vm-label">SSH Keys</p>
+          <div class="create-vm-radio-group">
+            <label><input type="radio" name="ssh-key-mode" checked /> Generate SSH key pair</label>
+            <label><input type="radio" name="ssh-key-mode" /> Upload SSH key files</label>
+            <label><input type="radio" name="ssh-key-mode" /> Paste SSH keys</label>
+          </div>
+          <p>Download the private key so that you can connect to the database system using SSH. It will not be shown again.</p>
+          <div class="create-vm-inline-actions">
+            <button type="button" class="secondary-button">Save private key</button>
+            <button type="button" class="secondary-button">Save public key</button>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>Network settings</h2>
+          <p><a href="#">Learn more</a> about Exadata networking requirements.</p>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select">
+              <label>Compartment</label>
+              <select>
+                <option>SharedPM</option>
+              </select>
+            </div>
+            <div class="create-vm-field create-vm-field--select is-required">
+              <label>Virtual cloud network</label>
+              <select>
+                <option value="" selected></option>
+                <option>SSOVCN</option>
+              </select>
+              <p class="create-vm-required">Required</p>
+            </div>
+          </div>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select">
+              <label>Compartment</label>
+              <select>
+                <option>SharedPM</option>
+              </select>
+            </div>
+            <div class="create-vm-field create-vm-field--select is-required">
+              <label>Client subnet</label>
+              <select>
+                <option value="" selected></option>
+                <option>SSOSUBREG</option>
+              </select>
+              <p class="create-vm-required">Required</p>
+            </div>
+          </div>
+          <div class="create-vm-toggle-row create-vm-toggle-row--compact">
+            <p class="create-vm-toggle-title">Use network security groups to control traffic</p>
+            <button type="button" class="toggle" role="switch" aria-checked="false">
+              <span class="toggle__track" aria-hidden="true"></span>
+              <span class="toggle__thumb" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select">
+              <label>Compartment</label>
+              <select>
+                <option>SharedPM</option>
+              </select>
+            </div>
+            <div class="create-vm-field create-vm-field--select is-required">
+              <label>Backup subnet</label>
+              <select>
+                <option value="" selected></option>
+                <option>SSOBACKUPREG</option>
+              </select>
+              <p class="create-vm-required">Required</p>
+            </div>
+          </div>
+          <div class="create-vm-toggle-row create-vm-toggle-row--compact">
+            <p class="create-vm-toggle-title">Use network security groups to control traffic</p>
+            <button type="button" class="toggle" role="switch" aria-checked="false">
+              <span class="toggle__track" aria-hidden="true"></span>
+              <span class="toggle__thumb" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="create-vm-private-dns">
+            <p class="create-vm-toggle-title">Use private DNS Service</p>
+            <button type="button" class="toggle" role="switch" aria-checked="false">
+              <span class="toggle__track" aria-hidden="true"></span>
+              <span class="toggle__thumb" aria-hidden="true"></span>
+            </button>
+            <p>Private DNS allows you to use your own private DNS domain names and fully manage the associated zones and records to provide hostname resolution for your applications running within and between VCNs, as well as your on-premises or other private network. Private DNS also provides DNS resolution across networks (for example, another VCN within the same region, cross region, or external network). <a href="#">Learn more</a></p>
+            <div class="create-vm-field is-required">
+              <label>Hostname prefix</label>
+              <input type="text" />
+              <p class="create-vm-required">Required</p>
+            </div>
+            <div class="create-vm-field">
+              <label>Host domain name</label>
+              <input type="text" />
+            </div>
+            <div class="create-vm-metric-row">
+              <dt>Host and domain URL</dt>
+              <dd>
+                —
+                <small>This value is determined by the hostname prefix and the host domain name.</small>
+              </dd>
+            </div>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>License type</h2>
+          <div class="create-vm-choice-grid">
+            <button type="button" class="create-vm-choice">
+              <strong>License included</strong>
+              <span>Subscribe to new Oracle Database software licenses and the Database service.</span>
+            </button>
+            <button type="button" class="create-vm-choice">
+              <strong>Bring Your Own License (BYOL)</strong>
+              <span>Bring my organization's Oracle Database software licenses to the Database service. <a href="#">Learn more</a></span>
+            </button>
+          </div>
+          <p class="create-vm-required create-vm-required--inline">You must choose a license type.</p>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>Diagnostics collection</h2>
+          <p>Enabling diagnostics collection and notifications allows you and Oracle Cloud operations to identify, investigate, track, and resolve guest VM issues quickly and effectively. You must subscribe to events to receive notifications. <a href="#">Learn more</a></p>
+          <div class="create-vm-checks">
+            <label><input type="checkbox" checked /> Enable diagnostic events</label>
+            <label><input type="checkbox" checked /> Enable health monitoring</label>
+            <label><input type="checkbox" checked /> Enable incident logs and trace collection</label>
+          </div>
+        </section>
+
+        <section class="create-vm-section create-vm-section--advanced">
+          <button type="button" class="create-vm-advanced-trigger" aria-expanded="false">
+            <span class="chevron chevron--right" aria-hidden="true"></span>
+            Advanced options
+          </button>
+        </section>
+      </div>
+      <footer class="create-vm-panel__footer">
+        <button type="button" class="secondary-button" data-create-vm-close>Cancel</button>
+        <button type="button" class="primary-button" data-create-vm-submit>Create</button>
+      </footer>
+    </section>
+  </aside>
 
   <script>
     (function () {
@@ -652,6 +916,181 @@
         });
       };
 
+      const initCreateVmPanel = () => {
+        const panel = document.querySelector('[data-create-vm-panel]');
+        const openButton = document.querySelector('[data-create-vm-open]');
+        const closeButtons = document.querySelectorAll('[data-create-vm-close]');
+        const panelBody = panel ? panel.querySelector('.create-vm-panel__body') : null;
+        const submitButton = panel ? panel.querySelector('[data-create-vm-submit]') : null;
+        const nameInput = panel ? panel.querySelector('[data-create-vm-name]') : null;
+        const clusterNameInput = panel ? panel.querySelector('[data-create-vm-cluster-name]') : null;
+        const tableBody = document.querySelector('.data-table tbody');
+
+        if (!panel || !openButton) {
+          return;
+        }
+
+        const fieldDefaults = Array.from(panel.querySelectorAll('input, select, textarea')).map((field) => ({
+          field,
+          value: field.value,
+          checked: 'checked' in field ? field.checked : undefined
+        }));
+        const toggleDefaults = Array.from(panel.querySelectorAll('.toggle')).map((toggle) => ({
+          toggle,
+          checked: toggle.getAttribute('aria-checked') || 'false'
+        }));
+        const choiceDefaults = Array.from(panel.querySelectorAll('.create-vm-choice')).map((choice) => ({
+          choice,
+          isActive: choice.classList.contains('create-vm-choice--active')
+        }));
+
+        const resetFormState = () => {
+          fieldDefaults.forEach(({ field, value, checked }) => {
+            field.value = value;
+            if (typeof checked === 'boolean') {
+              field.checked = checked;
+            }
+          });
+
+          toggleDefaults.forEach(({ toggle, checked }) => {
+            toggle.setAttribute('aria-checked', checked);
+          });
+
+          choiceDefaults.forEach(({ choice, isActive }) => {
+            choice.classList.toggle('create-vm-choice--active', isActive);
+          });
+        };
+
+        const updateRequiredIndicators = () => {
+          panel.querySelectorAll('.create-vm-field.is-required').forEach((container) => {
+            const field = container.querySelector('input, select, textarea');
+            const requiredText = container.querySelector('.create-vm-required');
+            if (!field || !requiredText) {
+              return;
+            }
+
+            const hasValue = (field.value || '').trim().length > 0;
+            requiredText.hidden = hasValue;
+          });
+        };
+
+        const open = () => {
+          panel.classList.add('is-open');
+          panel.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('create-vm-panel-open');
+          if (panelBody) {
+            panelBody.scrollTop = 0;
+          }
+        };
+
+        const close = () => {
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('create-vm-panel-open');
+          resetFormState();
+          updateRequiredIndicators();
+        };
+
+        openButton.addEventListener('click', open);
+        closeButtons.forEach((button) => button.addEventListener('click', close));
+
+        panel.addEventListener('click', (event) => {
+          if (event.target === panel) {
+            close();
+          }
+        });
+
+        panel.querySelectorAll('.toggle').forEach((toggle) => {
+          toggle.addEventListener('click', () => {
+            const checked = toggle.getAttribute('aria-checked') === 'true';
+            toggle.setAttribute('aria-checked', checked ? 'false' : 'true');
+          });
+        });
+
+        panel.querySelectorAll('.create-vm-choice').forEach((choice) => {
+          choice.addEventListener('click', () => {
+            const group = choice.closest('.create-vm-choice-grid');
+            if (!group) {
+              return;
+            }
+            group.querySelectorAll('.create-vm-choice').forEach((item) => item.classList.remove('create-vm-choice--active'));
+            choice.classList.add('create-vm-choice--active');
+          });
+        });
+
+        panel.querySelectorAll('.create-vm-field.is-required input, .create-vm-field.is-required select, .create-vm-field.is-required textarea').forEach((field) => {
+          field.addEventListener('input', updateRequiredIndicators);
+          field.addEventListener('change', updateRequiredIndicators);
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+            close();
+          }
+        });
+
+        const toClusterId = (value) => {
+          const slug = value
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+          if (!slug) {
+            return `vmcluster-${Date.now()}`;
+          }
+          return slug;
+        };
+
+        const formatUtcDate = (date) =>
+          date.toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+            timeZone: 'UTC'
+          }).replace(',', ',') + ' UTC';
+
+        const addVmClusterRow = () => {
+          if (!tableBody || !submitButton) {
+            return;
+          }
+
+          const displayName = (nameInput?.value || '').trim() || `VMCluster-${Date.now()}`;
+          const clusterName = (clusterNameInput?.value || '').trim();
+          const clusterId = toClusterId(clusterName || displayName);
+          const created = formatUtcDate(new Date());
+          const activeStorageChoice = panel.querySelector('.create-vm-choice-grid .create-vm-choice--active strong');
+          const storageType = activeStorageChoice && activeStorageChoice.textContent.includes('Exascale') ? 'Exascale' : 'ASM';
+
+          const row = document.createElement('tr');
+          row.setAttribute('data-cluster-id', clusterId);
+          row.innerHTML = `
+            <td><a href="vm-cluster-template.html?id=${encodeURIComponent(clusterId)}">${displayName}</a></td>
+            <td><span class="badge badge--available">Available</span></td>
+            <td>2</td>
+            <td>AD-1</td>
+            <td>8 OCPUs</td>
+            <td>60</td>
+            <td>UK West (Newport)</td>
+            <td>${storageType}</td>
+            <td>2</td>
+            <td>${created}</td>
+            <td class="table-actions" aria-label="Row actions">⋮</td>
+          `;
+
+          tableBody.prepend(row);
+          close();
+        };
+
+        if (submitButton) {
+          submitButton.addEventListener('click', addVmClusterRow);
+        }
+
+        updateRequiredIndicators();
+      };
+
       categoryButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const key = button.getAttribute('data-category');
@@ -671,6 +1110,7 @@
 
       renderCategory('oracle-ai-database');
       initDataTables();
+      initCreateVmPanel();
     })();
 
     const clusterCatalog = {

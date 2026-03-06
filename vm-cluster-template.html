@@ -363,7 +363,7 @@
               <button type="button" class="secondary-button vm-toolbar__search-button">Search</button>
             </div>
             <div class="vm-toolbar vm-toolbar--actions">
-              <button type="button" class="secondary-button vm-add-button">Create database</button>
+              <button type="button" class="secondary-button vm-add-button" data-db-open>Create database</button>
             </div>
             <div class="data-table data-table--virtual-machines data-table--databases">
               <table>
@@ -464,6 +464,190 @@
       </section>
     </main>
   </div>
+
+  <aside class="create-db-panel" data-create-db-panel aria-hidden="true">
+    <div class="create-db-panel__overlay" data-create-db-close></div>
+    <section class="create-db-panel__sheet" role="dialog" aria-modal="true" aria-labelledby="create-db-title">
+      <div class="create-db-panel__body">
+        <header class="create-db-panel__header">
+          <h1 id="create-db-title">Create database</h1>
+        </header>
+
+        <div class="create-db-panel__content">
+          <p class="create-db-intro">Create database. <a href="#">Learn more</a></p>
+
+          <section class="create-db-section">
+            <h2>Basic information</h2>
+            <label class="create-db-field">
+              <span class="create-db-field__label">Database name</span>
+              <input type="text" value="DB306" data-create-db-name />
+            </label>
+            <label class="create-db-field">
+              <span class="create-db-field__label">Database unique name</span>
+              <input type="text" data-create-db-unique />
+            </label>
+            <label class="create-db-field">
+              <span class="create-db-field__label">PDB name</span>
+              <input type="text" data-create-db-pdb />
+            </label>
+          </section>
+
+          <section class="create-db-section">
+            <h2>Database Home</h2>
+            <label class="create-db-field create-db-field--select">
+              <span class="create-db-field__label">Database release</span>
+              <select>
+                <option>19c</option>
+                <option>23ai</option>
+              </select>
+            </label>
+            <div class="create-db-subsection">
+              <p class="create-db-subtitle">Database Home source</p>
+              <p class="create-db-help">This DB system has no Database Homes for your selected database version. A new Database Home will be created.</p>
+              <div class="create-db-radio-group">
+                <label><input type="radio" name="db-home-source" /> Select an existing Database Home</label>
+                <label><input type="radio" name="db-home-source" checked /> Create a new Database Home</label>
+              </div>
+              <label class="create-db-field">
+                <span class="create-db-field__label">Database Home display name</span>
+                <input type="text" value="dbhome-202603061510" />
+              </label>
+              <div class="create-db-toggle-block">
+                <p class="create-db-subtitle">Unified Auditing</p>
+                <button type="button" class="toggle" role="switch" aria-checked="false">
+                  <span class="toggle__track" aria-hidden="true"></span>
+                  <span class="toggle__thumb" aria-hidden="true"></span>
+                </button>
+                <p class="create-db-help">Unified audit combines all database component audit trails into a single unified audit trail.</p>
+              </div>
+              <dl class="create-db-info-row">
+                <div>
+                  <dt>Database image</dt>
+                  <dd>Oracle Database 19c</dd>
+                </div>
+                <button type="button" class="secondary-button">Change database image</button>
+              </dl>
+            </div>
+          </section>
+
+          <section class="create-db-section">
+            <h2>Create administrator credentials</h2>
+            <dl class="create-db-kv-row">
+              <div>
+                <dt>Username</dt>
+                <dd>sys</dd>
+              </div>
+            </dl>
+            <label class="create-db-field create-db-field--invalid">
+              <span class="create-db-field__label">Password</span>
+              <input type="password" />
+              <button type="button" class="create-db-password-toggle" data-password-toggle aria-label="Show password">◉</button>
+            </label>
+            <p class="create-db-required">Password must be 9 to 30 characters and contain at least 2 uppercase, 2 lowercase, 2 special, and 2 numeric characters. The special characters must be _, #, or -.</p>
+            <label class="create-db-field">
+              <span class="create-db-field__label">Confirm password</span>
+              <input type="password" />
+              <button type="button" class="create-db-password-toggle" data-password-toggle aria-label="Show password">◉</button>
+            </label>
+            <p class="create-db-required create-db-required--right">Required</p>
+            <div class="create-db-toggle-block">
+              <p class="create-db-subtitle">Use the administrator password for the TDE wallet</p>
+              <button type="button" class="toggle" role="switch" aria-checked="true">
+                <span class="toggle__track" aria-hidden="true"></span>
+                <span class="toggle__thumb" aria-hidden="true"></span>
+              </button>
+              <p class="create-db-help">If you are going to use customer-managed keys stored in a vault, the TDE wallet is not applicable.</p>
+            </div>
+          </section>
+
+          <section class="create-db-section">
+            <h2>Database backups</h2>
+            <div class="create-db-toggle-block">
+              <p class="create-db-subtitle">Enable automatic backups</p>
+              <button type="button" class="toggle" role="switch" aria-checked="true">
+                <span class="toggle__track" aria-hidden="true"></span>
+                <span class="toggle__thumb" aria-hidden="true"></span>
+              </button>
+              <p class="create-db-help">Automatic backup is the preferred method for backing up Oracle Cloud databases. <a href="#">Learn more</a></p>
+            </div>
+            <div class="create-db-warning">
+              <p><strong>Warning</strong></p>
+              <p><strong>Important:</strong> All <a href="#">prerequisites</a> for backing up to Oracle Cloud Infrastructure Object Storage must be met for automatic backups to work.</p>
+            </div>
+            <label class="create-db-field create-db-field--select">
+              <span class="create-db-field__label">Backup destination</span>
+              <select>
+                <option>Object Storage</option>
+              </select>
+            </label>
+            <div class="create-db-warning">
+              <p><strong>Warning</strong></p>
+              <p>Your tenancy has exceeded the limit for the number of database protected. <a href="#">Submit a request</a> to increase the Autonomous Recovery Service limit for Protected Database Count.</p>
+            </div>
+          </section>
+
+          <section class="create-db-section">
+            <div class="create-db-toggle-block">
+              <p class="create-db-subtitle">Remote backup</p>
+              <button type="button" class="toggle" role="switch" aria-checked="false">
+                <span class="toggle__track" aria-hidden="true"></span>
+                <span class="toggle__thumb" aria-hidden="true"></span>
+              </button>
+              <p class="create-db-help">Remote region backups can be used for disaster recovery to ensure database availability in the event of a regional failure.</p>
+            </div>
+            <label class="create-db-field create-db-field--select">
+              <span class="create-db-field__label">Backup retention period</span>
+              <select>
+                <option>30 days</option>
+              </select>
+            </label>
+            <label class="create-db-field create-db-field--select">
+              <span class="create-db-field__label">Scheduled day for full backup</span>
+              <select>
+                <option>Sunday</option>
+              </select>
+            </label>
+            <label class="create-db-field create-db-field--select">
+              <span class="create-db-field__label">Scheduled time for full backup (UTC)</span>
+              <select>
+                <option>Anytime</option>
+              </select>
+            </label>
+            <label class="create-db-field create-db-field--select">
+              <span class="create-db-field__label">Scheduled time for incremental backup (UTC)</span>
+              <select>
+                <option>Anytime</option>
+              </select>
+            </label>
+            <div class="create-db-toggle-block">
+              <p class="create-db-subtitle">Take the first backup immediately</p>
+              <button type="button" class="toggle" role="switch" aria-checked="true">
+                <span class="toggle__track" aria-hidden="true"></span>
+                <span class="toggle__thumb" aria-hidden="true"></span>
+              </button>
+              <p class="create-db-help">The first database backup is a full incremental level 0 backup, which backs up all blocks in the database and is the foundation for the weekly incremental backup strategy.</p>
+            </div>
+            <div class="create-db-subsection">
+              <p class="create-db-subtitle">Deletion options after database termination</p>
+              <p class="create-db-help">Terminating a database will remove the database and retain backups per the choice below. <a href="#">Learn more</a></p>
+              <div class="create-db-radio-group">
+                <label><input type="radio" name="delete-backups" checked /> Retain backups per backup retention period</label>
+                <label><input type="radio" name="delete-backups" /> Retain backups for 72 hours, then delete</label>
+              </div>
+            </div>
+            <button type="button" class="create-db-advanced">
+              <span class="chevron chevron--right" aria-hidden="true"></span>
+              Advanced options
+            </button>
+          </section>
+        </div>
+      </div>
+      <footer class="create-db-panel__footer">
+        <button type="button" class="secondary-button" data-create-db-close>Cancel</button>
+        <button type="button" class="primary-button" data-create-db-submit>Create</button>
+      </footer>
+    </section>
+  </aside>
 
   <script>
     (function () {
@@ -1415,6 +1599,144 @@
         }
       }
     };
+
+    const initCreateDatabasePanel = () => {
+      const panel = document.querySelector('[data-create-db-panel]');
+      if (!panel) {
+        return;
+      }
+
+      const panelBody = panel.querySelector('.create-db-panel__body');
+      const closeButtons = panel.querySelectorAll('[data-create-db-close]');
+      const submitButton = panel.querySelector('[data-create-db-submit]');
+      const dbNameInput = panel.querySelector('[data-create-db-name]');
+      const dbUniqueInput = panel.querySelector('[data-create-db-unique]');
+      const inputDefaults = Array.from(panel.querySelectorAll('input, select, textarea')).map((field) => ({
+        field,
+        value: field.value,
+        checked: 'checked' in field ? field.checked : undefined
+      }));
+      const toggleDefaults = Array.from(panel.querySelectorAll('.toggle')).map((toggle) => ({
+        toggle,
+        checked: toggle.getAttribute('aria-checked') || 'false'
+      }));
+
+      const resetPanel = () => {
+        inputDefaults.forEach(({ field, value, checked }) => {
+          field.value = value;
+          if (typeof checked === 'boolean') {
+            field.checked = checked;
+          }
+        });
+        toggleDefaults.forEach(({ toggle, checked }) => {
+          toggle.setAttribute('aria-checked', checked);
+        });
+      };
+
+      const open = () => {
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('create-db-panel-open');
+        if (panelBody) {
+          panelBody.scrollTop = 0;
+        }
+      };
+
+      const close = () => {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('create-db-panel-open');
+        resetPanel();
+      };
+
+      document.addEventListener('click', (event) => {
+        if (event.target.closest('[data-db-open]')) {
+          event.preventDefault();
+          open();
+          return;
+        }
+        if (event.target.closest('[data-create-db-close]')) {
+          event.preventDefault();
+          close();
+          return;
+        }
+        const passwordToggle = event.target.closest('[data-password-toggle]');
+        if (passwordToggle) {
+          const field = passwordToggle.closest('.create-db-field')?.querySelector('input');
+          if (field) {
+            field.type = field.type === 'password' ? 'text' : 'password';
+          }
+        }
+      });
+
+      panel.querySelectorAll('.toggle').forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+          const current = toggle.getAttribute('aria-checked') === 'true';
+          toggle.setAttribute('aria-checked', current ? 'false' : 'true');
+        });
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', close);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+          close();
+        }
+      });
+
+      const formatUtcDate = (date) =>
+        `${date.toLocaleString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+          timeZone: 'UTC'
+        })} UTC`;
+
+      if (submitButton) {
+        submitButton.addEventListener('click', () => {
+          const tableBody = document.querySelector('[data-db-rows]');
+          const pagination = document.querySelector('[data-db-pagination]');
+          if (!tableBody) {
+            close();
+            return;
+          }
+
+          const name = (dbNameInput?.value || '').trim() || `DB${Date.now().toString().slice(-3)}`;
+          const uniqueName = (dbUniqueInput?.value || '').trim() || name.toLowerCase();
+          const clusterParam = params.get('id') || 'ssoexavmcluster';
+          const created = formatUtcDate(new Date());
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><a class="vm-row-name" href="db-template.html?id=${encodeURIComponent(name)}&cluster=${encodeURIComponent(clusterParam)}">${name}</a></td>
+            <td><span class="vm-row-badge">Available</span></td>
+            <td>${uniqueName}</td>
+            <td>19c</td>
+            <td>PRIMARY</td>
+            <td>${created}</td>
+            <td class="vm-table-actions">⋮</td>
+          `;
+          tableBody.prepend(row);
+
+          if (pagination) {
+            const total = tableBody.querySelectorAll('tr').length;
+            pagination.textContent = total
+              ? `Page 1 of 1 (1 - ${total} of ${total} total items)`
+              : 'Page 1 of 1 (0 total items)';
+          }
+
+          close();
+        });
+      }
+    };
+
+    initCreateDatabasePanel();
 
     const handleCopyClick = (event) => {
       const button = event.target.closest('[data-copy-value]');
