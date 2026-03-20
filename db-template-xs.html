@@ -133,16 +133,16 @@
       <nav class="side-nav__menu" aria-label="Oracle Exadata navigation">
         <button type="button" class="menu-item menu-item--active">
           <span class="menu-item__back" aria-hidden="true">‹</span>
-          Oracle Exadata Database Service on Dedicated Infrastructure
+          Oracle Exadata Database Service on Exascale Infrastructure
         </button>
         <div class="menu-sublist" role="list">
-          <button type="button" class="menu-subitem menu-subitem--active">Exadata VM Clusters</button>
-          <button type="button" class="menu-subitem">Exadata Infrastructure</button>
-          <button type="button" class="menu-subitem">Resources</button>
+          <button type="button" class="menu-subitem menu-subitem--active">VM Clusters</button>
+          <a class="menu-subitem" href="exadbxs.html">Exadata Infrastructure</a>
         </div>
         <div class="menu-divider" role="presentation"></div>
         <div class="menu-secondary">
-          <button type="button" class="menu-subitem">Scheduling policy</button>
+          <div class="menu-section-label">Resources</div>
+          <a class="menu-subitem" href="maintenance-scheduling-policy.html">Scheduling policy</a>
           <button type="button" class="menu-subitem">Software images</button>
           <button type="button" class="menu-subitem">Standalone backups</button>
           <button type="button" class="menu-subitem">Interim software updates</button>
@@ -153,7 +153,7 @@
 
     <main class="main-content main-content--detail" role="main">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="vm-cluster-template.html" class="breadcrumbs__link" data-breadcrumb-link>
+        <a href="vm-cluster-template-xs.html" class="breadcrumbs__link" data-breadcrumb-link>
           <svg class="breadcrumbs__icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
             <g fill="none">
               <path d="M21.996 11H5.41l5.293-5.293L9.29 4.293 1.582 12l7.707 7.707 1.414-1.414L5.41 13h16.586z" fill="currentColor"></path>
@@ -487,10 +487,47 @@
         </article>
 
         <article class="tab-panel" id="tab-db-pdb" role="tabpanel" aria-labelledby="tab-trigger-db-pdb" hidden>
-          <div class="empty-state">
-            <h2>Pluggable Databases</h2>
-            <p>Content to be implemented.</p>
-          </div>
+          <section class="vm-tab" aria-label="Pluggable databases">
+            <div class="vm-toolbar">
+              <label class="vm-toolbar__search">
+                <span class="sr-only">Search pluggable databases</span>
+                <span class="vm-search-icon" aria-hidden="true"></span>
+                <input type="search" placeholder="Search and Filter" />
+              </label>
+              <button type="button" class="secondary-button vm-toolbar__search-button">Search</button>
+            </div>
+            <div class="vm-toolbar vm-toolbar--actions">
+              <button type="button" class="secondary-button vm-add-button" data-pdb-create>Create</button>
+            </div>
+            <div class="data-table data-table--virtual-machines data-table--databases">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Refreshable clone</th>
+                    <th scope="col" class="sortable">Created <span class="chevron chevron--down" aria-hidden="true"></span></th>
+                    <th scope="col" aria-hidden="true" class="table-actions-header"></th>
+                  </tr>
+                </thead>
+                <tbody data-pdb-rows></tbody>
+              </table>
+              <footer class="table-footer">
+                <div class="pagination">
+                  <button type="button" class="pagination-button" aria-label="Previous page" disabled>‹</button>
+                  <span class="pagination-info" data-pdb-pagination>Page 1 of 1 (0 total items)</span>
+                  <button type="button" class="pagination-button" aria-label="Next page" disabled>›</button>
+                </div>
+                <div class="page-size">
+                  <span>Items per page</span>
+                  <button type="button" class="select-button">
+                    10
+                    <span class="chevron" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </section>
         </article>
 
         <article class="tab-panel" id="tab-db-upgrades" role="tabpanel" aria-labelledby="tab-trigger-db-upgrades" hidden>
@@ -682,6 +719,84 @@
     </div>
   </aside>
 
+  <aside class="vm-side-panel db-pdb-panel" data-pdb-panel aria-hidden="true">
+    <div class="vm-side-panel__overlay" data-pdb-overlay></div>
+    <div class="vm-side-panel__content" role="dialog" aria-modal="true" aria-labelledby="create-pdb-title" tabindex="-1">
+      <header class="vm-side-panel__header">
+        <h2 id="create-pdb-title">Create pluggable database</h2>
+      </header>
+      <form class="vm-side-panel__body pdb-form" data-pdb-form>
+        <p class="pdb-form__intro">Create pluggable database. <a href="#">Learn more</a></p>
+
+        <label class="pdb-form__field pdb-form__field--invalid">
+          <input type="text" placeholder="PDB name" data-pdb-name />
+        </label>
+        <p class="pdb-form__error" data-pdb-name-error>Required</p>
+
+        <section class="pdb-form__section">
+          <h3>PDB Admin account</h3>
+          <p class="pdb-form__label">Unlock the PDB admin account</p>
+          <button type="button" class="toggle" role="switch" aria-checked="false" data-pdb-unlock-toggle>
+            <span class="toggle__track" aria-hidden="true"></span>
+            <span class="toggle__thumb" aria-hidden="true"></span>
+          </button>
+          <p class="pdb-form__help">Provide a PDB admin password to unlock the PDB admin account.</p>
+        </section>
+
+        <section class="pdb-form__section">
+          <h3>Database admin credential</h3>
+          <label class="pdb-form__field pdb-form__field--invalid">
+            <input type="password" placeholder="TDE wallet password of database" data-pdb-wallet-password />
+            <button type="button" class="pdb-form__password-toggle" data-pdb-password-toggle aria-label="Show password">◉</button>
+          </label>
+          <p class="pdb-form__error pdb-form__error--long">Password must be 9 to 30 characters and contain at least 2 uppercase, 2 lowercase, 2 special, and 2 numeric characters. The special characters must be _, #, or -.</p>
+          <p class="pdb-form__label">Take a backup of the PDB immediately after creating it.</p>
+          <button type="button" class="toggle" role="switch" aria-checked="true" data-pdb-backup-toggle>
+            <span class="toggle__track" aria-hidden="true"></span>
+            <span class="toggle__thumb" aria-hidden="true"></span>
+          </button>
+          <p class="pdb-form__help">Ensures recoverability of the PDB for the database that has an existing cloud-managed backup.</p>
+        </section>
+
+        <section class="pdb-form__section">
+          <button type="button" class="pdb-form__advanced-trigger" data-pdb-advanced-trigger aria-expanded="false">
+            <span class="create-db-disclosure" aria-hidden="true"></span>
+            Advanced options
+          </button>
+
+          <div class="pdb-form__advanced-content" data-pdb-advanced-content hidden>
+            <div class="pdb-form__advanced-card">
+              <button type="button" class="pdb-form__accordion-title" data-pdb-accordion-trigger data-default-expanded="true" aria-expanded="true" aria-controls="pdb-advanced-encryption">
+                <span class="create-db-disclosure" aria-hidden="true"></span>
+                Encryption
+              </button>
+              <div class="pdb-form__accordion-content" data-pdb-accordion-content id="pdb-advanced-encryption">
+                <dl class="pdb-form__kv">
+                  <div>
+                    <dt>Encryption Key</dt>
+                    <dd>Oracle-managed key</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+
+            <div class="pdb-form__advanced-card">
+              <button type="button" class="pdb-form__accordion-title" data-pdb-accordion-trigger data-default-expanded="false" aria-expanded="false" aria-controls="pdb-advanced-tags">
+                <span class="create-db-disclosure" aria-hidden="true"></span>
+                Tags
+              </button>
+              <div class="pdb-form__accordion-content" data-pdb-accordion-content id="pdb-advanced-tags" hidden></div>
+            </div>
+          </div>
+        </section>
+      </form>
+      <footer class="vm-side-panel__footer">
+        <button type="button" class="secondary-button" data-pdb-cancel>Cancel</button>
+        <button type="button" class="primary-button" data-pdb-submit>Create</button>
+      </footer>
+    </div>
+  </aside>
+
   <script>
     (function () {
       const navButton = document.getElementById('nav-menu-button');
@@ -694,6 +809,17 @@
 
       if (!navButton || !navMenu || !navOverlay) {
         return;
+      }
+
+      const navEntries = performance.getEntriesByType ? performance.getEntriesByType('navigation') : [];
+      if (Array.isArray(navEntries) && navEntries[0] && navEntries[0].type === 'reload') {
+        [
+          'vmCluster:catalog',
+          'vmCluster:selected',
+          'exadbd:createdVmClusters',
+          'exadbd:createdInfrastructures',
+          'exadbcc:createdInfrastructures'
+        ].forEach((key) => sessionStorage.removeItem(key));
       }
 
       const openMenu = () => {
@@ -967,6 +1093,15 @@
       { name: 'Automatic Backup', state: 'Active', type: 'Incremental Backup, Initiated by Auto Backup', destination: 'Autonomous Recovery Service', encryptionKey: 'Oracle-managed key', version: '23.26.0.0.0', expirationDate: '—', started: 'Mar 1, 2026, 12:18:29 AM UTC' }
     ]);
 
+    const buildSamplePdbRows = () => ([
+      {
+        name: 'PDB1',
+        state: 'Available',
+        refreshableClone: 'No',
+        created: 'Dec 18, 2025, 12:22:16 AM UTC'
+      }
+    ]);
+
     const baseDbCatalog = {
       DemoPITR: {
         name: 'DemoPITR',
@@ -1010,7 +1145,8 @@
           }
         },
         dataGuardGroups: [],
-        backupRows: buildSampleBackupRows()
+        backupRows: buildSampleBackupRows(),
+        pdbRows: buildSamplePdbRows()
       },
       amtestdb: {
         name: 'amtestdb',
@@ -1083,7 +1219,8 @@
             dataGuardType: 'Active Data Guard'
           }
         ],
-        backupRows: buildSampleBackupRows()
+        backupRows: buildSampleBackupRows(),
+        pdbRows: buildSamplePdbRows()
       },
       RstrPITR: {
         name: 'RstrPITR',
@@ -1127,7 +1264,8 @@
           }
         },
         dataGuardGroups: [],
-        backupRows: buildSampleBackupRows()
+        backupRows: buildSampleBackupRows(),
+        pdbRows: buildSamplePdbRows()
       },
       anmdb2: {
         name: 'anmdb2',
@@ -1171,13 +1309,15 @@
           }
         },
         dataGuardGroups: [],
-        backupRows: buildSampleBackupRows()
+        backupRows: buildSampleBackupRows(),
+        pdbRows: buildSamplePdbRows()
       }
     };
 
     const params = new URLSearchParams(window.location.search);
     const dbId = params.get('id');
     const clusterId = params.get('cluster');
+    const dataSafeServiceDescription = 'Data Safe helps secure Oracle Databases by assessing security posture, discovering sensitive data, and auditing user activity.';
 
     const readClusterCatalog = () => {
       try {
@@ -1190,6 +1330,35 @@
       }
     };
 
+    const persistPdbRows = (rows) => {
+      if (!dbId || !clusterId) return;
+      const catalog = readClusterCatalog();
+      if (!catalog || !catalog[clusterId] || !Array.isArray(catalog[clusterId].databases)) {
+        return;
+      }
+
+      const dbEntry = catalog[clusterId].databases.find((db) => db.name === dbId);
+      if (!dbEntry) {
+        return;
+      }
+
+      dbEntry.pdbRows = Array.isArray(rows) ? rows.map((row) => ({ ...row })) : [];
+
+      try {
+        sessionStorage.setItem('vmCluster:catalog', JSON.stringify(catalog));
+        const selectedRaw = sessionStorage.getItem('vmCluster:selected');
+        if (selectedRaw) {
+          const selected = JSON.parse(selectedRaw);
+          if (selected && selected.id === clusterId) {
+            selected.data = catalog[clusterId];
+            sessionStorage.setItem('vmCluster:selected', JSON.stringify(selected));
+          }
+        }
+      } catch (error) {
+        /* ignore storage failures */
+      }
+    };
+
     const buildFromCluster = (catalog, dbName, clusterKey) => {
       if (!catalog) return null;
       const cluster = catalog[clusterKey];
@@ -1197,6 +1366,8 @@
       const match = cluster.databases.find((db) => db.name === dbName);
       if (!match) return null;
       const base = baseDbCatalog[dbName] || {};
+      const baseServices = base.services || {};
+      const dataSafeEnabled = match.dataSafeEnabled === true;
       return {
         name: match.name,
         status: base.status || { label: 'Available', badgeClass: 'badge--available' },
@@ -1213,21 +1384,30 @@
         backup: base.backup || {},
         dr: base.dr || {},
         encryptionKey: base.encryptionKey || 'Oracle-managed key',
-        services: base.services || {},
+        services: {
+          ...baseServices,
+          dataSafe: {
+            status: dataSafeEnabled ? 'Enabled' : 'Not enabled',
+            description: baseServices.dataSafe?.description || dataSafeServiceDescription
+          }
+        },
         dataGuardGroups: base.dataGuardGroups || [],
-        backupRows: base.backupRows ? base.backupRows.map((row) => ({ ...row })) : buildSampleBackupRows()
+        backupRows: base.backupRows ? base.backupRows.map((row) => ({ ...row })) : buildSampleBackupRows(),
+        pdbRows: Array.isArray(match.pdbRows)
+          ? match.pdbRows.map((row) => ({ ...row }))
+          : (base.pdbRows ? base.pdbRows.map((row) => ({ ...row })) : buildSamplePdbRows())
       };
     };
 
     const resolveDb = () => {
-      if (dbId && baseDbCatalog[dbId]) {
-        return baseDbCatalog[dbId];
-      }
-
       const catalog = readClusterCatalog();
       if (dbId && catalog && clusterId) {
         const derived = buildFromCluster(catalog, dbId, clusterId);
         if (derived) return derived;
+      }
+
+      if (dbId && baseDbCatalog[dbId]) {
+        return baseDbCatalog[dbId];
       }
 
       if (dbId && catalog) {
@@ -1243,6 +1423,18 @@
     };
 
     const dbPayload = resolveDb();
+    if (dbPayload) {
+      if (!dbPayload.services) {
+        dbPayload.services = {};
+      }
+      if (!dbPayload.services.dataSafe) {
+        dbPayload.services.dataSafe = {
+          status: 'Not enabled',
+          description: dataSafeServiceDescription
+        };
+      }
+    }
+    const isDataSafeEnabled = () => dbPayload?.services?.dataSafe?.status === 'Enabled';
 
     const setText = (slot, value) => {
       const el = document.querySelector(`[data-slot="${slot}"]`);
@@ -1295,13 +1487,15 @@
 
       renderBackupRows(dbPayload.backupRows || [], dbPayload.version);
       renderDataGuardGroups(dbPayload.dataGuardGroups || []);
+      renderPdbRows(dbPayload.pdbRows || []);
       setupCreateBackupPanel(dbPayload);
       setupAddStandbyPanel();
+      setupCreatePdbPanel(dbPayload);
     }
 
     const breadcrumbLink = document.querySelector('[data-breadcrumb-link]');
     if (breadcrumbLink && clusterId) {
-      breadcrumbLink.setAttribute('href', `vm-cluster-template.html?id=${encodeURIComponent(clusterId)}`);
+      breadcrumbLink.setAttribute('href', `vm-cluster-template-xs.html?id=${encodeURIComponent(clusterId)}`);
     }
 
     const tabButtons = Array.from(document.querySelectorAll('.detail-tabs .tab'));
@@ -1463,6 +1657,277 @@
           ? `Page 1 of 1 (1 - ${total} of ${total} total items)`
           : 'Page 1 of 1 (0 total items)';
       }
+    }
+
+    function renderPdbRows(rows) {
+      const tbody = document.querySelector('[data-pdb-rows]');
+      const pagination = document.querySelector('[data-pdb-pagination]');
+      if (!tbody) {
+        return;
+      }
+
+      const safeRows = Array.isArray(rows) ? rows : [];
+      tbody.innerHTML = '';
+
+      safeRows.forEach((row) => {
+        const tr = document.createElement('tr');
+        const dbParam = encodeURIComponent(dbPayload?.name || '');
+        const clusterParam = encodeURIComponent(clusterId || '');
+        const pdbHref = `pdb-template-xs.html?id=${encodeURIComponent(row.name || '')}&db=${dbParam}&cluster=${clusterParam}`;
+        tr.className = 'vm-row';
+        tr.setAttribute('role', 'link');
+        tr.setAttribute('tabindex', '0');
+        tr.dataset.pdbLink = pdbHref;
+
+        const nameCell = document.createElement('td');
+        const link = document.createElement('a');
+        link.href = pdbHref;
+        link.className = 'vm-row-name';
+        link.textContent = row.name || '—';
+        nameCell.appendChild(link);
+        tr.appendChild(nameCell);
+
+        const stateCell = document.createElement('td');
+        const badge = document.createElement('span');
+        badge.className = 'vm-row-badge';
+        badge.textContent = row.state || 'Available';
+        stateCell.appendChild(badge);
+        tr.appendChild(stateCell);
+
+        const cloneCell = document.createElement('td');
+        cloneCell.textContent = row.refreshableClone || 'No';
+        tr.appendChild(cloneCell);
+
+        const createdCell = document.createElement('td');
+        createdCell.textContent = row.created || '—';
+        tr.appendChild(createdCell);
+
+        const actionCell = document.createElement('td');
+        actionCell.className = 'vm-table-actions';
+        actionCell.textContent = '⋮';
+        tr.appendChild(actionCell);
+
+        tbody.appendChild(tr);
+      });
+
+      tbody.onclick = (event) => {
+        const target = event.target;
+        if (target.closest('a, button, input, select, textarea')) {
+          return;
+        }
+        const row = target.closest('tr[data-pdb-link]');
+        if (row && row.dataset.pdbLink) {
+          window.location.href = row.dataset.pdbLink;
+        }
+      };
+
+      tbody.onkeydown = (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') {
+          return;
+        }
+        const row = event.target.closest('tr[data-pdb-link]');
+        if (row && row.dataset.pdbLink) {
+          event.preventDefault();
+          window.location.href = row.dataset.pdbLink;
+        }
+      };
+
+      if (pagination) {
+        const total = safeRows.length;
+        pagination.textContent = total
+          ? `Page 1 of 1 (1 - ${total} of ${total} total items)`
+          : 'Page 1 of 1 (0 total items)';
+      }
+    }
+
+    function setupCreatePdbPanel(db) {
+      const panel = document.querySelector('[data-pdb-panel]');
+      const openButton = document.querySelector('[data-pdb-create]');
+      const closeButtons = document.querySelectorAll('[data-pdb-cancel]');
+      const overlay = document.querySelector('[data-pdb-overlay]');
+      const submitButton = document.querySelector('[data-pdb-submit]');
+      const form = document.querySelector('[data-pdb-form]');
+      const panelContent = panel ? panel.querySelector('.vm-side-panel__content') : null;
+      const nameInput = document.querySelector('[data-pdb-name]');
+      const nameError = document.querySelector('[data-pdb-name-error]');
+      const advancedTrigger = document.querySelector('[data-pdb-advanced-trigger]');
+      const advancedContent = document.querySelector('[data-pdb-advanced-content]');
+      const accordionTriggers = Array.from(form ? form.querySelectorAll('[data-pdb-accordion-trigger]') : []);
+      const dataSafeToggle = form ? form.querySelector('[data-pdb-datasafe-toggle]') : null;
+      const dataSafeLockedNote = form ? form.querySelector('[data-pdb-datasafe-locked-note]') : null;
+
+      if (!panel || !openButton || !submitButton || !form || !nameInput || !nameError || !db) {
+        return;
+      }
+
+      const formatUtcDate = (date) =>
+        `${date.toLocaleString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+          timeZone: 'UTC'
+        })} UTC`;
+
+      const setAccordionExpanded = (trigger, expanded) => {
+        trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        const controlsId = trigger.getAttribute('aria-controls');
+        const content = controlsId ? form.querySelector(`#${controlsId}`) : null;
+        if (content) {
+          content.hidden = !expanded;
+        }
+      };
+
+      const resetAdvancedDefaults = () => {
+        if (advancedTrigger && advancedContent) {
+          advancedTrigger.setAttribute('aria-expanded', 'false');
+          advancedContent.hidden = true;
+        }
+        accordionTriggers.forEach((trigger) => {
+          setAccordionExpanded(trigger, trigger.dataset.defaultExpanded === 'true');
+        });
+      };
+
+      const resetPanel = () => {
+        form.reset();
+        nameInput.classList.remove('is-invalid');
+        nameInput.closest('.pdb-form__field')?.classList.add('pdb-form__field--invalid');
+        nameError.hidden = false;
+        syncPdbDataSafeToggle();
+        resetAdvancedDefaults();
+      };
+
+      const syncPdbDataSafeToggle = () => {
+        if (!dataSafeToggle) {
+          return;
+        }
+        if (isDataSafeEnabled()) {
+          dataSafeToggle.setAttribute('aria-checked', 'true');
+          dataSafeToggle.disabled = true;
+          dataSafeToggle.setAttribute('aria-disabled', 'true');
+          if (dataSafeLockedNote) {
+            dataSafeLockedNote.hidden = false;
+          }
+          return;
+        }
+        dataSafeToggle.setAttribute('aria-checked', 'false');
+        dataSafeToggle.disabled = false;
+        dataSafeToggle.setAttribute('aria-disabled', 'false');
+        if (dataSafeLockedNote) {
+          dataSafeLockedNote.hidden = true;
+        }
+      };
+
+      const openPanel = () => {
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
+        syncPdbDataSafeToggle();
+        if (panelContent) {
+          panelContent.focus();
+        }
+      };
+
+      const closePanel = () => {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+        resetPanel();
+      };
+
+      const updateNameRequired = () => {
+        const hasValue = nameInput.value.trim().length > 0;
+        nameError.hidden = hasValue;
+        nameInput.closest('.pdb-form__field')?.classList.toggle('pdb-form__field--invalid', !hasValue);
+      };
+
+      openButton.addEventListener('click', openPanel);
+      closeButtons.forEach((button) => button.addEventListener('click', closePanel));
+      if (overlay) {
+        overlay.addEventListener('click', closePanel);
+      }
+
+      nameInput.addEventListener('input', updateNameRequired);
+
+      form.querySelectorAll('.toggle').forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+          if (toggle.disabled) {
+            return;
+          }
+          const isChecked = toggle.getAttribute('aria-checked') === 'true';
+          toggle.setAttribute('aria-checked', isChecked ? 'false' : 'true');
+        });
+      });
+
+      form.querySelectorAll('[data-pdb-password-toggle]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const input = button.closest('.pdb-form__field')?.querySelector('input');
+          if (!input) return;
+          input.type = input.type === 'password' ? 'text' : 'password';
+        });
+      });
+
+      if (advancedTrigger && advancedContent) {
+        advancedTrigger.addEventListener('click', () => {
+          const expanded = advancedTrigger.getAttribute('aria-expanded') === 'true';
+          if (!expanded) {
+            accordionTriggers.forEach((trigger) => {
+              setAccordionExpanded(trigger, trigger.dataset.defaultExpanded === 'true');
+            });
+          }
+          advancedTrigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          advancedContent.hidden = expanded;
+        });
+      }
+
+      accordionTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const expanded = trigger.getAttribute('aria-expanded') === 'true';
+          setAccordionExpanded(trigger, !expanded);
+        });
+      });
+
+      submitButton.addEventListener('click', () => {
+        const name = nameInput.value.trim();
+        if (!name) {
+          updateNameRequired();
+          nameInput.focus();
+          return;
+        }
+
+        const rows = Array.isArray(db.pdbRows) ? db.pdbRows : [];
+        const dataSafeRegistered = dataSafeToggle
+          ? dataSafeToggle.getAttribute('aria-checked') === 'true'
+          : false;
+        rows.unshift({
+          name,
+          state: 'Available',
+          refreshableClone: 'No',
+          created: formatUtcDate(new Date()),
+          dataSafeStatus: dataSafeRegistered ? 'Registered' : 'Not registered'
+        });
+        db.pdbRows = rows;
+        try {
+          const storageDbName = db?.name || dbId || '';
+          const storageCluster = clusterId || '';
+          localStorage.setItem(
+            `mockup:pdbDataSafe:${storageCluster}:${storageDbName}:${name}`,
+            dataSafeRegistered ? 'registered' : 'not_registered'
+          );
+        } catch (error) {
+          /* ignore storage failures */
+        }
+        renderPdbRows(db.pdbRows);
+        persistPdbRows(db.pdbRows);
+        closePanel();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+          closePanel();
+        }
+      });
     }
 
     function setupCreateBackupPanel(db) {

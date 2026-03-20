@@ -138,12 +138,12 @@
         </button>
         <div class="menu-sublist" role="list">
           <button type="button" class="menu-subitem menu-subitem--active">Exadata VM Clusters</button>
-          <button type="button" class="menu-subitem">Exadata Infrastructure</button>
-          <button type="button" class="menu-subitem">Resources</button>
+          <a class="menu-subitem" href="exadbd.html#exadata-infra">Exadata Infrastructure</a>
         </div>
         <div class="menu-divider" role="presentation"></div>
         <div class="menu-secondary">
-          <button type="button" class="menu-subitem">Scheduling policy</button>
+          <div class="menu-section-label">Resources</div>
+          <a class="menu-subitem" href="maintenance-scheduling-policy.html">Scheduling policy</a>
           <button type="button" class="menu-subitem">Software images</button>
           <button type="button" class="menu-subitem">Standalone backups</button>
           <button type="button" class="menu-subitem">Interim software updates</button>
@@ -151,114 +151,178 @@
         </div>
       </nav>
     </aside>
-    <main class="main-content">
-      <header class="page-header">
-        <div>
-          <h1>Exadata VM clusters</h1>
-          <p>The VM Cluster is where Oracle Databases are deployed. <a href="#">Learn more</a></p>
-        </div>
-      </header>
-      <section class="filter-bar" aria-label="Search and filter">
-        <div class="filter-bar__background" aria-hidden="true"></div>
-        <div class="filter-bar__content">
-          <label class="search-input" for="cluster-search">
-            <svg class="search-icon search-icon--inline" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
-              <circle cx="9" cy="9" r="6.5" stroke="#51606c" stroke-width="2" fill="none"></circle>
-              <path d="M13.5 13.5L18 18" stroke="#51606c" stroke-width="2" stroke-linecap="round"></path>
-            </svg>
-            <input id="cluster-search" type="text" placeholder="Search and Filter" />
-          </label>
-          <button type="button" class="search-button">Search</button>
-        </div>
-      </section>
-      <section class="filters" aria-label="Active filters">
-        <span class="filters__label">Applied filters</span>
-        <span class="chip">
-          Compartment <span class="chip__value">SharedPM</span>
-          <button type="button" aria-label="Remove compartment filter">×</button>
-        </span>
-        <span class="chip">
-          Availability domain <span class="chip__value">AD-1</span>
-          <button type="button" aria-label="Remove availability domain filter">×</button>
-        </span>
-      </section>
-      <section class="actions">
-        <button type="button" class="primary-button" data-create-vm-open>Create Exadata VM cluster</button>
-      </section>
-      <section class="data-table" aria-label="Exadata VM clusters list">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Display name</th>
-              <th scope="col">State</th>
-              <th scope="col">VM count</th>
-              <th scope="col" class="sortable">Availability domain <span class="filter-icon" aria-hidden="true"></span></th>
-              <th scope="col">Compute</th>
-              <th scope="col">Memory (GB)</th>
-              <th scope="col">OCI regions</th>
-              <th scope="col">Storage type</th>
-              <th scope="col">Storage (TB)</th>
-              <th scope="col" class="sortable">Created <span class="chevron chevron--down" aria-hidden="true"></span></th>
-              <th scope="col" class="table-actions-header" aria-hidden="true"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-cluster-id="ssoexavmcluster">
-              <td><a href="vm-cluster-template.html?id=ssoexavmcluster">SSOExaVMCluster</a></td>
-              <td><span class="badge badge--available">Available</span></td>
-              <td>2</td>
-              <td>AD-1</td>
-              <td>8 OCPUs</td>
-              <td>60</td>
-              <td>US East (Ashburn)</td>
-              <td>ASM</td>
-              <td>2</td>
-              <td>Sep 25, 2025, 2:22:41 PM UTC</td>
-              <td class="table-actions" aria-label="Row actions">⋮</td>
-            </tr>
-            <tr data-cluster-id="vmcluster-2025082110355n">
-              <td><a href="vm-cluster-template.html?id=vmcluster-2025082110355n">VMCluster-2025082110355N</a></td>
-              <td><span class="badge badge--available">Available</span></td>
-              <td>2</td>
-              <td>AD-1</td>
-              <td>8 OCPUs</td>
-              <td>60</td>
-              <td>US West (Phoenix)</td>
-              <td>ASM</td>
-              <td>2</td>
-              <td>Aug 21, 2025, 3:40:54 PM UTC</td>
-              <td class="table-actions" aria-label="Row actions">⋮</td>
-            </tr>
-            <tr data-cluster-id="vmcluster-202507281139">
-              <td><a href="vm-cluster-template.html?id=vmcluster-202507281139">VMCluster-202507281139</a></td>
-              <td><span class="badge badge--available">Available</span></td>
-              <td>1</td>
-              <td>AD-1</td>
-              <td>2 OCPUs</td>
-              <td>30</td>
-              <td>Germany Central (Frankfurt)</td>
-              <td>ASM</td>
-              <td>2</td>
-              <td>Jul 28, 2025, 6:43:48 PM UTC</td>
-              <td class="table-actions" aria-label="Row actions">⋮</td>
-            </tr>
-            <tr data-cluster-id="vmcluster-202503311639">
-              <td><a href="vm-cluster-template.html?id=vmcluster-202503311639">VMCluster-202503311639</a></td>
-              <td><span class="badge badge--available">Available</span></td>
-              <td>1</td>
-              <td>AD-1</td>
-              <td>6 OCPUs</td>
-              <td>30</td>
-              <td>Japan Central (Osaka)</td>
-              <td>ASM</td>
-              <td>2</td>
-              <td>Mar 31, 2025, 9:40:20 PM UTC</td>
-              <td class="table-actions" aria-label="Row actions">⋮</td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- table footer rendered dynamically -->
-      </section>
+    <main class="main-content exadbd-main-content">
+      <div class="exadbd-main-content__inner">
+        <section class="service-view" data-service-view="vm-clusters">
+          <header class="page-header">
+            <div>
+              <h1>Exadata VM clusters</h1>
+              <p>The VM Cluster is where Oracle Databases are deployed. <a href="#">Learn more</a></p>
+            </div>
+          </header>
+          <section class="filter-bar" aria-label="Search and filter">
+            <div class="filter-bar__background" aria-hidden="true"></div>
+            <div class="filter-bar__content">
+              <label class="search-input" for="cluster-search">
+                <svg class="search-icon search-icon--inline" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="9" cy="9" r="6.5" stroke="#51606c" stroke-width="2" fill="none"></circle>
+                  <path d="M13.5 13.5L18 18" stroke="#51606c" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+                <input id="cluster-search" type="text" placeholder="Search and Filter" />
+              </label>
+              <button type="button" class="search-button">Search</button>
+            </div>
+          </section>
+          <section class="filters" aria-label="Active filters">
+            <span class="filters__label">Applied filters</span>
+            <span class="chip">
+              Compartment <span class="chip__value">SharedPM</span>
+              <button type="button" aria-label="Remove compartment filter">×</button>
+            </span>
+            <span class="chip">
+              Availability domain <span class="chip__value">AD-1</span>
+              <button type="button" aria-label="Remove availability domain filter">×</button>
+            </span>
+          </section>
+          <section class="actions">
+            <button type="button" class="primary-button" data-create-vm-open>Create Exadata VM cluster</button>
+          </section>
+          <section class="data-table" aria-label="Exadata VM clusters list">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Display name</th>
+                  <th scope="col">State</th>
+                  <th scope="col">VM count</th>
+                  <th scope="col" class="sortable">Availability domain <span class="filter-icon" aria-hidden="true"></span></th>
+                  <th scope="col">Compute</th>
+                  <th scope="col">Memory (GB)</th>
+                  <th scope="col">Storage type</th>
+                  <th scope="col">Storage (TB)</th>
+                  <th scope="col" class="sortable">Created <span class="chevron chevron--down" aria-hidden="true"></span></th>
+                  <th scope="col" class="table-actions-header" aria-hidden="true"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-cluster-id="ssoexavmcluster">
+                  <td><a href="vm-cluster-template.html?id=ssoexavmcluster">SSOExaVMCluster</a></td>
+                  <td><span class="badge badge--available">Available</span></td>
+                  <td>2</td>
+                  <td>AD-1</td>
+                  <td>8 OCPUs</td>
+                  <td>60</td>
+                  <td>ASM</td>
+                  <td>2</td>
+                  <td>Sep 25, 2025, 2:22:41 PM UTC</td>
+                  <td class="table-actions" aria-label="Row actions">⋮</td>
+                </tr>
+                <tr data-cluster-id="vmcluster-2025082110355n">
+                  <td><a href="vm-cluster-template.html?id=vmcluster-2025082110355n">VMCluster-2025082110355N</a></td>
+                  <td><span class="badge badge--available">Available</span></td>
+                  <td>2</td>
+                  <td>AD-1</td>
+                  <td>8 OCPUs</td>
+                  <td>60</td>
+                  <td>ASM</td>
+                  <td>2</td>
+                  <td>Aug 21, 2025, 3:40:54 PM UTC</td>
+                  <td class="table-actions" aria-label="Row actions">⋮</td>
+                </tr>
+                <tr data-cluster-id="vmcluster-202507281139">
+                  <td><a href="vm-cluster-template.html?id=vmcluster-202507281139">VMCluster-202507281139</a></td>
+                  <td><span class="badge badge--available">Available</span></td>
+                  <td>1</td>
+                  <td>AD-1</td>
+                  <td>2 OCPUs</td>
+                  <td>30</td>
+                  <td>ASM</td>
+                  <td>2</td>
+                  <td>Jul 28, 2025, 6:43:48 PM UTC</td>
+                  <td class="table-actions" aria-label="Row actions">⋮</td>
+                </tr>
+                <tr data-cluster-id="vmcluster-202503311639">
+                  <td><a href="vm-cluster-template.html?id=vmcluster-202503311639">VMCluster-202503311639</a></td>
+                  <td><span class="badge badge--available">Available</span></td>
+                  <td>1</td>
+                  <td>AD-1</td>
+                  <td>6 OCPUs</td>
+                  <td>30</td>
+                  <td>ASM</td>
+                  <td>2</td>
+                  <td>Mar 31, 2025, 9:40:20 PM UTC</td>
+                  <td class="table-actions" aria-label="Row actions">⋮</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- table footer rendered dynamically -->
+          </section>
+        </section>
+
+        <section class="service-view" data-service-view="exadata-infra" hidden>
+          <header class="page-header">
+            <div>
+              <h1>Exadata infrastructure</h1>
+              <p>Exadata Infrastructure resources host VM clusters and databases on dedicated Exadata hardware. <a href="#">Learn more</a></p>
+            </div>
+          </header>
+          <section class="filter-bar" aria-label="Search and filter">
+            <div class="filter-bar__background" aria-hidden="true"></div>
+            <div class="filter-bar__content">
+              <label class="search-input" for="infra-search">
+                <svg class="search-icon search-icon--inline" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="9" cy="9" r="6.5" stroke="#51606c" stroke-width="2" fill="none"></circle>
+                  <path d="M13.5 13.5L18 18" stroke="#51606c" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+                <input id="infra-search" type="text" placeholder="Search and Filter" />
+              </label>
+              <button type="button" class="search-button">Search</button>
+            </div>
+          </section>
+          <section class="filters" aria-label="Active filters">
+            <span class="filters__label">Applied filters</span>
+            <span class="chip">
+              Compartment <span class="chip__value">SharedPM</span>
+              <button type="button" aria-label="Remove compartment filter">×</button>
+            </span>
+            <span class="chip">
+              Availability domain <span class="chip__value">AD-1</span>
+              <button type="button" aria-label="Remove availability domain filter">×</button>
+            </span>
+          </section>
+          <section class="actions">
+            <button type="button" class="primary-button" data-create-infra-open>Create Exadata infrastructure</button>
+          </section>
+          <section class="data-table" aria-label="Exadata infrastructure list">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Display name</th>
+                  <th scope="col">State</th>
+                  <th scope="col" class="sortable">Availability domain <span class="filter-icon" aria-hidden="true"></span></th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Compute count</th>
+                  <th scope="col">Storage count</th>
+                  <th scope="col" class="sortable">Created <span class="chevron chevron--down" aria-hidden="true"></span></th>
+                  <th scope="col" class="table-actions-header" aria-hidden="true"></th>
+                </tr>
+              </thead>
+              <tbody data-infra-table-body>
+                <tr data-infra-id="exainfra-01">
+                  <td><a href="exadata-infra-template-d.html?name=Exadata-Infra-202503271228&state=Available&stateClass=badge--available">Exadata-Infra-202503271228</a></td>
+                  <td><span class="badge badge--available">Available</span></td>
+                  <td>AD-1</td>
+                  <td>X8M-2</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>Feb 12, 2026, 4:18:07 PM UTC</td>
+                  <td class="table-actions" aria-label="Row actions">⋮</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- table footer rendered dynamically -->
+          </section>
+        </section>
+      </div>
     </main>
   </div>
 
@@ -527,6 +591,156 @@
     </section>
   </aside>
 
+  <aside class="create-vm-panel create-infra-panel" data-create-infra-panel aria-hidden="true">
+    <div class="create-vm-panel__overlay" data-create-infra-close></div>
+    <section class="create-vm-panel__sheet" role="dialog" aria-modal="true" aria-labelledby="create-infra-panel-title">
+      <div class="create-vm-panel__body">
+        <header class="create-vm-panel__header">
+          <h1 id="create-infra-panel-title">Create Exadata infrastructure</h1>
+          <p><a href="#">Learn more</a> on how to create an Oracle Exadata Cloud Infrastructure instance.</p>
+        </header>
+        <div class="create-vm-panel__banner" aria-hidden="true"></div>
+
+        <section class="create-vm-section">
+          <div class="create-vm-field">
+            <label>Display name</label>
+            <input type="text" value="EXA-INFRA-NEW" data-create-infra-name />
+          </div>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select">
+              <label>Compartment</label>
+              <select>
+                <option>SharedPM</option>
+              </select>
+            </div>
+            <div class="create-vm-field create-vm-field--select">
+              <label>Availability domain</label>
+              <select>
+                <option>AD-1</option>
+              </select>
+            </div>
+          </div>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select">
+              <label>Cluster placement group</label>
+              <select>
+                <option value="" selected>None</option>
+                <option>CPG-Shared-01</option>
+              </select>
+            </div>
+            <div class="create-vm-field create-vm-field--select">
+              <label>Exadata system model</label>
+              <select data-create-infra-model>
+                <option>Exadata X10M</option>
+                <option>Exadata X9M</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>Compute and storage configuration</h2>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select">
+              <label>Compute count</label>
+              <select data-create-infra-compute-count>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+            <div class="create-vm-field create-vm-field--select">
+              <label>Storage server count</label>
+              <select data-create-infra-storage-count>
+                <option>3</option>
+                <option>5</option>
+                <option>8</option>
+              </select>
+            </div>
+          </div>
+          <div class="create-vm-card create-infra-resource-card">
+            <h3>Resource allocation</h3>
+            <div class="create-vm-metric-row">
+              <dt>Total CPU cores</dt>
+              <dd>192</dd>
+            </div>
+            <div class="create-vm-metric-row">
+              <dt>Total memory</dt>
+              <dd>2,304 GB</dd>
+            </div>
+            <div class="create-vm-metric-row">
+              <dt>Total usable storage</dt>
+              <dd>76.8 TB</dd>
+            </div>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>Maintenance</h2>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select">
+              <label>Maintenance run time preference</label>
+              <select>
+                <option>No preference</option>
+                <option>Custom schedule</option>
+              </select>
+            </div>
+            <div class="create-vm-field create-vm-field--select">
+              <label>Patch preference</label>
+              <select>
+                <option>Rolling</option>
+                <option>Non-rolling</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>Contact details</h2>
+          <div class="create-vm-field is-required">
+            <label>Notification contact email</label>
+            <input type="email" value="" placeholder="name@example.com" />
+            <p class="create-vm-required">Required</p>
+          </div>
+        </section>
+
+        <section class="create-vm-section create-vm-section--advanced">
+          <button type="button" class="create-db-advanced" data-create-infra-advanced-trigger aria-expanded="false">
+            <span class="create-db-disclosure" aria-hidden="true"></span>
+            Advanced options
+          </button>
+          <div class="create-db-advanced-content" data-create-infra-advanced-content hidden>
+            <section class="create-db-advanced-card">
+              <h3>Tags</h3>
+              <div class="create-db-tags-row">
+                <div class="create-vm-field">
+                  <label>Tag namespace</label>
+                  <input type="text" placeholder="Operations" />
+                </div>
+                <div class="create-vm-field">
+                  <label>Tag key</label>
+                  <input type="text" placeholder="Environment" />
+                </div>
+                <div class="create-vm-field">
+                  <label>Tag value</label>
+                  <input type="text" placeholder="Dev" />
+                </div>
+                <button type="button" class="secondary-button create-db-tag-remove" aria-label="Remove tag">×</button>
+              </div>
+              <div class="create-db-tags-add">
+                <button type="button" class="secondary-button">+ Add tag</button>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+      <footer class="create-vm-panel__footer">
+        <button type="button" class="secondary-button" data-create-infra-close>Cancel</button>
+        <button type="button" class="primary-button" data-create-infra-submit>Create</button>
+      </footer>
+    </section>
+  </aside>
+
   <script>
     (function () {
       const navButton = document.getElementById('nav-menu-button');
@@ -539,6 +753,17 @@
 
       if (!navButton || !navMenu || !navOverlay) {
         return;
+      }
+
+      const navEntries = performance.getEntriesByType ? performance.getEntriesByType('navigation') : [];
+      if (Array.isArray(navEntries) && navEntries[0] && navEntries[0].type === 'reload') {
+        [
+          'vmCluster:catalog',
+          'vmCluster:selected',
+          'exadbd:createdVmClusters',
+          'exadbd:createdInfrastructures',
+          'exadbcc:createdInfrastructures'
+        ].forEach((key) => sessionStorage.removeItem(key));
       }
 
       const openMenu = () => {
@@ -916,6 +1141,308 @@
         });
       };
 
+      const RESOURCE_STORAGE_KEYS = {
+        vmClusters: 'exadbd:createdVmClusters',
+        infrastructures: 'exadbd:createdInfrastructures'
+      };
+
+      const readStoredList = (key) => {
+        try {
+          const raw = sessionStorage.getItem(key);
+          if (!raw) return [];
+          const parsed = JSON.parse(raw);
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+          return [];
+        }
+      };
+
+      const writeStoredList = (key, items) => {
+        try {
+          sessionStorage.setItem(key, JSON.stringify(items));
+        } catch (error) {
+          /* ignore storage failures */
+        }
+      };
+
+      const formatUtcDate = (date) =>
+        `${date.toLocaleString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+          timeZone: 'UTC'
+        })} UTC`;
+
+      const buildClusterCatalogEntry = ({ clusterId, displayName, created, storageType }) => ({
+        id: clusterId,
+        name: displayName,
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        breadcrumbLabel: 'Exadata VM Clusters',
+        headerMeta: {
+          compartment: 'ocidbaaspm (root)/SharedPM',
+          availabilityDomain: 'AD-1',
+          ocid: `ocid1.vmcluster.oc1..${clusterId}`
+        },
+        generalInformation: [
+          { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+          { label: 'Availability domain', value: 'AD-1' },
+          { label: 'OCID', value: `ocid1.vmcluster.oc1..${clusterId}`, copy: true },
+          { label: 'Created', value: created },
+          { label: 'Cluster name', value: clusterId },
+          { label: 'Time zone', value: 'UTC' },
+          { label: 'VM Type', value: 'Regular' },
+          { label: 'License type', value: 'Bring Your Own License (BYOL)' },
+          { label: 'IORM status', value: 'Enabled' },
+          { label: 'Diagnostics collection', value: 'Enabled', action: { label: 'Edit', type: 'button' } },
+          { label: 'API Access Control', value: 'Enabled' }
+        ],
+        network: [
+          { label: 'Virtual cloud network', value: 'SSOVCNCWL' },
+          { label: 'Subnet', value: 'sso-subnet-pri' },
+          { label: 'Backup subnet', value: 'sso-subnet-bkp' },
+          { label: 'Cluster subnet', value: 'sso-subnet-cluster' }
+        ],
+        storage: [
+          { label: 'Storage type', value: storageType },
+          { label: 'Exadata storage', value: '2 TB' },
+          { label: 'Storage for local backups', value: 'Not enabled' },
+          { label: 'Storage for Exadata sparse snapshots', value: 'Not enabled' }
+        ],
+        virtualMachines: [],
+        databases: []
+      });
+
+      const persistClusterCatalogEntry = (entry) => {
+        if (!entry || !entry.id) return;
+        try {
+          const raw = sessionStorage.getItem('vmCluster:catalog');
+          const catalog = raw ? JSON.parse(raw) : {};
+          if (!catalog || typeof catalog !== 'object') return;
+          if (!catalog[entry.id]) {
+            catalog[entry.id] = entry;
+          }
+          sessionStorage.setItem('vmCluster:catalog', JSON.stringify(catalog));
+        } catch (error) {
+          /* ignore storage failures */
+        }
+      };
+
+      const hydrateCreatedResources = () => {
+        const vmTableBody = document.querySelector('[data-service-view="vm-clusters"] .data-table tbody');
+        const infraTableBody = document.querySelector('[data-infra-table-body]');
+
+        if (vmTableBody) {
+          const createdClusters = readStoredList(RESOURCE_STORAGE_KEYS.vmClusters);
+          createdClusters.forEach((cluster) => {
+            if (!cluster || !cluster.clusterId) return;
+            if (vmTableBody.querySelector(`tr[data-cluster-id="${cluster.clusterId}"]`)) return;
+
+            const row = document.createElement('tr');
+            row.setAttribute('data-cluster-id', cluster.clusterId);
+            row.innerHTML = `
+              <td><a href="vm-cluster-template.html?id=${encodeURIComponent(cluster.clusterId)}">${cluster.displayName || cluster.clusterId}</a></td>
+              <td><span class="badge badge--available">Available</span></td>
+              <td>${cluster.vmCount || '2'}</td>
+              <td>${cluster.availabilityDomain || 'AD-1'}</td>
+              <td>${cluster.compute || '8 OCPUs'}</td>
+              <td>${cluster.memoryGb || '60'}</td>
+              <td>${cluster.storageType || 'ASM'}</td>
+              <td>${cluster.storageTb || '2'}</td>
+              <td>${cluster.created || '—'}</td>
+              <td class="table-actions" aria-label="Row actions">⋮</td>
+            `;
+            vmTableBody.prepend(row);
+            persistClusterCatalogEntry(buildClusterCatalogEntry({
+              clusterId: cluster.clusterId,
+              displayName: cluster.displayName || cluster.clusterId,
+              created: cluster.created || formatUtcDate(new Date()),
+              storageType: cluster.storageType || 'ASM'
+            }));
+          });
+        }
+
+        if (infraTableBody) {
+          const createdInfras = readStoredList(RESOURCE_STORAGE_KEYS.infrastructures);
+          createdInfras.forEach((infra) => {
+            if (!infra || !infra.name) return;
+            if (infraTableBody.querySelector(`tr[data-infra-id="${infra.id || infra.name}"]`)) return;
+
+            const row = document.createElement('tr');
+            row.setAttribute('data-infra-id', infra.id || infra.name);
+            row.innerHTML = `
+              <td><a href="exadata-infra-template-d.html?name=${encodeURIComponent(infra.name)}&state=Available&stateClass=badge--available">${infra.name}</a></td>
+              <td><span class="badge badge--available">Available</span></td>
+              <td>${infra.availabilityDomain || 'AD-1'}</td>
+              <td>${infra.model || 'X8M-2'}</td>
+              <td>${infra.computeCount || '2'}</td>
+              <td>${infra.storageCount || '3'}</td>
+              <td>${infra.created || '—'}</td>
+              <td class="table-actions" aria-label="Row actions">⋮</td>
+            `;
+            infraTableBody.prepend(row);
+          });
+        }
+      };
+
+      const initCreateInfraPanel = () => {
+        const panel = document.querySelector('[data-create-infra-panel]');
+        const openButton = document.querySelector('[data-create-infra-open]');
+        const closeButtons = document.querySelectorAll('[data-create-infra-close]');
+        const panelBody = panel ? panel.querySelector('.create-vm-panel__body') : null;
+        const submitButton = panel ? panel.querySelector('[data-create-infra-submit]') : null;
+        const nameInput = panel ? panel.querySelector('[data-create-infra-name]') : null;
+        const contactInput = panel ? panel.querySelector('input[type="email"]') : null;
+        const modelSelect = panel ? panel.querySelector('[data-create-infra-model]') : null;
+        const computeCountSelect = panel ? panel.querySelector('[data-create-infra-compute-count]') : null;
+        const storageCountSelect = panel ? panel.querySelector('[data-create-infra-storage-count]') : null;
+        const tableBody = document.querySelector('[data-infra-table-body]');
+        const advancedTrigger = panel ? panel.querySelector('[data-create-infra-advanced-trigger]') : null;
+        const advancedContent = panel ? panel.querySelector('[data-create-infra-advanced-content]') : null;
+
+        if (!panel || !openButton) {
+          return;
+        }
+
+        const fieldDefaults = Array.from(panel.querySelectorAll('input, select, textarea')).map((field) => ({
+          field,
+          value: field.value,
+          checked: 'checked' in field ? field.checked : undefined
+        }));
+
+        const resetFormState = () => {
+          fieldDefaults.forEach(({ field, value, checked }) => {
+            field.value = value;
+            if (typeof checked === 'boolean') {
+              field.checked = checked;
+            }
+          });
+
+          if (advancedTrigger && advancedContent) {
+            advancedTrigger.setAttribute('aria-expanded', 'false');
+            advancedContent.hidden = true;
+          }
+        };
+
+        const updateRequiredIndicators = () => {
+          panel.querySelectorAll('.create-vm-field.is-required').forEach((container) => {
+            const field = container.querySelector('input, select, textarea');
+            const requiredText = container.querySelector('.create-vm-required');
+            if (!field || !requiredText) {
+              return;
+            }
+
+            const hasValue = (field.value || '').trim().length > 0;
+            requiredText.hidden = hasValue;
+          });
+        };
+
+        const open = () => {
+          panel.classList.add('is-open');
+          panel.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('create-infra-panel-open');
+          if (panelBody) {
+            panelBody.scrollTop = 0;
+          }
+        };
+
+        const close = () => {
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('create-infra-panel-open');
+          resetFormState();
+          updateRequiredIndicators();
+        };
+
+        const addInfraRow = () => {
+          if (!tableBody || !submitButton) {
+            return;
+          }
+
+          if (contactInput && !(contactInput.value || '').trim()) {
+            updateRequiredIndicators();
+            contactInput.focus();
+            return;
+          }
+
+          const displayName = (nameInput?.value || '').trim() || `EXA-INFRA-${Date.now()}`;
+          const model = (modelSelect?.value || '').trim() || 'Exadata X10M';
+          const computeCount = (computeCountSelect?.value || '').trim() || '2';
+          const storageCount = (storageCountSelect?.value || '').trim() || '3';
+          const created = formatUtcDate(new Date());
+          const id = displayName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || `exainfra-${Date.now()}`;
+
+          if (tableBody.querySelector(`tr[data-infra-id="${id}"]`)) {
+            close();
+            return;
+          }
+
+          const row = document.createElement('tr');
+          row.setAttribute('data-infra-id', id);
+          row.innerHTML = `
+            <td><a href="exadata-infra-template-d.html?name=${encodeURIComponent(displayName)}&state=${encodeURIComponent('Available')}&stateClass=${encodeURIComponent('badge--available')}">${displayName}</a></td>
+            <td><span class="badge badge--available">Available</span></td>
+            <td>AD-1</td>
+            <td>${model}</td>
+            <td>${computeCount}</td>
+            <td>${storageCount}</td>
+            <td>${created}</td>
+            <td class="table-actions" aria-label="Row actions">⋮</td>
+          `;
+          tableBody.prepend(row);
+
+          const existing = readStoredList(RESOURCE_STORAGE_KEYS.infrastructures);
+          existing.unshift({
+            id,
+            name: displayName,
+            availabilityDomain: 'AD-1',
+            model,
+            computeCount,
+            storageCount,
+            created
+          });
+          writeStoredList(RESOURCE_STORAGE_KEYS.infrastructures, existing);
+          close();
+        };
+
+        openButton.addEventListener('click', open);
+        closeButtons.forEach((button) => button.addEventListener('click', close));
+
+        panel.addEventListener('click', (event) => {
+          if (event.target === panel) {
+            close();
+          }
+        });
+
+        if (advancedTrigger && advancedContent) {
+          advancedTrigger.addEventListener('click', () => {
+            const expanded = advancedTrigger.getAttribute('aria-expanded') === 'true';
+            advancedTrigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            advancedContent.hidden = expanded;
+          });
+        }
+
+        panel.querySelectorAll('.create-vm-field.is-required input, .create-vm-field.is-required select, .create-vm-field.is-required textarea').forEach((field) => {
+          field.addEventListener('input', updateRequiredIndicators);
+          field.addEventListener('change', updateRequiredIndicators);
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+            close();
+          }
+        });
+
+        if (submitButton) {
+          submitButton.addEventListener('click', addInfraRow);
+        }
+
+        updateRequiredIndicators();
+      };
+
       const initCreateVmPanel = () => {
         const panel = document.querySelector('[data-create-vm-panel]');
         const openButton = document.querySelector('[data-create-vm-open]');
@@ -1040,18 +1567,6 @@
           return slug;
         };
 
-        const formatUtcDate = (date) =>
-          date.toLocaleString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric',
-            hour: 'numeric',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: true,
-            timeZone: 'UTC'
-          }).replace(',', ',') + ' UTC';
-
         const addVmClusterRow = () => {
           if (!tableBody || !submitButton) {
             return;
@@ -1081,6 +1596,27 @@
           `;
 
           tableBody.prepend(row);
+
+          const existing = readStoredList(RESOURCE_STORAGE_KEYS.vmClusters);
+          existing.unshift({
+            clusterId,
+            displayName,
+            vmCount: '2',
+            availabilityDomain: 'AD-1',
+            compute: '8 OCPUs',
+            memoryGb: '60',
+            storageType,
+            storageTb: '2',
+            created
+          });
+          writeStoredList(RESOURCE_STORAGE_KEYS.vmClusters, existing);
+          persistClusterCatalogEntry(buildClusterCatalogEntry({
+            clusterId,
+            displayName,
+            created,
+            storageType
+          }));
+
           close();
         };
 
@@ -1102,6 +1638,61 @@
         });
       });
 
+      const vmClustersView = document.querySelector('[data-service-view="vm-clusters"]');
+      const infraView = document.querySelector('[data-service-view="exadata-infra"]');
+      const serviceSubitems = Array.from(document.querySelectorAll('.side-nav .menu-sublist .menu-subitem'));
+      const vmClustersNavItem = serviceSubitems.find((item) => item.textContent.trim() === 'Exadata VM Clusters');
+      const infraNavItem = serviceSubitems.find((item) => item.textContent.trim() === 'Exadata Infrastructure');
+
+      const setServiceView = (viewKey, updateHash) => {
+        const showInfra = viewKey === 'exadata-infra';
+
+        if (vmClustersView) {
+          vmClustersView.hidden = showInfra;
+        }
+        if (infraView) {
+          infraView.hidden = !showInfra;
+        }
+
+        if (vmClustersNavItem) {
+          vmClustersNavItem.classList.toggle('menu-subitem--active', !showInfra);
+        }
+        if (infraNavItem) {
+          infraNavItem.classList.toggle('menu-subitem--active', showInfra);
+        }
+
+        if (updateHash) {
+          const hash = showInfra ? '#exadata-infra' : '';
+          history.replaceState(null, '', `${window.location.pathname}${window.location.search}${hash}`);
+        }
+      };
+
+      if (vmClustersNavItem) {
+        vmClustersNavItem.addEventListener('click', (event) => {
+          event.preventDefault();
+          setServiceView('vm-clusters', true);
+        });
+      }
+
+      if (infraNavItem) {
+        infraNavItem.addEventListener('click', (event) => {
+          event.preventDefault();
+          setServiceView('exadata-infra', true);
+        });
+      }
+
+      const syncServiceViewFromHash = () => {
+        const normalizedHash = (window.location.hash || '').toLowerCase();
+        if (normalizedHash === '#exadata-infra') {
+          setServiceView('exadata-infra', false);
+          return;
+        }
+        setServiceView('vm-clusters', false);
+      };
+
+      window.addEventListener('hashchange', syncServiceViewFromHash);
+      syncServiceViewFromHash();
+
       document.addEventListener('click', () => {
         if (navMenu.classList.contains('is-open')) {
           closeMenu();
@@ -1109,7 +1700,9 @@
       });
 
       renderCategory('oracle-ai-database');
+      hydrateCreatedResources();
       initDataTables();
+      initCreateInfraPanel();
       initCreateVmPanel();
     })();
 
