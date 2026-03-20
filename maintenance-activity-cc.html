@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oracle Cloud Infrastructure Console &mdash; Maintenance activity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="console-branding-bar search-v2">
+    <div id="console-nav-container" class="nav-container" role="application" aria-label="Console navigation">
+      <button
+        type="button"
+        id="nav-menu-button"
+        class="nav-menu_button nav-menu_button_mega nav-menu_button_open-free-focus-white"
+        data-test-id="nav-mega-menu-button"
+        tabindex="0"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Open navigation menu"
+      >
+        <span class="nav-menu_button__icon" aria-hidden="true">
+          <span class="nav-menu_button__bar"></span>
+          <span class="nav-menu_button__bar"></span>
+          <span class="nav-menu_button__bar"></span>
+        </span>
+        <span class="nav-menu_button__close" aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="top-bar__logo" aria-label="Oracle Cloud">
+      <span class="brand-oval" aria-hidden="true"></span>
+      <span class="brand-text">Cloud</span>
+    </div>
+    <div id="search-v2-container" class="console-header-search-box">
+        <div class="margin-space-left"></div>
+        <div id="search-v2" aria-label="Search" class="searchbox-v2" tabindex="-1">
+          <label class="search-bar" for="global-search">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+              <circle cx="9" cy="9" r="6.5" stroke="white" stroke-width="2" fill="none" opacity="0.85"></circle>
+              <path d="M13.5 13.5L18 18" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <input id="global-search" type="text" placeholder="Search resources, services, documentation, and Marketplace" />
+          </label>
+        </div>
+        <div class="margin-space-right"></div>
+      </div>
+      <div class="console-header-item-bar">
+        <div class="top-bar__region" role="button" aria-haspopup="listbox" aria-label="Selected region">
+          <span class="region-icon" aria-hidden="true"></span>
+          <span class="region-label">UK West (Newport)</span>
+          <span class="chevron chevron--down" aria-hidden="true"></span>
+        </div>
+        <div class="top-bar__actions">
+          <button type="button" class="icon-button" aria-label="Developer tools">
+            <svg focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1.66602 1.6665H18.3327V14.1665H10.8327V16.6665H14.166V18.3332H5.83268V16.6665H9.16602V14.1665H1.66602V1.6665ZM3.33268 3.33317V12.4998H16.666V3.33317H3.33268Z" fill="white"></path>
+              <path d="M7.74343 4.82725L8.92194 6.00576L7.01119 7.9165L8.92194 9.82725L7.74343 11.0058L4.65417 7.9165L7.74343 4.82725ZM12.9875 7.9165L11.0768 6.00576L12.2553 4.82725L15.3445 7.9165L12.2553 11.0058L11.0768 9.82725L12.9875 7.9165Z" fill="white"></path>
+            </svg>
+          </button>
+          <button type="button" class="icon-button" aria-label="Unread announcements">
+            <svg focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M2.49805 12.4998V14.1665H17.498V12.4998C15.8897 12.4998 15.8314 9.1665 15.8314 9.1665V7.49984C15.8314 5.95274 15.2168 4.46901 14.1228 3.37505C13.0289 2.28109 11.5451 1.6665 9.99805 1.6665C8.45095 1.6665 6.96722 2.28109 5.87326 3.37505C4.77929 4.46901 4.16471 5.95274 4.16471 7.49984V9.1665C4.16471 9.1665 4.10638 12.4998 2.49805 12.4998ZM14.1647 9.1665C14.1531 10.3207 14.4099 11.4618 14.9147 12.4998H5.08138C5.58623 11.4618 5.84298 10.3207 5.83138 9.1665V7.49984C5.83138 6.39477 6.27037 5.33496 7.05177 4.55356C7.83317 3.77216 8.89298 3.33317 9.99805 3.33317C11.1031 3.33317 12.1629 3.77216 12.9443 4.55356C13.7257 5.33496 14.1647 6.39477 14.1647 7.49984V9.1665Z" fill="white"></path>
+              <path d="M6.73897 16.177C8.04186 19.053 12.0271 19.0567 13.2644 16.1606L11.7317 15.5058C11.0807 17.0296 8.97923 17.0833 8.25712 15.4893L6.73897 16.177Z" fill="white"></path>
+            </svg>
+          </button>
+          <button type="button" class="icon-button" aria-label="Help menu">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3.33268 9.99984C3.33268 6.31794 6.31745 3.33317 9.99935 3.33317C13.6812 3.33317 16.666 6.31794 16.666 9.99984C16.666 13.6817 13.6812 16.6665 9.99935 16.6665C6.31745 16.6665 3.33268 13.6817 3.33268 9.99984ZM9.99935 1.6665C5.39698 1.6665 1.66602 5.39746 1.66602 9.99984C1.66602 14.6022 5.39698 18.3332 9.99935 18.3332C14.6017 18.3332 18.3327 14.6022 18.3327 9.99984C18.3327 5.39746 14.6017 1.6665 9.99935 1.6665ZM6.66602 8.15773H8.33268C8.34768 7.26089 8.91935 6.40335 9.99935 6.40335C10.7943 6.40335 11.666 6.84405 11.666 7.61457C11.666 8.25702 11.0015 8.69673 10.4346 9.07192L10.3327 9.13949C9.73352 9.53177 9.25602 9.86229 9.16602 10.9612V11.6665H10.7727L10.8327 11.049C10.9677 10.3051 11.521 9.8251 12.166 9.42089C12.8102 9.00405 13.3327 8.663 13.3327 7.43773C13.3327 6.4644 12.8335 4.99984 9.99935 4.99984C7.80935 4.99984 6.71102 6.35212 6.66602 8.15773ZM10.8327 14.9998V13.3332H9.16602V14.9998H10.8327Z" fill="white"></path>
+            </svg>
+          </button>
+          <button type="button" class="profile-button" aria-label="User menu">
+            <span class="profile-avatar" aria-hidden="true"></span>
+            <span class="chevron chevron--down" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="nav-mega-menu-overlay" class="nav-mega-menu-overlay" aria-hidden="true"></div>
+  <div id="nav-menu" class="nav-menu" role="application" aria-modal="true" aria-hidden="true">
+    <div id="nav-primary-menu" class="nav-primary-menu" role="navigation">
+      <div class="nav-search-area">
+        <label class="nav-search-bar" for="nav-mega-search">
+          <svg class="nav-search-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+            <circle cx="9" cy="9" r="6.5" stroke="#51565d" stroke-width="2" fill="none"></circle>
+            <path d="M13.5 13.5L18 18" stroke="#51565d" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <input id="nav-mega-search" type="text" placeholder="Search" />
+        </label>
+      </div>
+      <div class="category-list" role="list">
+        <button type="button" class="category-item" role="listitem" data-category="home">Home</button>
+        <button type="button" class="category-item" role="listitem" data-category="compute">Compute</button>
+        <button type="button" class="category-item" role="listitem" data-category="storage">Storage</button>
+        <button type="button" class="category-item" role="listitem" data-category="networking">Networking</button>
+        <button type="button" class="category-item category-item--active" role="listitem" aria-current="true" data-category="oracle-ai-database">Oracle AI Database</button>
+        <button type="button" class="category-item" role="listitem" data-category="databases">Databases</button>
+        <button type="button" class="category-item" role="listitem" data-category="analytics-ai">Analytics &amp; AI</button>
+        <button type="button" class="category-item" role="listitem" data-category="developer-services">Developer Services</button>
+        <button type="button" class="category-item" role="listitem" data-category="identity-security">Identity &amp; Security</button>
+        <button type="button" class="category-item" role="listitem" data-category="observability-management">Observability &amp; Management</button>
+        <button type="button" class="category-item" role="listitem" data-category="hybrid-multicloud">Hybrid &amp; Multicloud</button>
+        <button type="button" class="category-item" role="listitem" data-category="migration-disaster-recovery">Migration &amp; Disaster Recovery</button>
+      </div>
+    </div>
+    <div id="nav-secondary-menu" class="nav-secondary-menu">
+      <div id="submenu-container" class="submenu-container" tabindex="-1">
+        <div class="submenu-container__heading">
+          <span class="category-item-icon" aria-hidden="true"></span>
+          <div tabindex="0" class="category-item__text" id="nav-category-title" role="heading" aria-level="1">Oracle AI Database</div>
+        </div>
+        <div class="submenu-container__section">
+          <div class="submenu-container__section_primary" id="submenu-container-primary">
+            <div class="submenu-columns" id="nav-category-content">
+              <!-- dynamic -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-content">
+    <aside class="side-nav">
+      <div class="side-nav__product">
+        <div class="product-icon" aria-hidden="true"><span class="product-icon__base"></span></div>
+        <div class="product-text">Oracle AI Database</div>
+      </div>
+      <nav class="side-nav__menu" aria-label="Oracle Exadata navigation">
+        <button type="button" class="menu-item menu-item--active">
+          <span class="menu-item__back" aria-hidden="true">‹</span>
+          Oracle Exadata Database Service on Cloud@Customer
+        </button>
+        <div class="menu-sublist" role="list">
+          <a class="menu-subitem" href="exadbcc.html">Exadata VM Clusters</a>
+          <button type="button" class="menu-subitem">Autonomous AI Databases</button>
+          <button type="button" class="menu-subitem">Autonomous Container Databases</button>
+          <button type="button" class="menu-subitem">Autonomous Exadata VM Clusters</button>
+          <a class="menu-subitem" href="exadbcc.html#exadata-infra">Exadata Infrastructure</a>
+          <button type="button" class="menu-subitem">Backup Destinations</button>
+          <button type="button" class="menu-subitem">Key Stores</button>
+        </div>
+        <div class="menu-divider" role="presentation"></div>
+        <div class="menu-secondary">
+          <div class="menu-section-label">Maintenance</div>
+          <a class="menu-subitem" href="maintenance-scheduling-policy.html?service=cc">Scheduling Policy</a>
+          <a class="menu-subitem menu-subitem--active" href="maintenance-activity-cc.html">Activity</a>
+          <a class="menu-subitem" href="maintenance-history-cc.html">History</a>
+        </div>
+      </nav>
+    </aside>
+    <main class="main-content maintenance-main-content">
+      <header class="page-header">
+        <div>
+          <h1>Activity</h1>
+        </div>
+      </header>
+      <section class="filter-bar" aria-label="Search and filter">
+        <div class="filter-bar__background" aria-hidden="true"></div>
+        <div class="filter-bar__content">
+          <label class="search-input" for="cluster-search">
+            <svg class="search-icon search-icon--inline" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
+              <circle cx="9" cy="9" r="6.5" stroke="#51606c" stroke-width="2" fill="none"></circle>
+              <path d="M13.5 13.5L18 18" stroke="#51606c" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <input id="cluster-search" type="text" placeholder="Search and Filter" />
+          </label>
+          <button type="button" class="search-button">Search</button>
+        </div>
+      </section>
+      <section class="filters" aria-label="Active filters">
+        <span class="filters__label">Applied filters</span>
+        <span class="chip">
+          Compartment <span class="chip__value">SharedPM</span>
+          <button type="button" aria-label="Remove compartment filter">×</button>
+        </span>
+      </section>
+      <section class="data-table" aria-label="Maintenance activity list">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">State</th>
+              <th scope="col">Resource</th>
+              <th scope="col">Service</th>
+              <th scope="col">Target database server version</th>
+              <th scope="col">Target storage server version</th>
+              <th scope="col">Next scheduled start time</th>
+              <th scope="col">Estimated time</th>
+              <th scope="col" class="table-actions-header" aria-hidden="true"></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <!-- table footer rendered dynamically -->
+      </section>
+    </main>
+  </div>
+
+  <aside class="create-vm-panel" data-create-policy-panel aria-hidden="true">
+    <div class="create-vm-panel__overlay" data-create-policy-close></div>
+    <section class="create-vm-panel__sheet" role="dialog" aria-modal="true" aria-labelledby="create-policy-title">
+      <div class="create-vm-panel__body">
+        <header class="create-vm-panel__header">
+          <h1 id="create-policy-title">Create maintenance scheduling policy</h1>
+          <p>If a maintenance scheduling policy is used, all the scheduling preferences for the infrastructure maintenance are derived from the policy. <a href="#">Learn more</a>.</p>
+        </header>
+        <div class="create-vm-panel__banner" aria-hidden="true"></div>
+
+        <section class="create-vm-section">
+          <div class="create-vm-field">
+            <label>Name</label>
+            <input type="text" value="SchedulingPolicy-202603191506" data-create-policy-name />
+          </div>
+          <div class="create-vm-field create-vm-field--select">
+            <label>Compartment</label>
+            <select>
+              <option>SharedPM</option>
+            </select>
+          </div>
+          <div class="create-vm-field create-vm-field--select is-required">
+            <label>Cadence</label>
+            <select data-create-policy-cadence data-placeholder-select>
+              <option value="" selected disabled hidden>Select cadence</option>
+              <option value="semiannual">Every six months</option>
+              <option value="quarterly">Every quarter</option>
+              <option value="monthly">Every month</option>
+            </select>
+            <p class="create-vm-required">Required</p>
+          </div>
+          <div class="create-vm-field create-vm-field--select is-required">
+            <label>Schedule start month</label>
+            <select data-create-policy-start-month data-placeholder-select>
+              <option value="" selected disabled hidden>Select start month</option>
+              <option value="0">January</option>
+              <option value="1">February</option>
+              <option value="2">March</option>
+              <option value="3">April</option>
+              <option value="4">May</option>
+              <option value="5">June</option>
+              <option value="6">July</option>
+              <option value="7">August</option>
+              <option value="8">September</option>
+              <option value="9">October</option>
+              <option value="10">November</option>
+              <option value="11">December</option>
+            </select>
+            <p class="create-vm-required">Required</p>
+          </div>
+        </section>
+
+        <section class="create-vm-section">
+          <h2>Maintenance window</h2>
+          <p>Oracle automation will perform maintenance to run scheduled actions as per your maintenance windows defined in the schedule.</p>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select is-required">
+              <label>Month</label>
+              <select data-create-policy-window-month data-placeholder-select>
+                <option value="" selected disabled hidden>Select month</option>
+              </select>
+              <p class="create-vm-required">Required</p>
+            </div>
+            <div class="create-vm-field create-vm-field--select is-required">
+              <label>Week</label>
+              <select data-create-policy-window-week data-placeholder-select>
+                <option value="" selected disabled hidden>Select week</option>
+                <option>First week of the selected month</option>
+                <option>Second week of the selected month</option>
+                <option>Third week of the selected month</option>
+                <option>Fourth week of the selected month</option>
+              </select>
+              <p class="create-vm-required">Required</p>
+            </div>
+          </div>
+          <div class="create-vm-grid">
+            <div class="create-vm-field create-vm-field--select is-required">
+              <label>Day</label>
+              <select data-create-policy-window-day data-placeholder-select>
+                <option value="" selected disabled hidden>Select day</option>
+                <option>Every sunday of the selected week</option>
+                <option>Every monday of the selected week</option>
+                <option>Every tuesday of the selected week</option>
+                <option>Every wednesday of the selected week</option>
+                <option>Every thursday of the selected week</option>
+                <option>Every friday of the selected week</option>
+                <option>Every saturday of the selected week</option>
+              </select>
+              <p class="create-vm-required">Required</p>
+            </div>
+            <div class="create-vm-field create-vm-field--select is-required">
+              <label>Start time (UTC)</label>
+              <select data-create-policy-window-time data-placeholder-select>
+                <option value="" selected></option>
+              </select>
+              <p class="create-vm-required">Required</p>
+            </div>
+          </div>
+          <div class="create-vm-field create-vm-field--select">
+            <label>Duration in hours</label>
+            <select data-create-policy-window-duration>
+              <option>10</option>
+              <option>8</option>
+              <option>6</option>
+            </select>
+          </div>
+          <div class="create-vm-toggle-row">
+            <p class="create-vm-toggle-title">Enforce window duration</p>
+            <button type="button" class="toggle" role="switch" aria-checked="false" data-create-policy-enforce-duration>
+              <span class="toggle__track" aria-hidden="true"></span>
+              <span class="toggle__thumb" aria-hidden="true"></span>
+            </button>
+            <p>Automation will reschedule any action with an estimated completion time that exceeds the configured duration to a future maintenance window.</p>
+          </div>
+          <div class="create-vm-warning">
+            <p><strong>Warning</strong></p>
+            <p>Additional maintenance windows may be added after policy creation.</p>
+          </div>
+        </section>
+
+        <section class="create-vm-section create-vm-section--advanced">
+          <button type="button" class="create-db-advanced" data-create-policy-advanced-trigger aria-expanded="false">
+            <span class="create-db-disclosure" aria-hidden="true"></span>
+            Advanced Options
+          </button>
+          <div class="create-db-advanced-content" data-create-policy-advanced-content hidden>
+            <section class="create-db-advanced-card">
+              <button type="button" class="create-db-accordion-title" data-create-policy-tags-trigger aria-expanded="true">
+                <span class="create-db-disclosure" aria-hidden="true"></span>
+                Tags
+              </button>
+              <div class="create-db-accordion-content" data-create-policy-tags-content>
+                <p>Add additional metadata to organize resources with <a href="#">free-form</a> and <a href="#">defined</a> tags.</p>
+                <div class="create-db-tags-row">
+                  <div class="create-vm-field create-vm-field--select">
+                    <label>Namespace</label>
+                    <select><option>None (free-form tag)</option></select>
+                  </div>
+                  <div class="create-vm-field">
+                    <label>Key</label>
+                    <input type="text" />
+                  </div>
+                  <div class="create-vm-field">
+                    <label>Value</label>
+                    <input type="text" />
+                  </div>
+                  <button type="button" class="secondary-button create-db-tag-remove" aria-label="Remove tag">×</button>
+                </div>
+                <div class="create-db-tags-add">
+                  <button type="button" class="secondary-button">Add tag</button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+      <footer class="create-vm-panel__footer">
+        <button type="button" class="secondary-button" data-create-policy-close>Cancel</button>
+        <button type="button" class="primary-button" data-create-policy-submit>Create</button>
+      </footer>
+    </section>
+  </aside>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const isCloudAtCustomer = params.get('service') === 'cc';
+      if (!isCloudAtCustomer) return;
+
+      const sideNav = document.querySelector('.side-nav__menu');
+      if (!sideNav) return;
+
+      const menuHeader = sideNav.querySelector('.menu-item');
+      if (menuHeader) {
+        menuHeader.innerHTML = '<span class="menu-item__back" aria-hidden="true">‹</span> Oracle Exadata Database Service on Cloud@Customer';
+      }
+
+      const subList = sideNav.querySelector('.menu-sublist');
+      if (subList) {
+        subList.innerHTML = `
+          <a class="menu-subitem" href="exadbcc.html">Exadata VM Clusters</a>
+          <button type="button" class="menu-subitem">Autonomous AI Databases</button>
+          <button type="button" class="menu-subitem">Autonomous Container Databases</button>
+          <button type="button" class="menu-subitem">Autonomous Exadata VM Clusters</button>
+          <a class="menu-subitem" href="exadbcc.html#exadata-infra">Exadata Infrastructure</a>
+          <button type="button" class="menu-subitem">Backup Destinations</button>
+          <button type="button" class="menu-subitem">Key Stores</button>
+        `;
+      }
+
+      const secondaryList = sideNav.querySelector('.menu-secondary');
+      if (secondaryList) {
+        secondaryList.innerHTML = `
+          <div class="menu-section-label">Maintenance</div>
+          <a class="menu-subitem" href="maintenance-scheduling-policy.html?service=cc">Scheduling Policy</a>
+          <a class="menu-subitem menu-subitem--active" href="maintenance-activity-cc.html">Activity</a>
+          <a class="menu-subitem" href="maintenance-history-cc.html">History</a>
+        `;
+      }
+
+      document.querySelectorAll('[data-policy-link]').forEach((link) => {
+        try {
+          const href = new URL(link.getAttribute('href'), window.location.href);
+          href.searchParams.set('service', 'cc');
+          link.setAttribute('href', `${href.pathname.split('/').pop()}${href.search}`);
+        } catch (error) {
+          /* ignore malformed href */
+        }
+      });
+    })();
+
+    (function () {
+      const navButton = document.getElementById('nav-menu-button');
+      const navMenu = document.getElementById('nav-menu');
+      const navOverlay = document.getElementById('nav-mega-menu-overlay');
+      const submenuContainer = document.getElementById('submenu-container');
+      const categoryButtons = document.querySelectorAll('.category-item');
+      const categoryTitle = document.getElementById('nav-category-title');
+      const categoryContent = document.getElementById('nav-category-content');
+
+      if (!navButton || !navMenu || !navOverlay) {
+        return;
+      }
+
+      const openMenu = () => {
+        navMenu.classList.add('is-open');
+        navOverlay.classList.add('is-open');
+        navMenu.setAttribute('aria-hidden', 'false');
+        navOverlay.setAttribute('aria-hidden', 'false');
+        navButton.setAttribute('aria-expanded', 'true');
+        navButton.setAttribute('aria-label', 'Close navigation menu');
+        document.body.classList.add('nav-menu-open');
+        if (submenuContainer) {
+          submenuContainer.focus();
+        }
+      };
+
+      const closeMenu = () => {
+        navMenu.classList.remove('is-open');
+        navOverlay.classList.remove('is-open');
+        navMenu.setAttribute('aria-hidden', 'true');
+        navOverlay.setAttribute('aria-hidden', 'true');
+        navButton.setAttribute('aria-expanded', 'false');
+        navButton.setAttribute('aria-label', 'Open navigation menu');
+        document.body.classList.remove('nav-menu-open');
+        navButton.focus();
+      };
+
+      navButton.addEventListener('click', () => {
+        if (navMenu.classList.contains('is-open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      navOverlay.addEventListener('click', closeMenu);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && navMenu.classList.contains('is-open')) {
+          closeMenu();
+        }
+      });
+
+      const categoryData = {
+        networking: {
+          title: 'Networking',
+          columns: [
+            {
+              heading: 'Overview',
+              links: [
+                { label: 'Overview', href: '#' }
+              ]
+            },
+            {
+              heading: 'Virtual cloud networks',
+              links: [
+                { label: 'VCNs', href: '#' }
+              ]
+            },
+            {
+              heading: 'Web Application Acceleration',
+              links: [
+                { label: 'WAAP', href: '#' }
+              ]
+            },
+            {
+              heading: 'Load balancers',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Load balancer', href: '#' },
+                { label: 'Network load balancer', href: '#' }
+              ]
+            },
+            {
+              heading: 'DNS management',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Public zones', href: '#' },
+                { label: 'Private zones', href: '#' },
+                { label: 'Traffic management steering policies', href: '#' },
+                { label: 'Private views', href: '#' },
+                { label: 'Private resolvers', href: '#' },
+                { label: 'HTTP redirects', href: '#' },
+                { label: 'TSIG keys', href: '#' }
+              ]
+            },
+            {
+              heading: 'Customer connectivity',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Site-to-Site VPN', href: '#' },
+                { label: 'FastConnect', href: '#' },
+                { label: 'Dynamic routing gateway', href: '#' },
+                { label: 'Customer-premises equipment', href: '#' }
+              ]
+            },
+            {
+              heading: 'Cluster Placement Groups',
+              links: [
+                { label: 'Cluster Placement Groups', href: '#' }
+              ]
+            },
+            {
+              heading: 'IP management',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Reserved public IPs', href: '#' },
+                { label: 'BYOIP', href: '#' },
+                { label: 'Public IP pools', href: '#' },
+                { label: 'IP Address Insights', href: '#' },
+                { label: 'BYOASN', href: '#' }
+              ]
+            },
+            {
+              heading: 'Network Command Center',
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Network visualizer', href: '#' },
+                { label: 'Network Path Analyzer', href: '#' },
+                { label: 'Inter-region latency', href: '#' },
+                { label: 'Capture filters', href: '#' },
+                { label: 'VTAPs', href: '#' },
+                { label: 'Flow logs', href: '#' }
+              ]
+            }
+          ]
+        },
+        'oracle-ai-database': {
+          title: 'Oracle AI Database',
+          columns: [
+            {
+              heading: 'Overview',
+              links: [
+                { label: 'Autonomous AI Database', href: '#' },
+                { label: 'Autonomous AI Database on Dedicated Infrastructure', href: '#' },
+                { label: 'Globally Distributed Autonomous AI Database', href: '#' },
+                { label: 'Oracle Base Database Service', href: 'basedb.html' }
+              ]
+            },
+            {
+              heading: 'Oracle Exadata Database Service',
+              links: [
+                { label: 'Oracle Exadata Database Service on Dedicated Infrastructure', href: 'exadbd.html' },
+                { label: 'Oracle Exadata Database Service on Exascale Infrastructure', href: 'exadbxs.html' },
+                { label: 'Oracle Exadata Database Service on Cloud@Customer', href: 'exadbcc.html' },
+                { label: 'Exadata Fleet Update', href: '#' },
+                { label: 'External Database', href: '#' },
+                { label: 'Database Multicloud Integrations', href: '#' }
+              ]
+            },
+            {
+              heading: 'Data Safe - Database Security',
+              highlighted: true,
+              links: [
+                { label: 'Overview', href: '#' },
+                { label: 'Security assessment', href: '#' },
+                { label: 'User assessment', href: '#' },
+                { label: 'Data discovery', href: '#' },
+                { label: 'Data masking', href: '#' },
+                { label: 'Activity auditing', href: '#' },
+                { label: 'SQL Firewall', href: '#' },
+                { label: 'Database Backups', href: '#' }
+              ]
+            },
+            {
+              heading: 'GoldenGate',
+              highlighted: true,
+              groups: [
+                {
+                  subheading: 'Api Access Control',
+                  links: [
+                    { label: 'Api Controls', href: '#' },
+                    { label: 'Access Requests', href: '#' }
+                  ]
+                },
+                {
+                  subheading: 'Delegate Access Control',
+                  links: [
+                    { label: 'Delegation Controls', href: '#' },
+                    { label: 'Access Requests', href: '#' }
+                  ]
+                },
+                {
+                  subheading: 'Operator Access Control',
+                  links: [
+                    { label: 'Overview', href: '#' }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      };
+
+      const renderCategory = (key) => {
+        const data = categoryData[key] || categoryData['oracle-ai-database'];
+        categoryTitle.textContent = data.title;
+        categoryContent.innerHTML = '';
+
+        data.columns.forEach((column) => {
+          const columnDiv = document.createElement('div');
+          columnDiv.className = 'submenu-column';
+
+          if (column.heading) {
+            const heading = document.createElement('h3');
+            heading.className = 'submenu-column__title';
+            heading.textContent = column.heading;
+            columnDiv.appendChild(heading);
+          }
+
+          if (column.links) {
+            column.links.forEach((link) => {
+              const linkEl = document.createElement('a');
+              linkEl.href = link.href;
+              linkEl.textContent = link.label;
+              linkEl.className = column.highlighted ? 'submenu-link submenu-link--highlight nav-link' : 'submenu-link nav-link';
+              columnDiv.appendChild(linkEl);
+            });
+          }
+
+          if (column.groups) {
+            column.groups.forEach((group) => {
+              const groupDiv = document.createElement('div');
+              groupDiv.className = 'submenu-column__group';
+              const subheading = document.createElement('h4');
+              subheading.className = 'submenu-column__subtitle';
+              subheading.textContent = group.subheading;
+              groupDiv.appendChild(subheading);
+
+              group.links.forEach((link) => {
+                const linkEl = document.createElement('a');
+                linkEl.href = link.href;
+                linkEl.textContent = link.label;
+                linkEl.className = column.highlighted ? 'submenu-link submenu-link--highlight nav-link' : 'submenu-link nav-link';
+                groupDiv.appendChild(linkEl);
+              });
+
+              columnDiv.appendChild(groupDiv);
+            });
+          }
+
+          categoryContent.appendChild(columnDiv);
+        });
+
+        const navLinks = categoryContent.querySelectorAll('.nav-link');
+        navLinks.forEach((link) => {
+          link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href');
+            if (href && href !== '#') {
+              event.preventDefault();
+              closeMenu();
+              setTimeout(() => {
+                window.location.href = href;
+              }, 120);
+            }
+          });
+        });
+      };
+
+      const initDataTables = () => {
+        const dataTables = document.querySelectorAll('.data-table');
+
+        const ensureEmptyStateRow = (tbody, columnCount) => {
+          let emptyRow = tbody.querySelector('.empty-state-row');
+
+          if (!emptyRow) {
+            emptyRow = document.createElement('tr');
+            emptyRow.className = 'empty-state-row';
+
+            const cell = document.createElement('td');
+            cell.className = 'empty-state-cell';
+            cell.innerHTML = `
+              <div class="empty-state" role="status">
+                <h2>No items to display</h2>
+                <p>Create new items or search again using different filters or search terms.</p>
+              </div>
+            `;
+
+            emptyRow.appendChild(cell);
+            tbody.appendChild(emptyRow);
+          }
+
+          const emptyCell = emptyRow.querySelector('.empty-state-cell');
+          if (emptyCell) {
+            emptyCell.setAttribute('colspan', String(columnCount));
+          }
+
+          return emptyRow;
+        };
+
+        const ensureFooter = (section) => {
+          let footer = section.querySelector('[data-footer]');
+
+          if (!footer) {
+            footer = document.createElement('footer');
+            footer.className = 'table-footer';
+            footer.setAttribute('data-footer', '');
+            footer.innerHTML = `
+              <div class="pagination">
+                <button type="button" class="pagination-button" aria-label="Previous page" disabled>‹</button>
+                <span class="pagination-info" data-pagination-info></span>
+                <button type="button" class="pagination-button" aria-label="Next page" disabled>›</button>
+              </div>
+              <div class="page-size">
+                <span>Items per page</span>
+                <button type="button" class="select-button" aria-haspopup="listbox">25 <span class="chevron" aria-hidden="true"></span></button>
+              </div>
+            `;
+            section.appendChild(footer);
+          }
+
+          return footer;
+        };
+
+        const isVisibleRow = (row) => {
+          if (row.hidden || row.getAttribute('aria-hidden') === 'true' || row.dataset.hidden === 'true') {
+            return false;
+          }
+
+          const style = window.getComputedStyle(row);
+          return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+        };
+
+        const updateTableState = (section) => {
+          const table = section.querySelector('table');
+          const tbody = table ? table.querySelector('tbody') : null;
+
+          if (!table || !tbody) {
+            return;
+          }
+
+          const columns = table.querySelectorAll('thead th').length || 1;
+          const dataRows = Array.from(tbody.querySelectorAll('tr')).filter((row) => !row.classList.contains('empty-state-row'));
+          const visibleRows = dataRows.filter(isVisibleRow);
+          const hasData = visibleRows.length > 0;
+
+          const footer = ensureFooter(section);
+          const emptyRow = ensureEmptyStateRow(tbody, columns);
+
+          if (emptyRow) {
+            emptyRow.classList.toggle('empty-state-row--hidden', hasData);
+          }
+
+          if (footer) {
+            footer.classList.toggle('table-footer--hidden', !hasData);
+            const info = footer.querySelector('[data-pagination-info]');
+            if (info) {
+              info.textContent = hasData
+                ? `Page 1 of 1 (1 - ${visibleRows.length} of ${visibleRows.length} total items)`
+                : 'Page 1 of 1 (0 total items)';
+            }
+          }
+        };
+
+        dataTables.forEach((section) => {
+          const table = section.querySelector('table');
+          const tbody = table ? table.querySelector('tbody') : null;
+
+          if (!table || !tbody) {
+            return;
+          }
+
+          updateTableState(section);
+
+          const observer = new MutationObserver(() => {
+            updateTableState(section);
+          });
+
+          observer.observe(tbody, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['style', 'class', 'hidden', 'aria-hidden', 'data-hidden']
+          });
+        });
+      };
+
+      const initCreatePolicyPanel = () => {
+        const panel = document.querySelector('[data-create-policy-panel]');
+        const openButton = document.querySelector('[data-create-policy-open]');
+        const closeButtons = document.querySelectorAll('[data-create-policy-close]');
+        const submitButton = panel ? panel.querySelector('[data-create-policy-submit]') : null;
+        const tableBody = document.querySelector('.data-table tbody');
+        const storageKey = 'mockup:maintenanceSchedulingPolicies';
+        const isCloudAtCustomer = new URLSearchParams(window.location.search).get('service') === 'cc';
+        const nameInput = panel ? panel.querySelector('[data-create-policy-name]') : null;
+        const cadenceField = panel ? panel.querySelector('[data-create-policy-cadence]') : null;
+        const startMonthField = panel ? panel.querySelector('[data-create-policy-start-month]') : null;
+        const windowMonthField = panel ? panel.querySelector('[data-create-policy-window-month]') : null;
+        const windowTimeField = panel ? panel.querySelector('[data-create-policy-window-time]') : null;
+        const advancedTrigger = panel ? panel.querySelector('[data-create-policy-advanced-trigger]') : null;
+        const advancedContent = panel ? panel.querySelector('[data-create-policy-advanced-content]') : null;
+        const tagsTrigger = panel ? panel.querySelector('[data-create-policy-tags-trigger]') : null;
+        const tagsContent = panel ? panel.querySelector('[data-create-policy-tags-content]') : null;
+        const panelBody = panel ? panel.querySelector('.create-vm-panel__body') : null;
+        const placeholderSelects = panel ? Array.from(panel.querySelectorAll('select[data-placeholder-select]')) : [];
+
+        if (!panel || !openButton) {
+          return;
+        }
+
+        const monthNames = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+        ];
+
+        const cadenceStep = (cadenceValue) => {
+          if (cadenceValue === 'semiannual') return 6;
+          if (cadenceValue === 'quarterly') return 3;
+          if (cadenceValue === 'monthly') return 1;
+          return null;
+        };
+
+        const buildWindowMonthOptions = () => {
+          if (!windowMonthField) return;
+
+          const cadence = cadenceField ? cadenceField.value : '';
+          const startMonthValue = startMonthField ? startMonthField.value : '';
+          const step = cadenceStep(cadence);
+
+          windowMonthField.innerHTML = '';
+
+          if (!step) {
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = 'Select month';
+            placeholder.selected = true;
+            placeholder.disabled = true;
+            placeholder.hidden = true;
+            windowMonthField.appendChild(placeholder);
+            const noMatches = document.createElement('option');
+            noMatches.value = '';
+            noMatches.textContent = 'No matches found.';
+            noMatches.disabled = true;
+            windowMonthField.appendChild(noMatches);
+            return;
+          }
+
+          const startMonth = startMonthValue === '' ? 0 : Number(startMonthValue);
+          const count = step === 1 ? 12 : Math.max(1, Math.floor(12 / step));
+
+          const placeholder = document.createElement('option');
+          placeholder.value = '';
+          placeholder.textContent = 'Select month';
+          placeholder.selected = true;
+          placeholder.disabled = true;
+          placeholder.hidden = true;
+          windowMonthField.appendChild(placeholder);
+
+          for (let i = 0; i < count; i += 1) {
+            const monthIndex = (startMonth + (i * step)) % 12;
+            const option = document.createElement('option');
+            option.value = String(monthIndex);
+            option.textContent = monthNames[monthIndex];
+            windowMonthField.appendChild(option);
+          }
+        };
+
+        const buildStartTimeOptions = () => {
+          if (!windowTimeField) return;
+
+          windowTimeField.innerHTML = '';
+          const placeholder = document.createElement('option');
+          placeholder.value = '';
+          placeholder.textContent = 'Select start time';
+          placeholder.selected = true;
+          placeholder.disabled = true;
+          placeholder.hidden = true;
+          windowTimeField.appendChild(placeholder);
+
+          for (let hour = 0; hour < 24; hour += 1) {
+            for (let minute = 0; minute < 60; minute += 30) {
+              const label = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+              const option = document.createElement('option');
+              option.value = label;
+              option.textContent = label;
+              windowTimeField.appendChild(option);
+            }
+          }
+        };
+
+        buildStartTimeOptions();
+        buildWindowMonthOptions();
+
+        const refreshPlaceholderSelects = () => {
+          placeholderSelects.forEach((select) => {
+            const selectedOption = select.options[select.selectedIndex];
+            const isPlaceholder = !selectedOption || selectedOption.disabled;
+            select.classList.toggle('is-placeholder', isPlaceholder);
+          });
+        };
+
+        refreshPlaceholderSelects();
+
+        const fieldDefaults = Array.from(panel.querySelectorAll('input, select, textarea')).map((field) => ({
+          field,
+          value: field.value,
+          checked: 'checked' in field ? field.checked : undefined
+        }));
+
+        const toggleDefaults = Array.from(panel.querySelectorAll('.toggle')).map((toggle) => ({
+          toggle,
+          checked: toggle.getAttribute('aria-checked') || 'false'
+        }));
+
+        const resetFormState = () => {
+          fieldDefaults.forEach(({ field, value, checked }) => {
+            field.value = value;
+            if (typeof checked === 'boolean') {
+              field.checked = checked;
+            }
+          });
+          toggleDefaults.forEach(({ toggle, checked }) => {
+            toggle.setAttribute('aria-checked', checked);
+          });
+          buildWindowMonthOptions();
+          buildStartTimeOptions();
+          refreshPlaceholderSelects();
+          if (advancedTrigger && advancedContent) {
+            advancedTrigger.setAttribute('aria-expanded', 'false');
+            advancedContent.hidden = true;
+          }
+          if (tagsTrigger && tagsContent) {
+            tagsTrigger.setAttribute('aria-expanded', 'true');
+            tagsContent.hidden = false;
+          }
+        };
+
+        const updateRequiredIndicators = () => {
+          panel.querySelectorAll('.create-vm-field.is-required').forEach((container) => {
+            const field = container.querySelector('input, select, textarea');
+            const requiredText = container.querySelector('.create-vm-required');
+            if (!field || !requiredText) {
+              return;
+            }
+            const hasValue = (field.value || '').trim().length > 0;
+            requiredText.hidden = hasValue;
+            container.classList.toggle('is-invalid', !hasValue);
+          });
+        };
+
+        const open = () => {
+          panel.classList.add('is-open');
+          panel.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('create-vm-panel-open');
+          if (panelBody) {
+            panelBody.scrollTop = 0;
+          }
+          updateRequiredIndicators();
+          refreshPlaceholderSelects();
+        };
+
+        const close = () => {
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('create-vm-panel-open');
+          resetFormState();
+          updateRequiredIndicators();
+        };
+
+        const formatUtcDate = (date) =>
+          date.toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+            timeZone: 'UTC'
+          }) + ' UTC';
+
+        const buildDetailHref = (name) => (isCloudAtCustomer
+          ? `maintenance-scheduling-policy-template.html?name=${encodeURIComponent(name)}&service=cc`
+          : `maintenance-scheduling-policy-template.html?name=${encodeURIComponent(name)}`);
+
+        const createPolicyRowMarkup = (policy) => `
+          <td><a href="${buildDetailHref(policy.name)}" class="vm-row-name" data-policy-link>${policy.name}</a></td>
+          <td><span class="badge badge--available">${policy.state || 'Available'}</span></td>
+          <td>${policy.cadence || 'Quarterly'}</td>
+          <td>${policy.updated || '—'}</td>
+          <td>${policy.nextWindow || '—'}</td>
+          <td class="table-actions" aria-label="Row actions">⋮</td>
+        `;
+
+        const readStoredPolicies = () => {
+          try {
+            const raw = localStorage.getItem(storageKey);
+            const parsed = raw ? JSON.parse(raw) : [];
+            if (!Array.isArray(parsed)) {
+              return [];
+            }
+            return parsed.filter((item) => item && item.name);
+          } catch (error) {
+            return [];
+          }
+        };
+
+        const writeStoredPolicies = (policies) => {
+          try {
+            localStorage.setItem(storageKey, JSON.stringify(policies));
+          } catch (error) {
+            /* ignore localStorage errors */
+          }
+        };
+
+        const getDefaultPoliciesFromTable = () => {
+          if (!tableBody) {
+            return [];
+          }
+          return Array.from(tableBody.querySelectorAll('tr'))
+            .filter((row) => !row.classList.contains('empty-state-row'))
+            .map((row) => {
+              const cells = row.querySelectorAll('td');
+              const name = row.querySelector('[data-policy-link]')?.textContent?.trim() || '';
+              if (!name || cells.length < 5) {
+                return null;
+              }
+              return {
+                name,
+                state: cells[1]?.textContent?.trim() || 'Available',
+                compartment: 'SharedPM',
+                cadence: cells[2]?.textContent?.trim() || 'Quarterly',
+                ocid: `ocid1.dbcloudschedulingpolicy.oc1.uk-cardiff-1.${name.toLowerCase()}`,
+                nextWindow: cells[4]?.textContent?.trim() || '—',
+                updated: cells[3]?.textContent?.trim() || '—'
+              };
+            })
+            .filter(Boolean);
+        };
+
+        const mergePolicies = (storedPolicies, defaultPolicies) => {
+          const deduped = [];
+          const seen = new Set();
+          [...storedPolicies, ...defaultPolicies].forEach((policy) => {
+            if (!policy || !policy.name || seen.has(policy.name)) {
+              return;
+            }
+            seen.add(policy.name);
+            deduped.push(policy);
+          });
+          return deduped;
+        };
+
+        const renderPolicyRows = (policies) => {
+          if (!tableBody) {
+            return;
+          }
+          tableBody.innerHTML = '';
+          policies.forEach((policy) => {
+            const row = document.createElement('tr');
+            row.innerHTML = createPolicyRowMarkup(policy);
+            tableBody.appendChild(row);
+          });
+        };
+
+        const defaultPolicies = getDefaultPoliciesFromTable();
+        let policyCatalog = mergePolicies(readStoredPolicies(), defaultPolicies);
+        if (policyCatalog.length) {
+          renderPolicyRows(policyCatalog);
+          writeStoredPolicies(policyCatalog);
+        }
+
+        const addPolicyRow = () => {
+          if (!tableBody || !submitButton) {
+            return;
+          }
+          const displayName = (nameInput?.value || '').trim() || `SchedulingPolicy-${Date.now()}`;
+          const cadenceOption = cadenceField ? cadenceField.options[cadenceField.selectedIndex] : null;
+          const cadenceLabel = cadenceOption && cadenceOption.textContent ? cadenceOption.textContent.trim() : '';
+          const cadence = cadenceLabel || 'Every quarter';
+          const now = new Date();
+          const updated = formatUtcDate(now);
+          const nextWindow = 'Apr 5, 2026, 11:00:00 AM UTC';
+          const createdPolicy = {
+            name: displayName,
+            state: 'Available',
+            compartment: 'SharedPM',
+            cadence,
+            ocid: `ocid1.dbcloudschedulingpolicy.oc1.uk-cardiff-1.${displayName.toLowerCase()}`,
+            nextWindow,
+            updated
+          };
+          policyCatalog = [createdPolicy, ...policyCatalog.filter((item) => item && item.name !== displayName)];
+          renderPolicyRows(policyCatalog);
+          writeStoredPolicies(policyCatalog);
+
+          close();
+        };
+
+        openButton.addEventListener('click', open);
+        closeButtons.forEach((button) => button.addEventListener('click', close));
+
+        panel.addEventListener('click', (event) => {
+          if (event.target === panel) {
+            close();
+          }
+        });
+
+        panel.querySelectorAll('.toggle').forEach((toggle) => {
+          toggle.addEventListener('click', () => {
+            const checked = toggle.getAttribute('aria-checked') === 'true';
+            toggle.setAttribute('aria-checked', checked ? 'false' : 'true');
+          });
+        });
+
+        panel.querySelectorAll('.create-vm-field.is-required input, .create-vm-field.is-required select, .create-vm-field.is-required textarea').forEach((field) => {
+          field.addEventListener('change', updateRequiredIndicators);
+          field.addEventListener('input', updateRequiredIndicators);
+        });
+
+        placeholderSelects.forEach((select) => {
+          select.addEventListener('change', refreshPlaceholderSelects);
+        });
+
+        if (cadenceField) {
+          cadenceField.addEventListener('change', () => {
+            buildWindowMonthOptions();
+            updateRequiredIndicators();
+            refreshPlaceholderSelects();
+          });
+        }
+
+        if (startMonthField) {
+          startMonthField.addEventListener('change', () => {
+            buildWindowMonthOptions();
+            updateRequiredIndicators();
+            refreshPlaceholderSelects();
+          });
+        }
+
+        if (advancedTrigger && advancedContent) {
+          advancedTrigger.addEventListener('click', () => {
+            const expanded = advancedTrigger.getAttribute('aria-expanded') === 'true';
+            advancedTrigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            advancedContent.hidden = expanded;
+          });
+        }
+
+        if (tagsTrigger && tagsContent) {
+          tagsTrigger.addEventListener('click', () => {
+            const expanded = tagsTrigger.getAttribute('aria-expanded') === 'true';
+            tagsTrigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            tagsContent.hidden = expanded;
+          });
+        }
+
+        if (submitButton) {
+          submitButton.addEventListener('click', addPolicyRow);
+        }
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+            close();
+          }
+        });
+      };
+
+      categoryButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const key = button.getAttribute('data-category');
+          categoryButtons.forEach((btn) => btn.classList.remove('category-item--active'));
+          categoryButtons.forEach((btn) => btn.removeAttribute('aria-current'));
+          button.classList.add('category-item--active');
+          button.setAttribute('aria-current', 'true');
+          renderCategory(key);
+        });
+      });
+
+      renderCategory('oracle-ai-database');
+      initDataTables();
+      initCreatePolicyPanel();
+    })();
+  </script>
+</body>
+</html>

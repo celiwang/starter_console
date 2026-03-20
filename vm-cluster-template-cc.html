@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oracle Cloud Infrastructure Console &mdash; VM Cluster Detail</title>
+  <title>Oracle Cloud Infrastructure Console &mdash; Exadata VM Cluster Details (Cloud@Customer)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
     <div class="console-header-item-bar">
       <div class="top-bar__region" role="button" aria-haspopup="listbox" aria-label="Selected region">
         <span class="region-icon" aria-hidden="true"></span>
-        <span class="region-label">UK West (Newport)</span>
+          <span class="region-label">US East (Ashburn)</span>
         <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
       </div>
       <div class="top-bar__actions">
@@ -133,27 +133,32 @@
       <nav class="side-nav__menu" aria-label="Oracle Exadata navigation">
         <button type="button" class="menu-item menu-item--active">
           <span class="menu-item__back" aria-hidden="true">‹</span>
-          Oracle Exadata Database Service on Dedicated Infrastructure
+          Oracle Exadata Database Service on Cloud@Customer
         </button>
         <div class="menu-sublist" role="list">
-          <button type="button" class="menu-subitem menu-subitem--active">Exadata VM Clusters</button>
-          <a class="menu-subitem" href="exadbd.html#exadata-infra">Exadata Infrastructure</a>
+          <a class="menu-subitem menu-subitem--active" href="exadbcc.html">Exadata VM Clusters</a>
+          <button type="button" class="menu-subitem">Autonomous AI Databases</button>
+          <button type="button" class="menu-subitem">Autonomous Container Databases</button>
+          <button type="button" class="menu-subitem">Autonomous Exadata VM Clusters</button>
+          <a class="menu-subitem" href="exadbcc.html#exadata-infra">Exadata Infrastructure</a>
+          <button type="button" class="menu-subitem">Backup Destinations</button>
+          <button type="button" class="menu-subitem">Key Stores</button>
         </div>
         <div class="menu-divider" role="presentation"></div>
         <div class="menu-secondary">
           <div class="menu-section-label">Resources</div>
-          <a class="menu-subitem" href="maintenance-scheduling-policy.html">Scheduling policy</a>
+          <a class="menu-subitem" href="maintenance-scheduling-policy.html?service=cc">Scheduling Policy</a>
           <button type="button" class="menu-subitem">Software images</button>
           <button type="button" class="menu-subitem">Standalone backups</button>
-          <button type="button" class="menu-subitem">Interim software updates</button>
-          <button type="button" class="menu-subitem">Key Stores</button>
+          <button type="button" class="menu-subitem">Autonomous standalone backups</button>
+          <button type="button" class="menu-subitem">Autonomous AI Database software images</button>
         </div>
       </nav>
     </aside>
 
     <main class="main-content main-content--detail" role="main">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="exadbd.html" class="breadcrumbs__link">
+        <a href="exadbcc.html" class="breadcrumbs__link">
           <svg class="breadcrumbs__icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
             <g fill="none">
               <path d="M21.996 11H5.41l5.293-5.293L9.29 4.293 1.582 12l7.707 7.707 1.414-1.414L5.41 13h16.586z" fill="currentColor"></path>
@@ -166,35 +171,39 @@
       <header class="vm-detail-header" aria-labelledby="detail-title">
         <div class="vm-detail-header__context">
           <div class="vm-detail-header__title-row">
-            <h1 id="detail-title" data-slot="cluster-name">SSOExaVMCluster</h1>
+            <h1 id="detail-title" data-slot="cluster-name">scaqan03adm0304clu1-vm</h1>
             <span class="badge badge--available" data-slot="cluster-status">Available</span>
           </div>
+          <p class="vm-detail-header__subtitle">Exadata VM Cluster</p>
         </div>
         <div class="vm-detail-header__actions">
           <button type="button" class="dropdown-button">
             Actions
             <svg aria-hidden="true" class="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M6.35 8 5 9.739 12 16l7-6.261L17.65 8 12 13.054z" fill="currentColor" fill-rule="evenodd"></path></svg>
           </button>
-          <button type="button" class="primary-button">Scale VM cluster</button>
+          <button type="button" class="primary-button">Scale VM Resources</button>
         </div>
       </header>
       <div class="filter-bar filter-bar--flat" aria-hidden="true">
         <div class="filter-bar__background"></div>
       </div>
+      <section class="cluster-warning">
+        <p class="cluster-warning__title">Unable to Connect</p>
+        <p class="cluster-warning__message">We are unable to connect to your Exadata Infrastructure. Once the connectivity is restored you will be able to manage your VM Cluster. <a href="#">Learn more</a></p>
+      </section>
 
       <nav class="detail-tabs" aria-label="VM cluster detail navigation">
         <div class="tabs" role="tablist">
           <button class="tab tab--active" role="tab" aria-selected="true" aria-controls="tab-information" id="tab-trigger-information">VM Cluster information</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-databases" id="tab-trigger-databases">Databases</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-database-homes" id="tab-trigger-database-homes">Database homes</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-virtual-ip" id="tab-trigger-virtual-ip">Virtual IP address</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-database-homes" id="tab-trigger-database-homes">Database Homes</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-virtual-machines" id="tab-trigger-virtual-machines">Virtual Machines</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-metrics" id="tab-trigger-metrics">Metrics</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-updates-os" id="tab-trigger-updates-os">Updates (OS)</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-updates-gi" id="tab-trigger-updates-gi">Updates (GI)</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-update-history" id="tab-trigger-update-history">Update History</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-security" id="tab-trigger-security">Security</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-monitoring" id="tab-trigger-monitoring">Monitoring</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="tab-work-requests" id="tab-trigger-work-requests">Work requests</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-tags" id="tab-trigger-tags">Tags</button>
         </div>
       </nav>
 
@@ -369,12 +378,13 @@
               <table>
                 <thead>
                   <tr>
-                    <th scope="col" class="sortable db-col-name">Name</th>
+                    <th scope="col" class="sortable db-col-name">Display name</th>
                     <th scope="col">State</th>
                     <th scope="col">Database unique name</th>
                     <th scope="col">Database version</th>
                     <th scope="col">Data Guard role</th>
-                    <th scope="col">Created</th>
+                    <th scope="col">Key management</th>
+                    <th scope="col" class="sortable">Created <span class="chevron chevron--down" aria-hidden="true"></span></th>
                     <th scope="col" aria-hidden="true" class="table-actions-header"></th>
                   </tr>
                 </thead>
@@ -409,9 +419,9 @@
           </div>
         </article>
 
-        <article class="tab-panel" id="tab-virtual-ip" role="tabpanel" aria-labelledby="tab-trigger-virtual-ip" hidden>
+        <article class="tab-panel" id="tab-metrics" role="tabpanel" aria-labelledby="tab-trigger-metrics" hidden>
           <div class="empty-state">
-            <h2>Virtual IP address</h2>
+            <h2>Metrics</h2>
             <p>Content to be implemented.</p>
           </div>
         </article>
@@ -441,16 +451,9 @@
           </div>
         </article>
 
-        <article class="tab-panel" id="tab-security" role="tabpanel" aria-labelledby="tab-trigger-security" hidden>
+        <article class="tab-panel" id="tab-tags" role="tabpanel" aria-labelledby="tab-trigger-tags" hidden>
           <div class="empty-state">
-            <h2>Security</h2>
-            <p>Content to be implemented.</p>
-          </div>
-        </article>
-
-        <article class="tab-panel" id="tab-monitoring" role="tabpanel" aria-labelledby="tab-trigger-monitoring" hidden>
-          <div class="empty-state">
-            <h2>Monitoring</h2>
+            <h2>Tags</h2>
             <p>Content to be implemented.</p>
           </div>
         </article>
@@ -635,10 +638,77 @@
                 <label><input type="radio" name="delete-backups" /> Retain backups for 72 hours, then delete</label>
               </div>
             </div>
-            <button type="button" class="create-db-advanced">
-              <span class="chevron chevron--right" aria-hidden="true"></span>
+            <button type="button" class="create-db-advanced" data-create-db-advanced-trigger aria-expanded="false">
+              <span class="create-db-disclosure" aria-hidden="true"></span>
               Advanced options
             </button>
+            <div class="create-db-advanced-content" data-create-db-advanced-content hidden>
+              <section class="create-db-advanced-card">
+                <button type="button" class="create-db-accordion-title" data-create-db-accordion-trigger data-default-expanded="true" aria-expanded="true" aria-controls="create-db-advanced-management">
+                  <span class="create-db-disclosure" aria-hidden="true"></span>
+                  Management
+                </button>
+                <div class="create-db-accordion-content" data-create-db-accordion-content id="create-db-advanced-management">
+                  <label class="create-db-field">
+                    <span class="create-db-field__label">Oracle SID prefix</span>
+                    <input type="text" />
+                  </label>
+                  <label class="create-db-field create-db-field--select">
+                    <span class="create-db-field__label">Character set</span>
+                    <select>
+                      <option>AL32UTF8</option>
+                    </select>
+                  </label>
+                  <label class="create-db-field create-db-field--select">
+                    <span class="create-db-field__label">National character set</span>
+                    <select>
+                      <option>AL16UTF16</option>
+                    </select>
+                  </label>
+                </div>
+              </section>
+              <section class="create-db-advanced-card">
+                <button type="button" class="create-db-accordion-title" data-create-db-accordion-trigger data-default-expanded="false" aria-expanded="false" aria-controls="create-db-advanced-encryption">
+                  <span class="create-db-disclosure" aria-hidden="true"></span>
+                  Encryption
+                </button>
+                <div class="create-db-accordion-content" data-create-db-accordion-content id="create-db-advanced-encryption" hidden>
+                  <p class="create-db-field__label">Key management</p>
+                  <div class="create-db-radio-group">
+                    <label><input type="radio" name="create-db-key-management" checked /> Use Oracle-managed keys</label>
+                    <label><input type="radio" name="create-db-key-management" /> Use customer-managed keys</label>
+                  </div>
+                </div>
+              </section>
+              <section class="create-db-advanced-card">
+                <button type="button" class="create-db-accordion-title" data-create-db-accordion-trigger data-default-expanded="false" aria-expanded="false" aria-controls="create-db-advanced-tags">
+                  <span class="create-db-disclosure" aria-hidden="true"></span>
+                  Tags
+                </button>
+                <div class="create-db-accordion-content" data-create-db-accordion-content id="create-db-advanced-tags" hidden>
+                  <p class="create-db-help">Add additional metadata to organize resources with <a href="#">free-form</a> and <a href="#">defined</a> tags.</p>
+                  <div class="create-db-tags-row">
+                    <label class="create-db-field create-db-field--select">
+                      <span class="create-db-field__label">Namespace</span>
+                      <select>
+                        <option>None (free-form tag)</option>
+                      </select>
+                    </label>
+                    <label class="create-db-field">
+                      <span class="create-db-field__label">Key</span>
+                      <input type="text" />
+                    </label>
+                    <label class="create-db-field">
+                      <span class="create-db-field__label">Value</span>
+                      <input type="text" />
+                    </label>
+                    <button type="button" class="secondary-button create-db-tag-remove" aria-label="Remove tag">x</button>
+                  </div>
+                  <div class="create-db-tags-add">
+                    <button type="button" class="secondary-button">Add tag</button>
+                  </div>
+                </div>
+              </section>            </div>
           </section>
         </div>
       </div>
@@ -937,6 +1007,174 @@
     })();
 
     const baseClusterCatalog = {
+      'scaqan03adm0304clu1-vm': {
+        name: 'scaqan03adm0304clu1-vm',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        breadcrumbLabel: 'Exadata VM Clusters',
+        warning: {
+          title: 'Unable to Connect',
+          message: 'We are unable to connect to your Exadata Infrastructure. Once the connectivity is restored you will be able to manage your VM Cluster.',
+          linkLabel: 'Learn more',
+          linkHref: '#'
+        },
+        headerMeta: {
+          compartment: 'ocidbaaspmt (root)/SharedPM',
+          availabilityDomain: 'AD-1',
+          ocid: 'ocid1.vmcluster.oc1.iad.example.scaqan03adm0304clu1vm'
+        },
+        generalInformation: [
+          { label: 'Compartment', value: 'ocidbaaspmt (root)/SharedPM' },
+          { label: 'OCID', value: '...zehm52lgvegqj27uye7daqhqcnjuodhvlrlfjrruga', copy: true },
+          { label: 'Created', value: 'Feb 6, 2026, 7:54:51 PM UTC' },
+          { label: 'Time zone', value: 'UTC' },
+          { label: 'VM type', value: 'Regular' },
+          { label: 'License type', value: 'Bring Your Own License (BYOL)' },
+          { label: 'Diagnostics Collection', value: 'Disabled', action: { label: 'Edit', type: 'button' } },
+          { label: 'API Access Control', value: 'Disabled', action: { label: 'Create', type: 'button' } }
+        ],
+        resourceAllocation: [
+          { label: 'VM count', value: '2' },
+          { label: 'OCPUs', value: '16' },
+          { label: 'Memory (GB)', value: '140' },
+          { label: 'Local storage /u02 (GB)', value: '300' },
+          { label: 'Local storage (additional file systems) (GB)', value: '368' }
+        ],
+        exadataInfrastructure: [
+          { label: 'Exadata Infrastructure', value: 'scaqan03adm0304clu1', href: '#' }
+        ],
+        storage: [
+          { label: 'Storage type', value: 'ASM' },
+          { label: 'Exadata storage (TB)', value: '8' },
+          { label: 'Storage for Exadata Snapshots', value: 'Not enabled' },
+          { label: 'Storage for local backups', value: 'Not enabled' }
+        ],
+        network: [
+          { label: 'VM Cluster Network', value: 'scaqan03adm0304clu1-network', href: '#' }
+        ],
+        version: [
+          { label: 'Exadata Image version', value: '25.1.10.0.0.251020' },
+          { label: 'Grid Infrastructure version', value: '19.29.0.0.0' },
+          { label: 'Updates Available', value: 'System up to date', description: 'No new updates are available' },
+          { label: 'Cloud automation update', value: 'Enabled', description: 'Cloud automation updates will be applied during the configured time period when available.', descriptionLink: { label: 'Learn more', href: '#' }, action: { label: 'Edit', type: 'button' } }
+        ],
+        virtualMachines: [
+          {
+            name: 'scaqan03adm0304clu1-vm-1',
+            state: 'Available',
+            compute: '8 OCPUs',
+            memory: '70 GB',
+            storage: '150 GB',
+            dnsName: 'scaqan03adm0304clu1-vm-1.example.oraclecloud.com',
+            dbServer: 'dbserver-1',
+            publicIp: '129.146.10.10',
+            ipv6: '—'
+          },
+          {
+            name: 'scaqan03adm0304clu1-vm-2',
+            state: 'Available',
+            compute: '8 OCPUs',
+            memory: '70 GB',
+            storage: '150 GB',
+            dnsName: 'scaqan03adm0304clu1-vm-2.example.oraclecloud.com',
+            dbServer: 'dbserver-2',
+            publicIp: '129.146.10.11',
+            ipv6: '—'
+          }
+        ],
+        databases: []
+      },
+      'vmcluster-202405241341': {
+        name: 'VMCluster-202405241341',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        breadcrumbLabel: 'Exadata VM Clusters',
+        headerMeta: {
+          compartment: 'ocidbaaspmt (root)/SharedPM',
+          availabilityDomain: 'AD-1',
+          ocid: '...ds4ampfmblz7typwc5xqctty3k3pibx4wotx4si52a'
+        },
+        generalInformation: [
+          { label: 'Compartment', value: 'ocidbaaspmt (root)/SharedPM' },
+          { label: 'OCID', value: '...ds4ampfmblz7typwc5xqctty3k3pibx4wotx4si52a', copy: true },
+          { label: 'Created', value: 'May 24, 2024, 1:42:47 PM UTC' },
+          { label: 'Time zone', value: 'UTC' },
+          { label: 'VM type', value: 'Regular' },
+          { label: 'License type', value: 'License included' },
+          { label: 'Diagnostics Collection', value: 'Disabled', action: { label: 'Edit', type: 'button' } },
+          { label: 'API Access Control', value: 'Enabled', action: { label: '...', type: 'button' } }
+        ],
+        resourceAllocation: [
+          { label: 'VM count', value: '2' },
+          { label: 'OCPUs', value: '26' },
+          { label: 'Memory (GB)', value: '800' },
+          { label: 'Local storage /u02 (GB)', value: '480' },
+          { label: 'Local storage (additional file systems) (GB)', value: '368' }
+        ],
+        exadataInfrastructure: [
+          { label: 'Exadata Infrastructure', value: 'scaqan03adm0304clu12', href: '#' }
+        ],
+        storage: [
+          { label: 'Storage type', value: 'ASM' },
+          { label: 'Exadata storage (TB)', value: '2' },
+          { label: 'Storage for Exadata Snapshots', value: 'Not enabled' },
+          { label: 'Storage for local backups', value: 'Not enabled' }
+        ],
+        network: [
+          { label: 'VM Cluster Network', value: 'VMClusterNetwork-202405221849', href: '#' }
+        ],
+        version: [
+          { label: 'Exadata Image version', value: '24.1.10.0.0.250313' },
+          { label: 'Grid Infrastructure version', value: '19.23.0.0.0' },
+          { label: 'Updates Available', value: '13', description: 'You have patches available for Grid Infrastructure and updates available for Grid Infrastructure and Exadata Image.' },
+          { label: 'Cloud automation update', value: 'Enabled', description: 'Cloud automation updates will be applied during the configured time period when available.', descriptionLink: { label: 'Learn more', href: '#' }, action: { label: 'Edit', type: 'button' } }
+        ],
+        virtualMachines: [],
+        databases: [
+          {
+            name: 'DB4700',
+            state: 'Available',
+            uniqueName: 'DB4700_brt_iad',
+            version: '19.23.0.0.0',
+            dataGuardRole: '—',
+            keyManagement: 'Oracle Wallet',
+            created: 'Mar 17, 2025, 3:22:25 PM UTC'
+          }
+        ]
+      },
+      'vmcluster-202401021656': {
+        name: 'VMCluster-202401021656',
+        status: { label: 'Terminated', badgeClass: 'badge--terminated' },
+        breadcrumbLabel: 'Exadata VM Clusters',
+        headerMeta: {
+          compartment: 'ocidbaaspm (root)/SharedPM',
+          availabilityDomain: 'AD-1',
+          ocid: 'ocid1.vmcluster.oc1.iad.example.vmcluster202401021656'
+        },
+        generalInformation: [
+          { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+          { label: 'OCID', value: 'ocid1.vmcluster.oc1.iad.example.vmcluster202401021656', copy: true },
+          { label: 'Created', value: 'Jan 2, 2024, 4:58:25 PM UTC' }
+        ],
+        resourceAllocation: [
+          { label: 'VM count', value: '0' },
+          { label: 'OCPUs', value: '4' },
+          { label: 'Memory (GB)', value: '60' }
+        ],
+        exadataInfrastructure: [
+          { label: 'Exadata Infrastructure', value: 'VMCluster-202401021656', href: '#' }
+        ],
+        storage: [
+          { label: 'Storage type', value: 'ASM' },
+          { label: 'Exadata storage (TB)', value: '2' }
+        ],
+        network: [
+          { label: 'VM Cluster Network', value: 'vmcluster-202401021656-network', href: '#' }
+        ],
+        version: [
+          { label: 'Exadata Image version', value: '24.4.5.0.0.240910' }
+        ],
+        virtualMachines: [],
+        databases: []
+      },
       'vmcluster-202601141706': {
         name: 'VMCluster-202601141706',
         status: { label: 'Available', badgeClass: 'badge--available' },
@@ -1079,6 +1317,7 @@
             uniqueName: 'amtestdb_01',
             version: '23.26.0.0.0',
             dataGuardRole: 'Primary',
+            hasStandby: true,
             created: 'Oct 16, 2025, 3:52:29 PM UTC'
           },
           {
@@ -1233,6 +1472,32 @@
       }
     };
 
+    const cloneArray = (entries) =>
+      (Array.isArray(entries) ? entries : []).map((entry) => ({ ...entry }));
+
+    const mergeDatabases = (baseEntries, storedEntries) => {
+      const merged = cloneArray(baseEntries);
+      const indexByName = new Map(
+        merged.map((db, index) => [String(db.name || '').toLowerCase(), index])
+      );
+
+      cloneArray(storedEntries).forEach((db) => {
+        const key = String(db.name || '').toLowerCase();
+        if (!key) {
+          return;
+        }
+        if (indexByName.has(key)) {
+          const idx = indexByName.get(key);
+          merged[idx] = { ...merged[idx], ...db };
+        } else {
+          indexByName.set(key, merged.length);
+          merged.push(db);
+        }
+      });
+
+      return merged;
+    };
+
     const mergeCatalogs = (base, stored) => {
       const merged = {};
       const keys = new Set([
@@ -1255,13 +1520,34 @@
 
         const combined = { ...baseEntry, ...(storedEntry || {}) };
 
+        // Keep screenshot-backed informational sections aligned with latest template data.
+        [
+          'generalInformation',
+          'resourceAllocation',
+          'exadataInfrastructure',
+          'storage',
+          'network',
+          'version'
+        ].forEach((field) => {
+          if (Array.isArray(baseEntry[field])) {
+            combined[field] = cloneArray(baseEntry[field]);
+          }
+        });
+
         if (Array.isArray(baseEntry.virtualMachines)) {
           const storedVms = storedEntry && Array.isArray(storedEntry.virtualMachines)
             ? storedEntry.virtualMachines
             : undefined;
           combined.virtualMachines = storedVms && storedVms.length
-            ? storedVms.map((vm) => ({ ...vm }))
-            : baseEntry.virtualMachines.map((vm) => ({ ...vm }));
+            ? cloneArray(storedVms)
+            : cloneArray(baseEntry.virtualMachines);
+        }
+
+        if (Array.isArray(baseEntry.databases)) {
+          const storedDatabases = storedEntry && Array.isArray(storedEntry.databases)
+            ? storedEntry.databases
+            : undefined;
+          combined.databases = mergeDatabases(baseEntry.databases, storedDatabases);
         }
 
         merged[key] = combined;
@@ -1283,6 +1569,31 @@
       clusterCatalog = baseClusterCatalog;
     }
 
+    const PRUNED_SAMPLE_DATABASES = new Set(['newmarch13']);
+    const pruneSampleDatabasesFromCatalog = (catalog) => {
+      if (!catalog || typeof catalog !== 'object') return;
+      Object.values(catalog).forEach((cluster) => {
+        if (!cluster || !Array.isArray(cluster.databases)) return;
+        cluster.databases = cluster.databases.filter(
+          (db) => !PRUNED_SAMPLE_DATABASES.has(String(db?.name || '').trim().toLowerCase())
+        );
+      });
+    };
+    pruneSampleDatabasesFromCatalog(clusterCatalog);
+    try {
+      sessionStorage.setItem('vmCluster:catalog', JSON.stringify(clusterCatalog));
+      const selectedRaw = sessionStorage.getItem('vmCluster:selected');
+      if (selectedRaw) {
+        const selected = JSON.parse(selectedRaw);
+        if (selected && selected.id && clusterCatalog[selected.id]) {
+          selected.data = clusterCatalog[selected.id];
+          sessionStorage.setItem('vmCluster:selected', JSON.stringify(selected));
+        }
+      }
+    } catch (error) {
+      /* ignore storage failures */
+    }
+
     const clusterSelectors = {
       name: document.querySelector('[data-slot="cluster-name"]'),
       status: document.querySelector('[data-slot="cluster-status"]'),
@@ -1293,7 +1604,10 @@
       sideContainer: document.querySelector('[data-section="side-panels"]'),
       virtualMachinesContainer: document.querySelector('[data-section="virtual-machines"]'),
       databasesContainer: document.querySelector('[data-section="databases"]'),
-      breadcrumb: document.querySelector('.breadcrumbs__link span')
+      breadcrumb: document.querySelector('.breadcrumbs__link span'),
+      warning: document.querySelector('.cluster-warning'),
+      warningTitle: document.querySelector('.cluster-warning__title'),
+      warningText: document.querySelector('.cluster-warning__message')
     };
 
     const tabButtons = Array.from(document.querySelectorAll('.detail-tabs .tab'));
@@ -1360,13 +1674,27 @@
         dt.textContent = row.label;
 
         const dd = document.createElement('dd');
-        const valueSpan = document.createElement('span');
-        valueSpan.textContent = row.value;
+        const valueNode = row.href
+          ? Object.assign(document.createElement('a'), { href: row.href, textContent: row.value, className: 'vm-row-name' })
+          : Object.assign(document.createElement('span'), { textContent: row.value });
 
         if (row.action) {
           dd.classList.add('detail-rows__service');
           const valueBlock = document.createElement('div');
-          valueBlock.appendChild(valueSpan);
+          valueBlock.appendChild(valueNode);
+          if (row.description) {
+            const description = document.createElement('small');
+            description.textContent = row.description;
+            valueBlock.appendChild(description);
+            if (row.descriptionLink) {
+              description.appendChild(document.createTextNode(' '));
+              const descriptionLink = document.createElement('a');
+              descriptionLink.href = row.descriptionLink.href || '#';
+              descriptionLink.className = 'vm-row-name';
+              descriptionLink.textContent = row.descriptionLink.label;
+              description.appendChild(descriptionLink);
+            }
+          }
           dd.appendChild(valueBlock);
 
           const actionButton = document.createElement('button');
@@ -1374,8 +1702,23 @@
           actionButton.className = 'secondary-button';
           actionButton.textContent = row.action.label;
           dd.appendChild(actionButton);
+        } else if (row.description) {
+          const valueBlock = document.createElement('div');
+          valueBlock.appendChild(valueNode);
+          const description = document.createElement('small');
+          description.textContent = row.description;
+          if (row.descriptionLink) {
+            description.appendChild(document.createTextNode(' '));
+            const descriptionLink = document.createElement('a');
+            descriptionLink.href = row.descriptionLink.href || '#';
+            descriptionLink.className = 'vm-row-name';
+            descriptionLink.textContent = row.descriptionLink.label;
+            description.appendChild(descriptionLink);
+          }
+          valueBlock.appendChild(description);
+          dd.appendChild(valueBlock);
         } else {
-          dd.appendChild(valueSpan);
+          dd.appendChild(valueNode);
         }
 
         if (row.copy) {
@@ -1416,22 +1759,42 @@
       if (clusterSelectors.breadcrumb) {
         clusterSelectors.breadcrumb.textContent = cluster.breadcrumbLabel;
       }
+      if (clusterSelectors.warning) {
+        const hasWarning = cluster.warning && cluster.warning.title && cluster.warning.message;
+        clusterSelectors.warning.hidden = !hasWarning;
+        if (hasWarning) {
+          if (clusterSelectors.warningTitle) {
+            clusterSelectors.warningTitle.textContent = cluster.warning.title;
+          }
+          if (clusterSelectors.warningText) {
+            clusterSelectors.warningText.innerHTML = `${cluster.warning.message} <a href="${cluster.warning.linkHref || '#'}">${cluster.warning.linkLabel || 'Learn more'}</a>`;
+          }
+        }
+      }
 
       if (clusterSelectors.generalContainer) {
         clusterSelectors.generalContainer.innerHTML = '';
 
-        const headerCard = createDetailCard({
+        const generalCard = createDetailCard({
           title: 'General information',
           rows: cluster.generalInformation
         });
-        clusterSelectors.generalContainer.appendChild(headerCard);
+        clusterSelectors.generalContainer.appendChild(generalCard);
 
-        if (cluster.network && cluster.network.length) {
-          const networkCardMain = createDetailCard({
-            title: 'Network',
-            rows: cluster.network
+        if (cluster.resourceAllocation && cluster.resourceAllocation.length) {
+          const resourceCard = createDetailCard({
+            title: 'Resource allocation',
+            rows: cluster.resourceAllocation
           });
-          clusterSelectors.generalContainer.appendChild(networkCardMain);
+          clusterSelectors.generalContainer.appendChild(resourceCard);
+        }
+
+        if (cluster.exadataInfrastructure && cluster.exadataInfrastructure.length) {
+          const infrastructureCard = createDetailCard({
+            title: 'Exadata Infrastructure',
+            rows: cluster.exadataInfrastructure
+          });
+          clusterSelectors.generalContainer.appendChild(infrastructureCard);
         }
       }
 
@@ -1444,6 +1807,20 @@
           });
 
           clusterSelectors.sideContainer.appendChild(storageCard);
+        }
+        if (cluster.network && cluster.network.length) {
+          const networkCard = createDetailCard({
+            title: 'Network',
+            rows: cluster.network
+          });
+          clusterSelectors.sideContainer.appendChild(networkCard);
+        }
+        if (cluster.version && cluster.version.length) {
+          const versionCard = createDetailCard({
+            title: 'Version',
+            rows: cluster.version
+          });
+          clusterSelectors.sideContainer.appendChild(versionCard);
         }
       }
 
@@ -1571,7 +1948,7 @@
             tr.appendChild(createCell(db.name, {
               isLink: true,
               className: 'vm-row-name',
-              href: `db-template-d.html?id=${encodeURIComponent(db.name)}&cluster=${encodeURIComponent(clusterId || '')}`
+              href: `db-template-cc.html?id=${encodeURIComponent(db.name)}&cluster=${encodeURIComponent(clusterId || '')}`
             }));
 
             const stateCell = document.createElement('td');
@@ -1583,7 +1960,14 @@
 
             tr.appendChild(createCell(db.uniqueName));
             tr.appendChild(createCell(db.version));
-            tr.appendChild(createCell(db.dataGuardRole || '—'));
+            const roleValue = String(db.dataGuardRole || '').trim();
+            const inferredHasStandby = db.hasStandby === true
+              || (db.hasStandby === undefined && roleValue === 'Primary');
+            const normalizedRole = roleValue.toLowerCase() === 'primary' && !inferredHasStandby
+              ? '—'
+              : (db.dataGuardRole || '—');
+            tr.appendChild(createCell(normalizedRole));
+            tr.appendChild(createCell(db.keyManagement || 'Oracle Wallet'));
             tr.appendChild(createCell(db.created));
 
             const actionsCell = document.createElement('td');
@@ -1622,6 +2006,10 @@
       const submitButton = panel.querySelector('[data-create-db-submit]');
       const dbNameInput = panel.querySelector('[data-create-db-name]');
       const dbUniqueInput = panel.querySelector('[data-create-db-unique]');
+      const dataSafeToggle = panel.querySelector('[data-create-db-datasafe-toggle]');
+      const advancedTrigger = panel.querySelector('[data-create-db-advanced-trigger]');
+      const advancedContent = panel.querySelector('[data-create-db-advanced-content]');
+      const accordionTriggers = Array.from(panel.querySelectorAll('[data-create-db-accordion-trigger]'));
       const inputDefaults = Array.from(panel.querySelectorAll('input, select, textarea')).map((field) => ({
         field,
         value: field.value,
@@ -1631,6 +2019,25 @@
         toggle,
         checked: toggle.getAttribute('aria-checked') || 'false'
       }));
+
+      const setAccordionExpanded = (trigger, expanded) => {
+        trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        const controlsId = trigger.getAttribute('aria-controls');
+        const content = controlsId ? panel.querySelector(`#${controlsId}`) : null;
+        if (content) {
+          content.hidden = !expanded;
+        }
+      };
+
+      const resetAdvancedDefaults = () => {
+        if (advancedTrigger && advancedContent) {
+          advancedTrigger.setAttribute('aria-expanded', 'false');
+          advancedContent.hidden = true;
+        }
+        accordionTriggers.forEach((trigger) => {
+          setAccordionExpanded(trigger, trigger.dataset.defaultExpanded === 'true');
+        });
+      };
 
       const resetPanel = () => {
         inputDefaults.forEach(({ field, value, checked }) => {
@@ -1642,6 +2049,7 @@
         toggleDefaults.forEach(({ toggle, checked }) => {
           toggle.setAttribute('aria-checked', checked);
         });
+        resetAdvancedDefaults();
       };
 
       const open = () => {
@@ -1687,6 +2095,28 @@
         });
       });
 
+      if (advancedTrigger && advancedContent) {
+        advancedTrigger.addEventListener('click', () => {
+          const expanded = advancedTrigger.getAttribute('aria-expanded') === 'true';
+          if (!expanded) {
+            accordionTriggers.forEach((trigger) => {
+              setAccordionExpanded(trigger, trigger.dataset.defaultExpanded === 'true');
+            });
+          }
+          advancedTrigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          advancedContent.hidden = expanded;
+        });
+      }
+
+      accordionTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const expanded = trigger.getAttribute('aria-expanded') === 'true';
+          setAccordionExpanded(trigger, !expanded);
+        });
+      });
+
+      resetAdvancedDefaults();
+
       closeButtons.forEach((button) => {
         button.addEventListener('click', close);
       });
@@ -1720,10 +2150,13 @@
 
           const name = (dbNameInput?.value || '').trim() || `DB${Date.now().toString().slice(-3)}`;
           const uniqueName = (dbUniqueInput?.value || '').trim() || name.toLowerCase();
-          const clusterParam = params.get('id') || 'ssoexavmcluster';
+          const clusterParam = params.get('id') || 'scaqan03adm0304clu1-vm';
           const created = formatUtcDate(new Date());
-          const cluster = clusterCatalog[clusterParam];
+          const dataSafeEnabled = dataSafeToggle
+            ? dataSafeToggle.getAttribute('aria-checked') === 'true'
+            : false;
 
+          const cluster = clusterCatalog[clusterParam];
           if (cluster) {
             const existing = Array.isArray(cluster.databases) ? cluster.databases : [];
             cluster.databases = [{
@@ -1731,9 +2164,11 @@
                 state: 'Available',
                 uniqueName,
                 version: '19c',
-                dataGuardRole: 'PRIMARY',
+                dataGuardRole: '—',
+                hasStandby: false,
+                keyManagement: 'Oracle Wallet',
                 created,
-                pdbRows: []
+                dataSafeEnabled
               },
               ...existing.filter((db) => db.name !== name)
             ];
@@ -1744,11 +2179,11 @@
 
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td><a class="vm-row-name" href="db-template-d.html?id=${encodeURIComponent(name)}&cluster=${encodeURIComponent(clusterParam)}">${name}</a></td>
+            <td><a class="vm-row-name" href="db-template-cc.html?id=${encodeURIComponent(name)}&cluster=${encodeURIComponent(clusterParam)}">${name}</a></td>
             <td><span class="vm-row-badge">Available</span></td>
             <td>${uniqueName}</td>
             <td>19c</td>
-            <td>PRIMARY</td>
+            <td>—</td>
             <td>${created}</td>
             <td class="vm-table-actions">⋮</td>
           `;
@@ -1785,7 +2220,7 @@
       document.addEventListener('click', handleCopyClick);
 
     const params = new URLSearchParams(window.location.search);
-    const clusterId = params.get('id') || 'ssoexavmcluster';
+    const clusterId = params.get('id') || 'scaqan03adm0304clu1-vm';
 
     const clusterWriter = (clusterIdParam) => {
       const payload = clusterCatalog[clusterIdParam];
@@ -1801,22 +2236,7 @@
       renderCluster(payload);
     };
 
-    const storedClusterRaw = sessionStorage.getItem('vmCluster:selected');
-    if (storedClusterRaw) {
-      try {
-        const storedCluster = JSON.parse(storedClusterRaw);
-        if (storedCluster && storedCluster.id === clusterId && storedCluster.data) {
-          const merged = mergeCatalogs(baseClusterCatalog, { [clusterId]: storedCluster.data });
-          renderCluster(merged[clusterId] || storedCluster.data);
-        } else {
-          clusterWriter(clusterId);
-        }
-      } catch (error) {
-        clusterWriter(clusterId);
-      }
-    } else {
-      clusterWriter(clusterId);
-    }
+    clusterWriter(clusterId);
   </script>
 </body>
 </html>

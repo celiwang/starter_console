@@ -133,11 +133,11 @@
       <nav class="side-nav__menu" aria-label="Oracle Exadata navigation">
         <button type="button" class="menu-item menu-item--active">
           <span class="menu-item__back" aria-hidden="true">‹</span>
-          Oracle Exadata Database Service on Dedicated Infrastructure
+          Oracle Exadata Database Service on Exascale Infrastructure
         </button>
         <div class="menu-sublist" role="list">
-          <button type="button" class="menu-subitem menu-subitem--active">Exadata VM Clusters</button>
-          <a class="menu-subitem" href="exadbd.html#exadata-infra">Exadata Infrastructure</a>
+          <a class="menu-subitem menu-subitem--active" href="exadbxs.html">Exadata VM clusters</a>
+          <a class="menu-subitem" href="exadbxs.html">Exadata Infrastructure</a>
         </div>
         <div class="menu-divider" role="presentation"></div>
         <div class="menu-secondary">
@@ -153,13 +153,13 @@
 
     <main class="main-content main-content--detail" role="main">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="exadbd.html" class="breadcrumbs__link">
+        <a href="exadbxs.html" class="breadcrumbs__link">
           <svg class="breadcrumbs__icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
             <g fill="none">
               <path d="M21.996 11H5.41l5.293-5.293L9.29 4.293 1.582 12l7.707 7.707 1.414-1.414L5.41 13h16.586z" fill="currentColor"></path>
             </g>
           </svg>
-          <span>Exadata VM Clusters</span>
+          <span>Exadata VM clusters</span>
         </a>
       </nav>
 
@@ -635,10 +635,77 @@
                 <label><input type="radio" name="delete-backups" /> Retain backups for 72 hours, then delete</label>
               </div>
             </div>
-            <button type="button" class="create-db-advanced">
-              <span class="chevron chevron--right" aria-hidden="true"></span>
+            <button type="button" class="create-db-advanced" data-create-db-advanced-trigger aria-expanded="false">
+              <span class="create-db-disclosure" aria-hidden="true"></span>
               Advanced options
             </button>
+            <div class="create-db-advanced-content" data-create-db-advanced-content hidden>
+              <section class="create-db-advanced-card">
+                <button type="button" class="create-db-accordion-title" data-create-db-accordion-trigger data-default-expanded="true" aria-expanded="true" aria-controls="create-db-advanced-management">
+                  <span class="create-db-disclosure" aria-hidden="true"></span>
+                  Management
+                </button>
+                <div class="create-db-accordion-content" data-create-db-accordion-content id="create-db-advanced-management">
+                  <label class="create-db-field">
+                    <span class="create-db-field__label">Oracle SID prefix</span>
+                    <input type="text" />
+                  </label>
+                  <label class="create-db-field create-db-field--select">
+                    <span class="create-db-field__label">Character set</span>
+                    <select>
+                      <option>AL32UTF8</option>
+                    </select>
+                  </label>
+                  <label class="create-db-field create-db-field--select">
+                    <span class="create-db-field__label">National character set</span>
+                    <select>
+                      <option>AL16UTF16</option>
+                    </select>
+                  </label>
+                </div>
+              </section>
+              <section class="create-db-advanced-card">
+                <button type="button" class="create-db-accordion-title" data-create-db-accordion-trigger data-default-expanded="false" aria-expanded="false" aria-controls="create-db-advanced-encryption">
+                  <span class="create-db-disclosure" aria-hidden="true"></span>
+                  Encryption
+                </button>
+                <div class="create-db-accordion-content" data-create-db-accordion-content id="create-db-advanced-encryption" hidden>
+                  <p class="create-db-field__label">Key management</p>
+                  <div class="create-db-radio-group">
+                    <label><input type="radio" name="create-db-key-management" checked /> Use Oracle-managed keys</label>
+                    <label><input type="radio" name="create-db-key-management" /> Use customer-managed keys</label>
+                  </div>
+                </div>
+              </section>
+              <section class="create-db-advanced-card">
+                <button type="button" class="create-db-accordion-title" data-create-db-accordion-trigger data-default-expanded="false" aria-expanded="false" aria-controls="create-db-advanced-tags">
+                  <span class="create-db-disclosure" aria-hidden="true"></span>
+                  Tags
+                </button>
+                <div class="create-db-accordion-content" data-create-db-accordion-content id="create-db-advanced-tags" hidden>
+                  <p class="create-db-help">Add additional metadata to organize resources with <a href="#">free-form</a> and <a href="#">defined</a> tags.</p>
+                  <div class="create-db-tags-row">
+                    <label class="create-db-field create-db-field--select">
+                      <span class="create-db-field__label">Namespace</span>
+                      <select>
+                        <option>None (free-form tag)</option>
+                      </select>
+                    </label>
+                    <label class="create-db-field">
+                      <span class="create-db-field__label">Key</span>
+                      <input type="text" />
+                    </label>
+                    <label class="create-db-field">
+                      <span class="create-db-field__label">Value</span>
+                      <input type="text" />
+                    </label>
+                    <button type="button" class="secondary-button create-db-tag-remove" aria-label="Remove tag">x</button>
+                  </div>
+                  <div class="create-db-tags-add">
+                    <button type="button" class="secondary-button">Add tag</button>
+                  </div>
+                </div>
+              </section>            </div>
           </section>
         </div>
       </div>
@@ -937,10 +1004,80 @@
     })();
 
     const baseClusterCatalog = {
+      'vmcluster-202511162239': {
+        name: 'VMCluster-202511162239',
+        status: { label: 'Available', badgeClass: 'badge--available' },
+        breadcrumbLabel: 'Exadata VM clusters',
+        headerMeta: {
+          compartment: 'ocidbaaspm (root)/SharedPM',
+          availabilityDomain: 'AD-1',
+          ocid: 'ocid1.vmcluster.oc1.uk-cardiff-1.example.vmcluster202511162239'
+        },
+        generalInformation: [
+          { label: 'Compartment', value: 'ocidbaaspm (root)/SharedPM' },
+          { label: 'Availability domain', value: 'AD-1' },
+          { label: 'OCID', value: 'ocid1.vmcluster.oc1.uk-cardiff-1.example.vmcluster202511162239', copy: true },
+          { label: 'Created', value: 'Nov 17, 2025, 3:44:54 AM UTC' },
+          { label: 'Cluster name', value: 'VMCluster-202511162239' },
+          { label: 'Time zone', value: 'UTC' },
+          { label: 'VM Type', value: 'Regular' },
+          { label: 'License type', value: 'Bring Your Own License (BYOL)' },
+          { label: 'IORM status', value: 'Enabled' },
+          { label: 'Diagnostics collection', value: 'Enabled', action: { label: 'Edit', type: 'button' } },
+          { label: 'API Access Control', value: 'Enabled' }
+        ],
+        storage: [
+          { label: 'Storage type', value: 'ASM' },
+          { label: 'Exadata storage', value: '2 TB' },
+          { label: 'Storage for local backups', value: 'Not enabled' },
+          { label: 'Storage for Exadata sparse snapshots', value: 'Not enabled' }
+        ],
+        network: [
+          { label: 'Virtual cloud network', value: 'SSOVCNCWL' },
+          { label: 'Client subnet', value: 'SSOSUBREG' },
+          { label: 'Backup subnet', value: 'SSOBACKUPREG' },
+          { label: 'Hostname domain name', value: 'vmcluster-202511162239.pub.cwl.oraclevcn.com', copy: true },
+          { label: 'SCAN DNS name', value: 'vmcluster-202511162239-scan.pub.cwl.oraclevcn.com', copy: true }
+        ],
+        virtualMachines: [
+          {
+            name: 'vmcluster-202511162239-1',
+            state: 'Available',
+            compute: '8 OCPUs',
+            memory: '44 GB',
+            storage: '244 GB',
+            dnsName: 'vmcluster-202511162239-1.pub.cwl.oraclevcn.com',
+            dbServer: 'dbserver-1',
+            publicIp: '129.151.80.10',
+            ipv6: '—'
+          },
+          {
+            name: 'vmcluster-202511162239-2',
+            state: 'Available',
+            compute: '8 OCPUs',
+            memory: '44 GB',
+            storage: '244 GB',
+            dnsName: 'vmcluster-202511162239-2.pub.cwl.oraclevcn.com',
+            dbServer: 'dbserver-2',
+            publicIp: '129.151.80.11',
+            ipv6: '—'
+          }
+        ],
+        databases: [
+          {
+            name: 'XSDB1',
+            state: 'Available',
+            uniqueName: 'XSDB1_ukw1',
+            version: '19.23.0.0.0',
+            dataGuardRole: 'PRIMARY',
+            created: 'Nov 17, 2025, 4:12:18 AM UTC'
+          }
+        ]
+      },
       'vmcluster-202601141706': {
         name: 'VMCluster-202601141706',
         status: { label: 'Available', badgeClass: 'badge--available' },
-        breadcrumbLabel: 'Exadata VM Clusters',
+        breadcrumbLabel: 'Exadata VM clusters',
         headerMeta: {
           compartment: 'ocidbaaspm (root)/SharedPM',
           availabilityDomain: 'AD-1',
@@ -976,7 +1113,7 @@
       ssoexavmcluster: {
         name: 'SSOExaVMCluster',
         status: { label: 'Available', badgeClass: 'badge--available' },
-        breadcrumbLabel: 'Exadata VM Clusters',
+        breadcrumbLabel: 'Exadata VM clusters',
         headerMeta: {
           compartment: 'ocidbaaspm (root)/SharedPM',
           availabilityDomain: 'vPay:UK-CARDIFF-1.AD-1',
@@ -1079,6 +1216,7 @@
             uniqueName: 'amtestdb_01',
             version: '23.26.0.0.0',
             dataGuardRole: 'Primary',
+            hasStandby: true,
             created: 'Oct 16, 2025, 3:52:29 PM UTC'
           },
           {
@@ -1102,7 +1240,7 @@
       'vmcluster-2025082110355n': {
         name: 'VMCluster-2025082110355N',
         status: { label: 'Available', badgeClass: 'badge--available' },
-        breadcrumbLabel: 'Exadata VM Clusters',
+        breadcrumbLabel: 'Exadata VM clusters',
         headerMeta: {
           compartment: 'ocidbaaspm (root)/SharedPM',
           availabilityDomain: 'AD-1',
@@ -1138,7 +1276,7 @@
       'vmcluster-202507281139': {
         name: 'VMCluster-202507281139',
         status: { label: 'Available', badgeClass: 'badge--available' },
-        breadcrumbLabel: 'Exadata VM Clusters',
+        breadcrumbLabel: 'Exadata VM clusters',
         headerMeta: {
           compartment: 'ocidbaaspm (root)/SharedPM',
           availabilityDomain: 'AD-1',
@@ -1174,7 +1312,7 @@
       'vmcluster-202503311639': {
         name: 'VMCluster-202503311639',
         status: { label: 'Available', badgeClass: 'badge--available' },
-        breadcrumbLabel: 'Exadata VM Clusters',
+        breadcrumbLabel: 'Exadata VM clusters',
         headerMeta: {
           compartment: 'ocidbaaspm (root)/SharedPM',
           availabilityDomain: 'AD-1',
@@ -1281,6 +1419,31 @@
       }
     } catch (error) {
       clusterCatalog = baseClusterCatalog;
+    }
+
+    const PRUNED_SAMPLE_DATABASES = new Set(['newmarch13']);
+    const pruneSampleDatabasesFromCatalog = (catalog) => {
+      if (!catalog || typeof catalog !== 'object') return;
+      Object.values(catalog).forEach((cluster) => {
+        if (!cluster || !Array.isArray(cluster.databases)) return;
+        cluster.databases = cluster.databases.filter(
+          (db) => !PRUNED_SAMPLE_DATABASES.has(String(db?.name || '').trim().toLowerCase())
+        );
+      });
+    };
+    pruneSampleDatabasesFromCatalog(clusterCatalog);
+    try {
+      sessionStorage.setItem('vmCluster:catalog', JSON.stringify(clusterCatalog));
+      const selectedRaw = sessionStorage.getItem('vmCluster:selected');
+      if (selectedRaw) {
+        const selected = JSON.parse(selectedRaw);
+        if (selected && selected.id && clusterCatalog[selected.id]) {
+          selected.data = clusterCatalog[selected.id];
+          sessionStorage.setItem('vmCluster:selected', JSON.stringify(selected));
+        }
+      }
+    } catch (error) {
+      /* ignore storage failures */
     }
 
     const clusterSelectors = {
@@ -1571,7 +1734,7 @@
             tr.appendChild(createCell(db.name, {
               isLink: true,
               className: 'vm-row-name',
-              href: `db-template-d.html?id=${encodeURIComponent(db.name)}&cluster=${encodeURIComponent(clusterId || '')}`
+              href: `db-template-xs.html?id=${encodeURIComponent(db.name)}&cluster=${encodeURIComponent(clusterId || '')}`
             }));
 
             const stateCell = document.createElement('td');
@@ -1583,7 +1746,13 @@
 
             tr.appendChild(createCell(db.uniqueName));
             tr.appendChild(createCell(db.version));
-            tr.appendChild(createCell(db.dataGuardRole || '—'));
+            const roleValue = String(db.dataGuardRole || '').trim();
+            const inferredHasStandby = db.hasStandby === true
+              || (db.hasStandby === undefined && roleValue === 'Primary');
+            const normalizedRole = roleValue.toLowerCase() === 'primary' && !inferredHasStandby
+              ? '—'
+              : (db.dataGuardRole || '—');
+            tr.appendChild(createCell(normalizedRole));
             tr.appendChild(createCell(db.created));
 
             const actionsCell = document.createElement('td');
@@ -1622,6 +1791,10 @@
       const submitButton = panel.querySelector('[data-create-db-submit]');
       const dbNameInput = panel.querySelector('[data-create-db-name]');
       const dbUniqueInput = panel.querySelector('[data-create-db-unique]');
+      const dataSafeToggle = panel.querySelector('[data-create-db-datasafe-toggle]');
+      const advancedTrigger = panel.querySelector('[data-create-db-advanced-trigger]');
+      const advancedContent = panel.querySelector('[data-create-db-advanced-content]');
+      const accordionTriggers = Array.from(panel.querySelectorAll('[data-create-db-accordion-trigger]'));
       const inputDefaults = Array.from(panel.querySelectorAll('input, select, textarea')).map((field) => ({
         field,
         value: field.value,
@@ -1631,6 +1804,25 @@
         toggle,
         checked: toggle.getAttribute('aria-checked') || 'false'
       }));
+
+      const setAccordionExpanded = (trigger, expanded) => {
+        trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        const controlsId = trigger.getAttribute('aria-controls');
+        const content = controlsId ? panel.querySelector(`#${controlsId}`) : null;
+        if (content) {
+          content.hidden = !expanded;
+        }
+      };
+
+      const resetAdvancedDefaults = () => {
+        if (advancedTrigger && advancedContent) {
+          advancedTrigger.setAttribute('aria-expanded', 'false');
+          advancedContent.hidden = true;
+        }
+        accordionTriggers.forEach((trigger) => {
+          setAccordionExpanded(trigger, trigger.dataset.defaultExpanded === 'true');
+        });
+      };
 
       const resetPanel = () => {
         inputDefaults.forEach(({ field, value, checked }) => {
@@ -1642,6 +1834,7 @@
         toggleDefaults.forEach(({ toggle, checked }) => {
           toggle.setAttribute('aria-checked', checked);
         });
+        resetAdvancedDefaults();
       };
 
       const open = () => {
@@ -1687,6 +1880,28 @@
         });
       });
 
+      if (advancedTrigger && advancedContent) {
+        advancedTrigger.addEventListener('click', () => {
+          const expanded = advancedTrigger.getAttribute('aria-expanded') === 'true';
+          if (!expanded) {
+            accordionTriggers.forEach((trigger) => {
+              setAccordionExpanded(trigger, trigger.dataset.defaultExpanded === 'true');
+            });
+          }
+          advancedTrigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          advancedContent.hidden = expanded;
+        });
+      }
+
+      accordionTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const expanded = trigger.getAttribute('aria-expanded') === 'true';
+          setAccordionExpanded(trigger, !expanded);
+        });
+      });
+
+      resetAdvancedDefaults();
+
       closeButtons.forEach((button) => {
         button.addEventListener('click', close);
       });
@@ -1720,10 +1935,13 @@
 
           const name = (dbNameInput?.value || '').trim() || `DB${Date.now().toString().slice(-3)}`;
           const uniqueName = (dbUniqueInput?.value || '').trim() || name.toLowerCase();
-          const clusterParam = params.get('id') || 'ssoexavmcluster';
+          const clusterParam = params.get('id') || 'vmcluster-202511162239';
           const created = formatUtcDate(new Date());
-          const cluster = clusterCatalog[clusterParam];
+          const dataSafeEnabled = dataSafeToggle
+            ? dataSafeToggle.getAttribute('aria-checked') === 'true'
+            : false;
 
+          const cluster = clusterCatalog[clusterParam];
           if (cluster) {
             const existing = Array.isArray(cluster.databases) ? cluster.databases : [];
             cluster.databases = [{
@@ -1731,9 +1949,10 @@
                 state: 'Available',
                 uniqueName,
                 version: '19c',
-                dataGuardRole: 'PRIMARY',
+                dataGuardRole: '—',
+                hasStandby: false,
                 created,
-                pdbRows: []
+                dataSafeEnabled
               },
               ...existing.filter((db) => db.name !== name)
             ];
@@ -1744,11 +1963,11 @@
 
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td><a class="vm-row-name" href="db-template-d.html?id=${encodeURIComponent(name)}&cluster=${encodeURIComponent(clusterParam)}">${name}</a></td>
+            <td><a class="vm-row-name" href="db-template-xs.html?id=${encodeURIComponent(name)}&cluster=${encodeURIComponent(clusterParam)}">${name}</a></td>
             <td><span class="vm-row-badge">Available</span></td>
             <td>${uniqueName}</td>
             <td>19c</td>
-            <td>PRIMARY</td>
+            <td>—</td>
             <td>${created}</td>
             <td class="vm-table-actions">⋮</td>
           `;
@@ -1785,7 +2004,7 @@
       document.addEventListener('click', handleCopyClick);
 
     const params = new URLSearchParams(window.location.search);
-    const clusterId = params.get('id') || 'ssoexavmcluster';
+    const clusterId = params.get('id') || 'vmcluster-202511162239';
 
     const clusterWriter = (clusterIdParam) => {
       const payload = clusterCatalog[clusterIdParam];
